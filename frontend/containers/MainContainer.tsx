@@ -1,11 +1,11 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { setExampleState } from '../store/appSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 export default function MainContainer() {
-  const exampleState = useSelector((state) => state.app.exampleState);
-  const anotherState = useSelector((state) => state.app.anotherState);
-  const dispatch = useDispatch();
+  const exampleState = useAppSelector((state) => state.app.exampleState);
+  const anotherState = useAppSelector((state) => state.app.anotherState);
+  const dispatch = useAppDispatch();
 
   return (
     <div>

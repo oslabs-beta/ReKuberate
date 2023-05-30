@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: ['./frontend/index.js'],
+  entry: ['./frontend/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -38,6 +38,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -63,6 +68,6 @@ module.exports = {
     maxAssetSize: 512000,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 };
