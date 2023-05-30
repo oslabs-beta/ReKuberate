@@ -1,12 +1,16 @@
 import React from 'react';
 
 import { Route, Routes } from 'react-router-dom';
-import MainContainer from './containers/MainContainer';
+import HomeContainer from './containers/HomeContainer';
+import SidebarContainer from './containers/SidebarContainer';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path='/' element={<MainContainer />}></Route>
-    </Routes>
+    <>
+      <SidebarContainer />
+      <Routes>
+        <Route path='/' element={<HomeContainer />}></Route>
+      </Routes>
+    </>
   );
 }
