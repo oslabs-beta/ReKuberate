@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const PORT: number = 3000;
 
-const PG_URI = 'postgres://rcyzjqws:vzvsE8cnMcQ8DNEpmuocpc26AO1-ppbC@rajje.db.elephantsql.com/rcyzjqw';
+const PG_URI = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 const pool = new Pool({
   connectionString: PG_URI,
   ssl: {
