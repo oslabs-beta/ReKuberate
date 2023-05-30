@@ -2,7 +2,7 @@
   "name": "rekuberate",
   "version": "1.0.0",
   "description": "kubernetes app",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "frontend": "NODE_ENV=development webpack-dev-server --open --hot --progress --color",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"cross-env NODE_ENV=development nodemon ./server/server.js\"",
@@ -35,8 +35,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.2.5",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.0",
     "concurrently": "^8.0.1",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
@@ -45,8 +50,11 @@
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.0.4"
   }
 }
