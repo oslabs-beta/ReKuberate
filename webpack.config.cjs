@@ -68,6 +68,6 @@ module.exports = {
     maxAssetSize: 512000,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
   },
 };
