@@ -10,50 +10,50 @@ export default function PodsContainer() {
         id: 'node 1',
         node_data: 'Running',
         normal: { fill: '#008000' },
-        hovered: { fill: '#34a834' },
-        selected: { fill: '#008000' },
+        hovered: { fill: '#51cf51' },
+        selected: { fill: '#036803' },
       },
       {
         id: 'node 2',
         node_data: 'Running',
         normal: { fill: '#008000' },
-        hovered: { fill: '#34a834' },
-        selected: { fill: '#008000' },
+        hovered: { fill: '#51cf51' },
+        selected: { fill: '#036803' },
       },
       {
         id: 'node 3',
         node_data: 'Running',
         normal: { fill: '#008000' },
-        hovered: { fill: '#34a834' },
-        selected: { fill: '#008000' },
+        hovered: { fill: '#51cf51' },
+        selected: { fill: '#036803' },
       },
       {
         id: 'node 4',
         node_data: 'Running',
         normal: { fill: '#008000' },
-        hovered: { fill: '#34a834' },
-        selected: { fill: '#008000' },
+        hovered: { fill: '#51cf51' },
+        selected: { fill: '#036803' },
       },
       {
         id: 'node 5',
         node_data: 'Failed',
         normal: { fill: '#ff0000' },
         hovered: { fill: '#fc7474' },
-        selected: { fill: '#ff0000' },
+        selected: { fill: '#940000' },
       },
       {
         id: 'node 6',
         node_data: 'Running',
         normal: { fill: '#008000' },
-        hovered: { fill: '#34a834' },
-        selected: { fill: '#008000' },
+        hovered: { fill: '#51cf51' },
+        selected: { fill: '#036803' },
       },
       {
         id: 'node 7',
         node_data: 'Pending',
         normal: { fill: '#ffa500' },
         hovered: { fill: '#fac86a' },
-        selected: { fill: '#ffa500' },
+        selected: { fill: '#ca8606' },
       },
     ],
     edges: [
@@ -68,12 +68,12 @@ export default function PodsContainer() {
   };
 
   const chart = anychart.graph(mockData);
-  chart.background('gray');
+  chart.background('#d8d8d8');
 
   const background = chart.background();
-  background.stroke('25 blue');
+  background.stroke('25 #929292');
   background.cornerType('round');
-  background.corners(20);
+  background.corners(15);
 
   const nodes = chart.nodes();
   nodes.normal().height(30);
@@ -91,8 +91,8 @@ export default function PodsContainer() {
   nodes.tooltip().format('{%node_data}');
 
   const edges = chart.edges();
-  edges.normal().stroke('#7ec5ff')
-  edges.selected().stroke('#7ec5ff')
+  edges.normal().stroke('#7ec5ff');
+  edges.selected().stroke('#7ec5ff');
   edges.arrows({
     enabled: true,
     size: 18,
