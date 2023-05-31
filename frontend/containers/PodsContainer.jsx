@@ -1,5 +1,8 @@
 import React from 'react';
+import React from 'react';
 import './PodsContainerStyles.scss';
+import AnyChart from 'anychart-react';
+import anychart from 'anychart';
 import AnyChart from 'anychart-react';
 import anychart from 'anychart';
 
