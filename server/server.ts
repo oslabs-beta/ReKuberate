@@ -4,11 +4,15 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import { fileURLToPath } from 'url';
 import path from 'path';
+// import initRoute from './routes/initRoute';
+// import userRoute from './routes/userRoute';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT: number = 3000;
+
+app.use(express.json());
 
 const PG_URI = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 const pool = new Pool({
@@ -29,6 +33,11 @@ pool.connect((err) => {
 
 //Serves front end index html when rendering
 app.use(express.static(path.join(__dirname, './frontend/index.html')));
+
+//Route to initialize prometheus and grafana
+// app.use('/init', initRoute);
+//Route for user verification and creation
+// app.use('/user', userRoute)
 
 //Catch all Route
 app.use('*', (req: Request, res: Response) => res.sendStatus(404));
