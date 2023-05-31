@@ -1,5 +1,4 @@
 import React from 'react';
-import { setExampleState } from '../store/appSlice';
 import styles from './HomeContainerStyles.module.scss';
 
 export default function HomeContainer() {
