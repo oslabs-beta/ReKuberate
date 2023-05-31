@@ -9,6 +9,7 @@ export default function PodsContainer() {
       {
         id: 'node 1',
         node_data: 'Running',
+        location: 'Philadelphia',
         normal: { fill: '#008000' },
         hovered: { fill: '#51cf51' },
         selected: { fill: '#036803' },
@@ -16,6 +17,7 @@ export default function PodsContainer() {
       {
         id: 'node 2',
         node_data: 'Running',
+        location: 'Boston',
         normal: { fill: '#008000' },
         hovered: { fill: '#51cf51' },
         selected: { fill: '#036803' },
@@ -23,6 +25,7 @@ export default function PodsContainer() {
       {
         id: 'node 3',
         node_data: 'Running',
+        location: 'San Francisco',
         normal: { fill: '#008000' },
         hovered: { fill: '#51cf51' },
         selected: { fill: '#036803' },
@@ -30,6 +33,7 @@ export default function PodsContainer() {
       {
         id: 'node 4',
         node_data: 'Running',
+        location: 'Los Angeles',
         normal: { fill: '#008000' },
         hovered: { fill: '#51cf51' },
         selected: { fill: '#036803' },
@@ -37,6 +41,7 @@ export default function PodsContainer() {
       {
         id: 'node 5',
         node_data: 'Failed',
+        location: 'Philadelphia',
         normal: { fill: '#ff0000' },
         hovered: { fill: '#fc7474' },
         selected: { fill: '#940000' },
@@ -44,6 +49,7 @@ export default function PodsContainer() {
       {
         id: 'node 6',
         node_data: 'Running',
+        location: 'Chicago',
         normal: { fill: '#008000' },
         hovered: { fill: '#51cf51' },
         selected: { fill: '#036803' },
@@ -51,6 +57,7 @@ export default function PodsContainer() {
       {
         id: 'node 7',
         node_data: 'Pending',
+        location: 'New York',
         normal: { fill: '#ffa500' },
         hovered: { fill: '#fac86a' },
         selected: { fill: '#ca8606' },
@@ -73,7 +80,7 @@ export default function PodsContainer() {
   const background = chart.background();
   background.stroke('25 #929292');
   background.cornerType('round');
-  background.corners(15);
+  background.corners(0, 0, 10, 10);
 
   const nodes = chart.nodes();
   nodes.normal().height(30);
@@ -83,12 +90,11 @@ export default function PodsContainer() {
   nodes.labels().fontSize(18);
   nodes.labels().fontColor('black');
   nodes.labels().fontWeight(900);
-  nodes.labels().background('white');
 
-  nodes.tooltip().fontSize(36);
+  nodes.tooltip().fontSize(28);
   nodes.tooltip().background('white');
   nodes.tooltip().fontColor('black');
-  nodes.tooltip().format('{%node_data}');
+  nodes.tooltip().format(`status: {%node_data}\nlocation: {%location}`);
 
   const edges = chart.edges();
   edges.normal().stroke('#7ec5ff');
