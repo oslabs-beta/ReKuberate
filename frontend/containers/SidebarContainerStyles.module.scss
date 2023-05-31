@@ -1,0 +1,26 @@
+.sidebar {
+  position: fixed;
+  height: 80vh;
+  top: 20;
+  left: 20;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 10%;
+  width: 150px;
+  border-radius: 20px;
+  background-color: rgb(43, 255, 0, 0.7);
+}
+
+.sidebarLinks {
+  font-size: 28px;
+  text-decoration: none;
+  padding-bottom: 10%;
+  padding-top: 10%;
+  border-radius: 20px;
+  margin: 15px;
+}
+
+.sidebarLinks:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
