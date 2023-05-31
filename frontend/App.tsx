@@ -10,6 +10,7 @@ export default function App() {
     <>
       <SidebarContainer />
       <div className={styles.mainDiv}>
+        <h1 className={styles.title}>ReKuberate</h1>
         <Routes>
           <Route path='/' element={<HomeContainer />}></Route>
           <Route path='/pods' element={<PodsContainer />}></Route>

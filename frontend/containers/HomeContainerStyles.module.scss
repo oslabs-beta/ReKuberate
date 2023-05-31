@@ -1,0 +1,63 @@
+.yaml {
+  height: 79.5vh;
+  background-color: #929292;
+  border-radius: 0 0 20px 20px;
+  padding-top: 7vh;
+}
+
+.fileborder {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30vh;
+  padding-bottom: 30vh;
+  border: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 20px;
+  background-color: #d8d8d8;
+  width: 90%;
+  text-align: center;
+}
+
+.fileInput {
+  font-size: 1.25vw;
+}
+
+.button {
+  display: block;
+  margin: 10px;
+  font-size: 1.25vw;
+  border-radius: 7px;
+  border: solid;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fileInput::file-selector-button {
+  margin: 10px;
+  font-size: 1.25vw;
+  border-radius: 7px;
+  border: solid;
+  padding: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: white;
+}
+
+@media screen and (max-width: 950px) {
+  .fileInput {
+    font-size: 12px;
+  }
+
+  .button {
+    font-size: 12px;
+  }
+
+  .fileInput::file-selector-button {
+    font-size: 12px;
+  }
+}

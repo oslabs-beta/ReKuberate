@@ -1,15 +1,15 @@
 .sidebar {
   position: fixed;
-  height: 80vh;
+  height: 75vh;
   top: 20;
   left: 20;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 10%;
-  width: 150px;
+  padding-top: 20vh;
+  width: 190px;
   border-radius: 20px;
-  background-color: rgb(43, 255, 0, 0.7);
+  background-color: rgba(24, 139, 1, 0.7);
 }
 
 .sidebarLinks {
@@ -19,6 +19,7 @@
   padding-top: 10%;
   border-radius: 20px;
   margin: 15px;
+  color: white;
 }
 
 .sidebarLinks:hover {
