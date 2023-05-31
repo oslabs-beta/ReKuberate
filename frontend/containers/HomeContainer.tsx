@@ -1,6 +1,7 @@
 import React from 'react';
 import { setExampleState } from '../store/appSlice';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
+import styles from './HomeContainerStyles.module.scss'
 
 export default function HomeContainer() {
   const exampleState = useAppSelector((state) => state.app.exampleState);
@@ -9,7 +10,7 @@ export default function HomeContainer() {
 
   return (
     <div>
-      <h1>{exampleState}</h1>
+      <h1 className={styles.title}>{exampleState}</h1>
       <p>{anotherState}</p>
       <input
         onChange={(event) => {
