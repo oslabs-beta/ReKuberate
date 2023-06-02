@@ -1,4 +1,4 @@
-export class Node {
+export interface Node {
   id: string;
   node_data?: unknown;
   location?: unknown;
@@ -7,12 +7,12 @@ export class Node {
   selected?: { fill: string; [k: string]: string };
 }
 
-export class edge {
+export interface edge {
   from: string;
   to: string;
 }
 
-export class MockData {
+export interface MockData {
   nodes: Node[];
   edges: edge[];
 }
