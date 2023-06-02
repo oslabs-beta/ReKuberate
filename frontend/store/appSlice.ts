@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface appState {
   exampleState: string,
-  anotherState: any[]
+  anotherState: string[]
 }
 
 const initialState: appState = {
@@ -18,7 +18,7 @@ const appSlice = createSlice({
     setExampleState: (state, action: PayloadAction<string>) => {
       state.exampleState = action.payload;
     },
-    setAnotherState: (state, action: PayloadAction<any>) => {
+    setAnotherState: (state, action: PayloadAction<string>) => {
       state.anotherState = [...state.anotherState, action.payload]
     }
   },
