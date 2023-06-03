@@ -2,9 +2,10 @@ import React from 'react';
 import './PodsContainerStyles.scss';
 import AnyChart from 'anychart-react';
 import anychart from 'anychart';
+import { MockData } from '../types';
 
 export default function PodsContainer() {
-  const mockData = {
+  const mockData: MockData = {
     nodes: [
       {
         id: 'node 1',
@@ -78,7 +79,7 @@ export default function PodsContainer() {
   chart.background('#d8d8d8');
 
   const background = chart.background();
-  background.stroke('25 #929292');
+  background.stroke('20 #2c2c2c');
   background.cornerType('round');
   background.corners(0, 0, 10, 10);
 
