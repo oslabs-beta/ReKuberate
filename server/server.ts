@@ -1,21 +1,22 @@
 import express, { Request, Response, NextFunction } from 'express';
-const app = express();
 import pkg from 'pg';
-const { Pool } = pkg;
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { ErrorHandler } from './types';
 // import initRoute from './routes/initRoute';
 // import userRoute from './routes/userRoute';
+const { Pool } = pkg;
+const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename: string = fileURLToPath(import.meta.url);
+const __dirname: string = path.dirname(__filename);
 
 const PORT: number = 3000;
 
 app.use(express.json());
 
-const PG_URI = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
-const pool = new Pool({
+const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
+const pool: pkg.Pool = new Pool({
   connectionString: PG_URI,
   ssl: {
     rejectUnauthorized: false,
@@ -23,7 +24,7 @@ const pool = new Pool({
 });
 
 //Connect to SQL database
-pool.connect((err) => {
+pool.connect((err: Error) => {
   if (err) {
     return console.error('could not connect to postgres', err);
   } else {
@@ -42,14 +43,6 @@ app.use(express.static(path.join(__dirname, './frontend/index.html')));
 //Catch all Route
 app.use('*', (req: Request, res: Response) => res.sendStatus(404));
 
-//Declare ErrorHandler type and assign log to string, status to number, and message to string
-type ErrorHandler = {
-  log: string;
-  status: number;
-  message: {
-    err: string;
-  };
-};
 
 //Global Error Handler
 app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {

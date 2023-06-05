@@ -1,6 +1,11 @@
-import express from 'express'
+import express, {Request, Response} from 'express';
+import initController from '../controllers/initController';
+
+
 const initRoute = express.Router();
 
-const initController = require('../controllers/initializationController');
+initRoute.get('/', initController.installPrometheus, initController.installGrafana, (req: Request, res: Response) => {
+   return res.sendStatus(200)
+})
 
-module.exports = initRoute;
+export default initRoute;
