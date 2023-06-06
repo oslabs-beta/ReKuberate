@@ -1,5 +1,5 @@
 import express, {NextFunction, Request, Response} from 'express';
-import initController from '../controllers/initController';
+import initController from '../controllers/initController.ts';
 
 
 const initRoute = express.Router();

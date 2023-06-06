@@ -7,32 +7,32 @@ export default function MetricsContainer() {
       <div className={styles.topMetrics}>
         <iframe
           className={styles.memory}
-          src='http://localhost:3000/d-solo/cd0e9de9-a5c6-4cd0-b87c-11f0c24b6722/node-exporter-nodes?orgId=1&refresh=5s&from=1686057914360&to=1686061514360&panelId=5'></iframe>
+          src='http://localhost:9000/d-solo/bb16c020-3528-4db5-81de-d5e0081eaaf7/node-exporter-nodes?orgId=1&refresh=30s&from=1686073626190&to=1686077226190&panelId=5'></iframe>
         <div className={styles.running}>
           <iframe
             className={styles.runningBlock}
-            src='http://localhost:3000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686057520072&to=1686061120072&panelId=2'></iframe>
+            src='http://localhost:9000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686073714401&to=1686077314401&panelId=2'></iframe>
           <iframe
             className={styles.runningBlock}
-            src='http://localhost:3000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686057542896&to=1686061142896&panelId=3'></iframe>
+            src='http://localhost:9000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686073730807&to=1686077330807&panelId=3'></iframe>
           <iframe
             className={styles.runningBlock}
-            src='http://localhost:3000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686057558274&to=1686061158274&panelId=4'></iframe>
+            src='http://localhost:9000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686073745632&to=1686077345632&panelId=4'></iframe>
         </div>
       </div>
       <div>
         <iframe
           className={styles.metrics}
-          src='http://localhost:3000/d-solo/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&from=1686064376412&to=1686067976412&panelId=3'></iframe>
+          src='http://localhost:9000/d-solo/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&from=1686073564519&to=1686077164519&panelId=3'></iframe>
         <iframe
           className={styles.metrics}
-          src='http://localhost:3000/d-solo/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&from=1686064456160&to=1686068056160&panelId=4'></iframe>
+          src='http://localhost:9000/d-solo/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&from=1686073879587&to=1686077479587&panelId=4'></iframe>
         <iframe
           className={styles.metrics}
-          src='http://localhost:3000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686057591233&to=1686061191233&panelId=23'></iframe>
+          src='http://localhost:9000/d-solo/632e265de029684c40b21cb76bca4f94/kubernetes-proxy?orgId=1&refresh=10s&from=1686073801036&to=1686077401036&panelId=10'></iframe>
         <iframe
           className={styles.metrics}
-          src='http://localhost:3000/d-solo/3138fa155d5915769fbded898ac09fd9/kubernetes-kubelet?orgId=1&refresh=10s&from=1686057598349&to=1686061198349&panelId=24'></iframe>
+          src='http://localhost:9000/d-solo/632e265de029684c40b21cb76bca4f94/kubernetes-proxy?orgId=1&refresh=10s&from=1686073839054&to=1686077439054&panelId=11'></iframe>
       </div>
     </div>
   );

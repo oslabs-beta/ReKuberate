@@ -1,7 +1,9 @@
 export interface Node {
   id: string;
-  node_data?: unknown;
-  location?: unknown;
+  name?: any;
+  nodeName?: any;
+  status?: any;
+  purpose?: any;
   normal?: { fill: string; [k: string]: string };
   hovered?: { fill: string; [k: string]: string };
   selected?: { fill: string; [k: string]: string };

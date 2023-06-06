@@ -9,10 +9,11 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "exclude": ["node_modules"]
 }
-
 
 // added type: module to package.json
 // added "esModuleInterop": true to tsconfig.json

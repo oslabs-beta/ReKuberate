@@ -3,9 +3,10 @@ import pkg from 'pg';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { ErrorHandler } from './types';
-import initRoute from './routes/initRoute';
-import clusterRoute from './routes/clusterRoute';
+import initRoute from './routes/initRoute.ts';
+import clusterRoute from './routes/clusterRoute.ts';
 // import userRoute from './routes/userRoute';
+
 const { Pool } = pkg;
 const app = express();
 
