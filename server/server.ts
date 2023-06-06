@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import { ErrorHandler } from './types';
 import initRoute from './routes/initRoute';
-// import clusterRoute from './routes/clusterRoute';
+import clusterRoute from './routes/clusterRoute';
 // import userRoute from './routes/userRoute';
 const { Pool } = pkg;
 const app = express();
@@ -44,7 +44,7 @@ app.use('/', initRoute, (req: Request, res: Response) => {
 })
 
 //Route to get cluster info when accessing pods display page
-// app.use('/pods', clusterRoute)
+app.use('/pods', clusterRoute)
 //Route for user verification and creation
 // app.use('/user', userRoute)
 

@@ -9,3 +9,5 @@ clusterRoute.get(
     return res.status(200).json(res.locals.nodeAndPodInfo);
   }
 );
+
+export default clusterRoute
