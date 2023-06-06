@@ -5,7 +5,6 @@ import path from 'path';
 import { ErrorHandler } from './types';
 import initRoute from './routes/initRoute.ts';
 import clusterRoute from './routes/clusterRoute.ts';
-// import userRoute from './routes/userRoute';
 
 const { Pool } = pkg;
 const app = express();
@@ -35,8 +34,6 @@ pool.connect((err: Error) => {
   }
 });
 
-
-
 //Serves front end static files
 // app.use(express.static('./frontend'))
 
@@ -48,10 +45,12 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.resolve(__dirname, '../dist')));
 }
 
-app.use('/initiate', initRoute);
+//Route to install prometheus and grafana
+app.use('/api/initiate', initRoute);
 
 //Route to get cluster info when accessing pods display page
-app.use('/pods', clusterRoute)
+app.use('/api/pods', clusterRoute);
+
 //Route for user verification and creation
 // app.use('/user', userRoute)
 

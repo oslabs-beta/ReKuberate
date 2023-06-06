@@ -10,4 +10,4 @@ clusterRoute.get(
   }
 );
 
-export default clusterRoute
+export default clusterRoute;
