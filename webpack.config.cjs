@@ -23,13 +23,17 @@ module.exports = {
       publicPath: '/',
     },
 
-    headers: { 'Access-Control-Allow-Origin': '*'},
+    headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
       '/assets/**': {
         target: 'http://localhost:3001/',
         secure: false,
       },
       '/server/**': {
+        target: 'http://localhost:3001/',
+        secure: false,
+      },
+      '/api/**': {
         target: 'http://localhost:3001/',
         secure: false,
       },
@@ -56,8 +60,8 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: 'url-loader'
-      }
+        use: 'url-loader',
+      },
     ],
   },
   plugins: [
