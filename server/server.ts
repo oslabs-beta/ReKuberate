@@ -36,13 +36,19 @@ pool.connect((err: Error) => {
 });
 
 
-// app.use(express.static(path.join(__dirname, './frontend/index.html')), initRoute);
-//Serves front end static files
-app.use(express.static('./frontend'))
 
-app.use('/', initRoute, (req: Request, res: Response) => {
-  return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
-})
+//Serves front end static files
+// app.use(express.static('./frontend'))
+
+// app.use('/', initRoute, (req: Request, res: Response) => {
+//   return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
+// })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.resolve(__dirname, '../dist')));
+}
+
+app.use('/initiate', initRoute);
 
 //Route to get cluster info when accessing pods display page
 app.use('/pods', clusterRoute)
