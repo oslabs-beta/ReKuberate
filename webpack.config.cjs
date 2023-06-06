@@ -23,7 +23,7 @@ module.exports = {
       publicPath: '/',
     },
 
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { 'Access-Control-Allow-Origin': '*'},
     proxy: {
       '/assets/**': {
         target: 'http://localhost:3000/',

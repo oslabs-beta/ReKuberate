@@ -4,6 +4,7 @@ import HomeContainer from './containers/HomeContainer';
 import PodsContainer from './containers/PodsContainer';
 import SidebarContainer from './containers/SidebarContainer';
 import styles from './stylesheets/styles.module.scss'
+import MetricsContainer from './containers/MetricsContainer';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<HomeContainer />}></Route>
           <Route path='/pods' element={<PodsContainer />}></Route>
+          <Route path='/metrics' element={<MetricsContainer />}></Route>
         </Routes>
       </div>      
     </>
