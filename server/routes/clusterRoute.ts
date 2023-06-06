@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import clusterController from '../controllers/clusterController';
+import clusterController from '../controllers/clusterController.ts';
 const clusterRoute = express.Router();
 
 clusterRoute.get(
