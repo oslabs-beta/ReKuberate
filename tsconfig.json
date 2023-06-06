@@ -13,7 +13,6 @@
   "exclude": ["node_modules"]
 }
 
-
 // added type: module to package.json
 // added "esModuleInterop": true to tsconfig.json
 // added .cjs file extension to webpack
