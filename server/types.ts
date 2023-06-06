@@ -1,6 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 
-export type middleware = (req: Request, res: Response, next: NextFunction) => void;
+
+export type middleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => void;
 
 //Declare controller types
 export type InitControllerType = {
@@ -9,8 +14,8 @@ export type InitControllerType = {
 };
 
 export type ClusterControllerType = {
-  getPodInfo: middleware;
-  getNodeInfo: middleware;
+  getPodAndNodeInfo: middleware;
+  // getNodeInfo: middleware
 };
 
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
@@ -22,14 +27,12 @@ export type ErrorHandler = {
   };
 };
 
-//Pod info type
-export type AllPodsType = {
-  [name: string]: PodInfoType;
+
+export type obj = {
+  [key: string]: {
+    [key: string]: any;
+  };
 };
 
-export type PodInfoType = {
-  status: string;
-  restarts: number;
-  mostRecentRestart: number;
-  age: number;
-};
+// export type podsSplit = string | string[];
+

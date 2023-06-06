@@ -44,6 +44,7 @@ for (let i = 1; i < minikube.length - 2; i++) {
     //if string includes container name, push to container.pods
     for (let j = 1; j < podsSplit.length - 1; j++) {
       if (podsSplit[j].includes(currentContainer)) {
+        // console.log(podsSplit[j][0]);
         obj[currentContainer].pods.push({
           name: podsSplit[j][0],
           status: podsSplit[j][2],
