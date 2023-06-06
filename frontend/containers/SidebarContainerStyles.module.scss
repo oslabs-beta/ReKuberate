@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  height: 76vh;
+  height: 78vh;
   top: 20;
   left: 20;
   display: flex;
@@ -9,7 +9,7 @@
   padding-top: 20vh;
   width: 190px;
   border-radius: 20px;
-  background-color: rgba(22, 129, 0);
+  background-image: linear-gradient(#749c85, #fffeee);
 }
 
 .sidebarLinks {

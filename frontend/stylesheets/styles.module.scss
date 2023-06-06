@@ -6,14 +6,18 @@ body {
 
 .mainDiv {
   padding-left: 200px;
+  text-align: center;
 }
 
 .title {
   color: white;
-  padding-top: 4vh;
   margin: 0;
   text-align: center;
-  background-color: #2c2c2c;
+  background-color: #fffeee;
   border-radius: 20px 20px 0 0;
   font-size: 48px;
+}
+
+.logo {
+  width: 20%;
 }

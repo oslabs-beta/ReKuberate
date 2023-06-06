@@ -1,29 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface appState {
-  exampleState: string,
-  anotherState: string[]
+  data: {};
 }
 
 const initialState: appState = {
-  exampleState: 'Goodbye',
-  anotherState: []
-}
+  data: {},
+};
 
 const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setExampleState: (state, action: PayloadAction<string>) => {
-      state.exampleState = action.payload;
+    setData: (state, action: PayloadAction<Object>) => {
+      state.data = action.payload;
     },
-    setAnotherState: (state, action: PayloadAction<string>) => {
-      state.anotherState = [...state.anotherState, action.payload]
-    }
   },
 });
 
-export const { setExampleState, setAnotherState } = appSlice.actions;
+export const { setData } = appSlice.actions;
 
 export default appSlice.reducer;

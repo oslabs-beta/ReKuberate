@@ -23,14 +23,14 @@ module.exports = {
       publicPath: '/',
     },
 
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { 'Access-Control-Allow-Origin': '*'},
     proxy: {
       '/assets/**': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:3001/',
         secure: false,
       },
       '/server/**': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:3001/',
         secure: false,
       },
     },
@@ -54,6 +54,10 @@ module.exports = {
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: 'url-loader'
+      }
     ],
   },
   plugins: [
