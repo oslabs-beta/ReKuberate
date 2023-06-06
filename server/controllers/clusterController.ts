@@ -1,16 +1,84 @@
 import { spawn, spawnSync } from 'child_process';
-import { ClusterControllerType } from '../types';
+import { ClusterControllerType, obj } from '../types';
 
 const clusterController: ClusterControllerType = {
-  getPodInfo: (req, res, next) => {
-    console.log('getting pod info')
-    const podInfo = spawnSync('kubectl get pods', {shell: true, encoding: 'utf-8'})
-    console.log(podInfo.stdout)
+  getPodAndNodeInfo: async (req, res, next) => {
+    try {
+      // console.log('getting pods');
+      const pods = spawnSync('kubectl get pod -o wide', {
+        shell: true,
+        encoding: 'utf-8',
+      });
+      // console.log(pods.stdout);
+
+      const podsOutput = pods.stdout;
+      //way around using any??
+      const podsSplit: any = podsOutput.split(/[\n]/);
+      // console.log(podsSplit)
+
+      // console.log('getting nodes');
+      const nodes = spawnSync('minikube status', {
+        shell: true,
+        encoding: 'utf-8',
+      });
+      const nodesOutput = nodes.output;
+
+      const minikube = nodesOutput[1].split(/[\n]/);
+      const obj: obj = {};
+      let currentContainer: string = minikube[0];
+      obj[currentContainer] = {};
+      obj[currentContainer].pods = [];
+
+      //splitting the strings into individual strings seperated by one space
+      for (let i = 1; i < podsSplit.length - 1; i++) {
+        podsSplit[i] = podsSplit[i].replace(/\s+/g, ' ');
+        podsSplit[i] = podsSplit[i].split(/[' ']/);
+
+        //if string includes container name, push to container.pods
+        if (podsSplit[i].includes(currentContainer)) {
+          obj[currentContainer].pods.push({
+            name: podsSplit[i][0],
+            status: podsSplit[i][2],
+          });
+        }
+      }
+
+      for (let i = 1; i < minikube.length - 2; i++) {
+        if (minikube[i] === '') {
+          i++;
+          currentContainer = minikube[i];
+          obj[currentContainer] = {};
+          i++;
+          obj[currentContainer].pods = [];
+          //if string includes container name, push to container.pods
+          for (let j = 1; j < podsSplit.length - 1; j++) {
+            if (podsSplit[j].includes(currentContainer)) {
+              //work around any typing here?
+              obj[currentContainer].pods.push({
+                name: podsSplit[j][0],
+                status: podsSplit[j][2],
+              });
+            }
+          }
+        }
+
+        const key = minikube[i].slice(0, minikube[i].indexOf(': '));
+        obj[currentContainer][key] = minikube[i].slice(
+          minikube[i].indexOf(': ') + 2
+        );
+      }
+
+      // console.log(obj);
+      res.locals.nodeAndPodInfo = obj;
+      return next();
+    } catch (err) {
+      return next({
+        log: `error in clusterController.getPodeAndNodeInfo: ${err}`,
+        status: 500,
+        message: { err: 'An error occurred getting pod and node info' },
+      });
+    }
   },
-  
-  getNodeInfo: (req, res, next) => {
-    console.log('getting node info')
-    
-  }
-  
-}
+};
+
+export default clusterController;
