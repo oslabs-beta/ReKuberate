@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './HomeContainerStyles.module.scss';
 import { useAppDispatch } from '../store/hooks';
 import { setData } from '../store/appSlice';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeContainer() {
-
   let obj = {
     minikube: {
       pods: [
