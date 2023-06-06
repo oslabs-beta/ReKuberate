@@ -1,11 +1,11 @@
-import express, {Request, Response} from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 import initController from '../controllers/initController';
 
 
 const initRoute = express.Router();
 
-initRoute.get('/', initController.installPrometheus, initController.installGrafana, (req: Request, res: Response) => {
-   return res.sendStatus(200)
+initRoute.get('/', initController.installPrometheus, initController.installGrafana, (req: Request, res: Response, next: NextFunction) => {
+   return next()
 })
 
 export default initRoute;

@@ -3,7 +3,8 @@ import pkg from 'pg';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { ErrorHandler } from './types';
-// import initRoute from './routes/initRoute';
+import initRoute from './routes/initRoute';
+// import clusterRoute from './routes/clusterRoute';
 // import userRoute from './routes/userRoute';
 const { Pool } = pkg;
 const app = express();
@@ -33,11 +34,17 @@ pool.connect((err: Error) => {
   }
 });
 
-//Serves front end index html when rendering
-app.use(express.static(path.join(__dirname, './frontend/index.html')));
 
-//Route to initialize prometheus and grafana
-// app.use('/init', initRoute);
+// app.use(express.static(path.join(__dirname, './frontend/index.html')), initRoute);
+//Serves front end static files
+app.use(express.static('./frontend'))
+
+app.use('/', initRoute, (req: Request, res: Response) => {
+  return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
+})
+
+//Route to get cluster info when accessing pods display page
+// app.use('/pods', clusterRoute)
 //Route for user verification and creation
 // app.use('/user', userRoute)
 
