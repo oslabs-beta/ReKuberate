@@ -5,6 +5,37 @@ import anychart from 'anychart';
 import { MockData } from '../types';
 
 export default function PodsContainer() {
+
+
+  let obj = {
+    minikube: {
+      pods: [
+        { name: 'prometheus-prometheus-node-exporter-twpfm', status: 'Running' },
+        { name: 'thad-59bc548768-28cxn', status: 'Running' },
+      ],
+      type: 'Control Plane',
+      host: 'Running',
+      kubelet: 'Running',
+      apiserver: 'Running',
+      kubeconfig: 'Configured',
+    },
+    'minikube-m02': {
+      pods: [
+        { name: 'alertmanager-prometheus-kube-prometheus-alertmanager-0', status: 'Running' },
+        { name: 'kai-8654fbf4bf-rg5ph', status: 'CrashLoopBackOff' },
+        { name: 'kevin-65c6dc4c89-k8qq7', status: 'Running' },
+        { name: 'prometheus-grafana-f76877bf7-bptcn', status: 'Running' },
+        { name: 'prometheus-kube-prometheus-operator-6d94dc655b-wgzjq', status: 'Running' },
+        { name: 'prometheus-kube-state-metrics-8674d7b847-wfbql', status: 'Running' },
+        { name: 'prometheus-prometheus-kube-prometheus-prometheus-0', status: 'Running' },
+        { name: 'prometheus-prometheus-node-exporter-mvf7s', status: 'Running' },
+      ],
+      type: 'Worker',
+      host: 'Running',
+      kubelet: 'Running',
+    },
+  };
+
   const mockData: MockData = {
     nodes: [
       {
@@ -79,7 +110,11 @@ export default function PodsContainer() {
   chart.background('#d8d8d8');
 
   const background = chart.background();
-  background.stroke('20 #2c2c2c');
+  background.stroke({
+    keys: ['#749c85', '#749c85', '#749c85', '#fffeee'],
+    thickness: 20,
+    angle: 90,
+  });
   background.cornerType('round');
   background.corners(0, 0, 10, 10);
 

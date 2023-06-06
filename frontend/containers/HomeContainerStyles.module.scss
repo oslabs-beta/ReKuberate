@@ -1,15 +1,15 @@
 .yaml {
-  height: 79.5vh;
-  background-color: #2c2c2c;
+  height: 85.5vh;
+  background-image: linear-gradient(#fffeee, rgb(116, 156, 133), rgb(116, 156, 133), rgb(116, 156, 133));
   border-radius: 0 0 20px 20px;
-  padding-top: 7vh;
+  padding-top: 1vh;
 }
 
 .fileborder {
   margin-left: auto;
   margin-right: auto;
-  padding-top: 30vh;
-  padding-bottom: 30vh;
+  padding-top: 33vh;
+  padding-bottom: 33vh;
   border: solid;
   border-width: 5px;
   border-color: black;
@@ -35,6 +35,7 @@
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
 }
 
 .fileInput::file-selector-button {
@@ -46,6 +47,15 @@
   padding-left: 8px;
   padding-right: 8px;
   background-color: white;
+  cursor: pointer;
+}
+
+.fileInput::file-selector-button:hover {
+  background-color: #fffeee;
+}
+
+.button:hover {
+  background-color: #fffeee;
 }
 
 @media screen and (max-width: 950px) {

@@ -11,7 +11,7 @@ const app = express();
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
 
-const PORT: number = 3000;
+const PORT: number = 3001;
 
 app.use(express.json());
 
