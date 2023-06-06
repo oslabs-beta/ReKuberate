@@ -15,7 +15,8 @@ const PORT: number = 3000;
 
 app.use(express.json());
 
-const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
+const PG_URI: string =
+  'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 const pool: pkg.Pool = new Pool({
   connectionString: PG_URI,
   ssl: {
@@ -43,17 +44,18 @@ app.use(express.static(path.join(__dirname, './frontend/index.html')));
 //Catch all Route
 app.use('*', (req: Request, res: Response) => res.sendStatus(404));
 
-
 //Global Error Handler
-app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
-  const defaultError: ErrorHandler = {
-    log: 'Express error handler caught unkown middleware error',
-    status: 400,
-    message: { err: 'An error has occured' },
-  };
-  const errorObj: ErrorHandler = Object.assign(defaultError, err);
-  console.log(errorObj.log);
-  res.status(errorObj.status).json(errorObj.message);
-});
+app.use(
+  (err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
+    const defaultError: ErrorHandler = {
+      log: 'Express error handler caught unkown middleware error',
+      status: 400,
+      message: { err: 'An error has occured' },
+    };
+    const errorObj: ErrorHandler = Object.assign(defaultError, err);
+    console.log(errorObj.log);
+    res.status(errorObj.status).json(errorObj.message);
+  }
+);
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
