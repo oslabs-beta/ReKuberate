@@ -25,7 +25,7 @@ const initController: InitControllerType = {
     try{
     console.log('grafana initialization controller running')
     // spawn('kubectl port-forward deployment/prometheus-grafana 3000', {shell: true, detached: true})
-    spawn('kubectl port-forward service/prometheus-grafana 8000:80', {shell: true, detached: true})
+    spawn('kubectl port-forward service/prometheus-grafana 9000:80', {shell: true, detached: true})
     return next();
     } catch (err) {
     return next({
