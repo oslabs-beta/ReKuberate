@@ -6,10 +6,9 @@ const initController: InitControllerType = {
   installPrometheus: async (req, res, next) => {
     try{
     console.log('prometheus initialization controller running')
-    spawnSync('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts', { shell: true });
-    spawnSync('helm repo add stable https://charts.helm.sh/stable', {shell: true});
-    spawnSync('helm repo update'), {shell: true};
-    spawnSync('helm install prometheus prometheus-community/kube-prometheus-stack', { shell: true });
+    spawnSync('helm repo add grafana https://grafana.github.io/helm-charts', { shell: true});
+    spawnSync('helm dependency build ./kube-prometheus-stack', {shell: true});
+    spawnSync('helm install prometheus ./kube-prometheus-stack', { shell: true });
     return next();
     } catch (err) {
       return next({
@@ -19,6 +18,7 @@ const initController: InitControllerType = {
       });
     }
   },
+
 
   //controller to port forward Grafana so that the metrics page can start scrapping data
   installGrafana: (req, res, next) => {
