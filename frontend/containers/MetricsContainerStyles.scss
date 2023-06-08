@@ -1,0 +1,40 @@
+.bigDiv {
+  background-image: linear-gradient(
+    #fffeee,
+    rgb(116, 156, 133),
+    rgb(116, 156, 133),
+    rgb(116, 156, 133)
+  );
+}
+
+.memoryDiv {
+  display: inline-block;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.runningDiv {
+  display: inline-block;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 1%;
+  vertical-align: top;
+  padding-top: 25px;
+}
+
+.memory {
+  border: none;
+}
+
+.running {
+  width: 150px;
+  height: 100px;
+  vertical-align: middle;
+  border: none;
+}
+
+.metrics {
+  border: none;
+  width: 50%;
+  height: 35vh;
+}

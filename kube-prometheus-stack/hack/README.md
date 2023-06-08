@@ -7,18 +7,21 @@ This script generates prometheus rules set for alertmanager from any properly fo
 Currently following imported:
 
 - [prometheus-operator/kube-prometheus rules set](https://github.com/prometheus-operator/kube-prometheus/blob/main/manifests/kubernetesControlPlane-prometheusRule.yaml)
+
   - In order to modify these rules:
+
     - prepare and merge PR into [kubernetes-mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/rules) master and/or release branch
     - run import inside your fork of [prometheus-operator/kube-prometheus](https://github.com/prometheus-operator/kube-prometheus/tree/main)
 
-     ```bash
-     jb update
-     make generate
-     ```
+    ```bash
+    jb update
+    make generate
+    ```
 
     - prepare and merge PR with imported changes into `prometheus-operator/kube-prometheus` master and/or release branch
     - run sync_prometheus_rules.py inside your fork of this repository
     - send PR with changes to this repository
+
 - [etcd-io/etcd rules set](https://github.com/etcd-io/etcd/blob/main/contrib/mixin/mixin.libsonnet).
   - In order to modify these rules:
     - prepare and merge PR into [etcd-io/etcd](https://github.com/etcd-io/etcd/blob/main/contrib/mixin/mixin.libsonnet) repository
@@ -32,14 +35,16 @@ This script generates grafana dashboards from json files, splitting them to sepa
 Currently following imported:
 
 - [prometheus-operator/kube-prometheus dashboards](https://github.com/prometheus-operator/kube-prometheus/tree/main/manifests/grafana-deployment.yaml)
+
   - In order to modify these dashboards:
+
     - prepare and merge PR into [kubernetes-mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/dashboards) master and/or release branch
     - run import inside your fork of [prometheus-operator/kube-prometheus](https://github.com/prometheus-operator/kube-prometheus/tree/main)
 
-     ```bash
-     jb update
-     make generate
-     ```
+    ```bash
+    jb update
+    make generate
+    ```
 
     - prepare and merge PR with imported changes into `prometheus-operator/kube-prometheus` master and/or release branch
     - run sync_grafana_dashboards.py inside your fork of this repository

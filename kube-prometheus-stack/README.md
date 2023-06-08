@@ -163,20 +163,20 @@ This includes the overridability of container registry for all containers at the
 For instance, the prometheus-config-reloader used to be configured as follow:
 
 ```yaml
-    image:
-      repository: quay.io/prometheus-operator/prometheus-config-reloader
-      tag: v0.60.1
-      sha: ""
+image:
+  repository: quay.io/prometheus-operator/prometheus-config-reloader
+  tag: v0.60.1
+  sha: ""
 ```
 
 But it now moved to:
 
 ```yaml
-    image:
-      registry: quay.io
-      repository: prometheus-operator/prometheus-config-reloader
-      tag: v0.60.1
-      sha: ""
+image:
+  registry: quay.io
+  repository: prometheus-operator/prometheus-config-reloader
+  tag: v0.60.1
+  sha: ""
 ```
 
 ### From 40.x to 41.x
@@ -246,7 +246,7 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-oper
 
 ### From 37.x to 38.x
 
-Reverted one of the default metrics relabelings for cAdvisor added in 36.x, due to it breaking container_network_* and various other statistics. If you do not want this change, you will need to override the `kubelet.cAdvisorMetricRelabelings`.
+Reverted one of the default metrics relabelings for cAdvisor added in 36.x, due to it breaking container*network*\* and various other statistics. If you do not want this change, you will need to override the `kubelet.cAdvisorMetricRelabelings`.
 
 ### From 36.x to 37.x
 
@@ -390,12 +390,12 @@ For _prometheus-node-exporter_ the `ServiceMonitor` customisation is now set via
 Port names have been renamed for Istio's
 [explicit protocol selection](https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection).
 
-| | old value | new value |
-|-|-----------|-----------|
-| `alertmanager.alertmanagerSpec.portName` | `web` | `http-web` |
-| `grafana.service.portName` | `service` | `http-web` |
+|                                             | old value             | new value      |
+| ------------------------------------------- | --------------------- | -------------- |
+| `alertmanager.alertmanagerSpec.portName`    | `web`                 | `http-web`     |
+| `grafana.service.portName`                  | `service`             | `http-web`     |
 | `prometheus-node-exporter.service.portName` | `metrics` (hardcoded) | `http-metrics` |
-| `prometheus.prometheusSpec.portName` | `web` | `http-web` |
+| `prometheus.prometheusSpec.portName`        | `web`                 | `http-web`     |
 
 ### From 21.x to 22.x
 
@@ -665,32 +665,32 @@ If the **prometheus-operator** values are compatible with the new **kube-prometh
 
 1. Patch the PersistenceVolume created/used by the prometheus-operator chart to `Retain` claim policy:
 
-    ```console
-    kubectl patch pv/<PersistentVolume name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
-    ```
+   ```console
+   kubectl patch pv/<PersistentVolume name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+   ```
 
-    **Note:** To execute the above command, the user must have a cluster wide permission. Please refer [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+   **Note:** To execute the above command, the user must have a cluster wide permission. Please refer [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
 2. Uninstall the **prometheus-operator** release and delete the existing PersistentVolumeClaim, and verify PV become Released.
 
-    ```console
-    helm uninstall prometheus-operator -n monitoring
-    kubectl delete pvc/<PersistenceVolumeClaim name> -n monitoring
-    ```
+   ```console
+   helm uninstall prometheus-operator -n monitoring
+   kubectl delete pvc/<PersistenceVolumeClaim name> -n monitoring
+   ```
 
-    Additionally, you have to manually remove the remaining `prometheus-operator-kubelet` service.
+   Additionally, you have to manually remove the remaining `prometheus-operator-kubelet` service.
 
-    ```console
-    kubectl delete service/prometheus-operator-kubelet -n kube-system
-    ```
+   ```console
+   kubectl delete service/prometheus-operator-kubelet -n kube-system
+   ```
 
-    You can choose to remove all your existing CRDs (ServiceMonitors, Podmonitors, etc.) if you want to.
+   You can choose to remove all your existing CRDs (ServiceMonitors, Podmonitors, etc.) if you want to.
 
 3. Remove current `spec.claimRef` values to change the PV's status from Released to Available.
 
-    ```console
-    kubectl patch pv/<PersistentVolume name> --type json -p='[{"op": "remove", "path": "/spec/claimRef"}]' -n monitoring
-    ```
+   ```console
+   kubectl patch pv/<PersistentVolume name> --type json -p='[{"op": "remove", "path": "/spec/claimRef"}]' -n monitoring
+   ```
 
 **Note:** To execute the above command, the user must have a cluster wide permission. Please refer to [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
@@ -706,8 +706,8 @@ volumeClaimTemplate:
     storageClassName: gp2
     accessModes: ["ReadWriteOnce"]
     resources:
-     requests:
-       storage: 50Gi
+      requests:
+        storage: 50Gi
 ```
 
 You have to specify matching `volumeClaimTemplate` with 50Gi storage and `ReadWriteOnce` access mode.
@@ -759,7 +759,7 @@ metadata:
   name: pvc-prometheus-migration-prometheus-0
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   azureDisk:
     cachingMode: None
     diskName: pvc-prometheus-migration-prometheus-0
@@ -785,7 +785,7 @@ metadata:
   namespace: monitoring
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi

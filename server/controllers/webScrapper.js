@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from "puppeteer";
 
 function delay(time) {
   return new Promise(function (resolve) {
@@ -6,29 +6,33 @@ function delay(time) {
   });
 }
 
-
 async function webScrapper() {
-  const browser = await puppeteer.launch({headless:true, args: [`--window-size=1900,1000`]});
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: [`--window-size=1900,1000`],
+  });
   const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
 
-  await page.goto('http://localhost:9000/dashboards');
+  await page.goto("http://localhost:9000/dashboards");
+
+  await delay(500);
 
   const searchInput =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
   await page.waitForSelector(searchInput);
-  await page.type(searchInput, 'kubelet');
+  await page.type(searchInput, "kubelet");
 
   await delay(500);
 
   const kublet =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
 
   await page.waitForSelector(kublet);
   await page.click(kublet);
 
-  await delay(250);
+  await delay(500);
 
   //opens menu and clicks on embed to get link for kublets
   await page.mouse.click(310, 160);
@@ -37,7 +41,7 @@ async function webScrapper() {
   await delay(250);
   await page.mouse.click(820, 135);
   let textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const numOfKublets = await textSelector?.evaluate((el) => el.textContent);
   //exits out of menu
@@ -53,7 +57,7 @@ async function webScrapper() {
   await delay(250);
   await page.mouse.click(820, 135);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const numOfPods = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -68,7 +72,7 @@ async function webScrapper() {
   await delay(250);
   await page.mouse.click(820, 135);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const numOfContainers = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -77,23 +81,23 @@ async function webScrapper() {
   await delay(250);
 
   //click on dashboard to go back out to all dashboards
-  await page.goto('http://localhost:9000/dashboards');
+  await page.goto("http://localhost:9000/dashboards");
 
-  await delay(250);
+  await delay(500);
 
   const searchInput1 =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
   await page.waitForSelector(searchInput1);
-  await page.type(searchInput1, 'Node Exporter / Nodes');
+  await page.type(searchInput1, "Node Exporter / Nodes");
 
   await delay(500);
   const selector =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
 
   await page.waitForSelector(selector);
   await page.click(selector);
 
-  await delay(250);
+  await delay(500);
 
   //opens share menu for cpu usage and gets embed
   await page.mouse.click(933, 193);
@@ -103,7 +107,7 @@ async function webScrapper() {
   await page.mouse.click(831, 131);
   await delay(250);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const cpuUsage = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -118,7 +122,7 @@ async function webScrapper() {
   await page.mouse.click(834, 132);
   await delay(250);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const memUsageGraph = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -133,7 +137,7 @@ async function webScrapper() {
   await page.mouse.click(834, 132);
   await delay(250);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const memUsageDial = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -141,23 +145,23 @@ async function webScrapper() {
   await delay(250);
 
   //click on dashboard to go back out to all dashboards
-  await page.goto('http://localhost:9000/dashboards');
+  await page.goto("http://localhost:9000/dashboards");
 
-  await delay(250);
+  await delay(500);
 
   const searchInput2 =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
   await page.waitForSelector(searchInput2);
-  await page.type(searchInput2, 'Kubernetes / API server');
+  await page.type(searchInput2, "Kubernetes / API server");
 
   await delay(500);
   const selector1 =
-    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
+    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
 
   await page.waitForSelector(selector1);
   await page.click(selector1);
 
-  await delay(250);
+  await delay(500);
 
   //click on menu for availability
   await page.mouse.click(621, 228);
@@ -167,7 +171,7 @@ async function webScrapper() {
   await page.mouse.click(834, 132);
   await delay(250);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const availability = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -182,7 +186,7 @@ async function webScrapper() {
   await page.mouse.click(834, 132);
   await delay(250);
   textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
+    "#share-panel-embed-embed-html-textarea"
   );
   const errorBudget = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
@@ -190,7 +194,7 @@ async function webScrapper() {
   await delay(250);
 
   await browser.close();
-  
+
   //put all Urls into an object and then assign to res.locals.graphs
   const allUrls = {
     numOfKublets,
@@ -200,11 +204,10 @@ async function webScrapper() {
     memUsageGraph,
     memUsageDial,
     availability,
-    errorBudget
-  }
+    errorBudget,
+  };
   console.log(allUrls);
   return allUrls;
-};
+}
 
 export default webScrapper;
-

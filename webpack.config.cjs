@@ -1,40 +1,40 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: ['./frontend/index.tsx'],
+  entry: ["./frontend/index.tsx"],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
+    filename: "bundle.js",
   },
-  devtool: 'eval-source-map',
+  devtool: "eval-source-map",
   mode: process.env.NODE_ENV,
   devServer: {
-    host: 'localhost',
+    host: "localhost",
     port: 8080,
     hot: true,
     historyApiFallback: true,
 
     static: {
-      directory: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
+      directory: path.resolve(__dirname, "dist"),
+      publicPath: "/",
     },
 
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { "Access-Control-Allow-Origin": "*" },
     proxy: {
-      '/assets/**': {
-        target: 'http://localhost:3001/',
+      "/assets/**": {
+        target: "http://localhost:3001/",
         secure: false,
       },
-      '/server/**': {
-        target: 'http://localhost:3001/',
+      "/server/**": {
+        target: "http://localhost:3001/",
         secure: false,
       },
-      '/api/**': {
-        target: 'http://localhost:3001/',
+      "/api/**": {
+        target: "http://localhost:3001/",
         secure: false,
       },
     },
@@ -43,31 +43,31 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
         },
       },
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: 'url-loader',
+        use: "url-loader",
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'frontend/index.html'),
+      template: path.resolve(__dirname, "frontend/index.html"),
     }),
   ],
   performance: {
@@ -76,6 +76,6 @@ module.exports = {
     maxAssetSize: 512000,
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".scss"],
   },
 };

@@ -1,5 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
-
+import { Request, Response, NextFunction } from "express";
 
 export type middleware = (
   req: Request,
@@ -27,7 +26,6 @@ export type ErrorHandler = {
   };
 };
 
-
 export type obj = {
   [key: string]: {
     [key: string]: any;
@@ -35,4 +33,3 @@ export type obj = {
 };
 
 // export type podsSplit = string | string[];
-
