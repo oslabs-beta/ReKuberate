@@ -63,9 +63,7 @@ const clusterController: ClusterControllerType = {
         }
 
         const key = minikube[i].slice(0, minikube[i].indexOf(': '));
-        obj[currentContainer][key] = minikube[i].slice(
-          minikube[i].indexOf(': ') + 2
-        );
+        obj[currentContainer][key] = minikube[i].slice(minikube[i].indexOf(': ') + 2);
       }
 
       // console.log(obj);

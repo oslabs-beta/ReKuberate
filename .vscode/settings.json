@@ -1,4 +1,4 @@
 {
-    "javascript.format.semicolons": "insert",
-    "typescript.format.semicolons": "insert"
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert"
 }

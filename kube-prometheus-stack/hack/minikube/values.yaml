@@ -4,6 +4,6 @@ prometheus:
 kubeEtcd:
   serviceMonitor:
     scheme: https
-    caFile:   /etc/prometheus/secrets/etcd-certs/ca.crt
+    caFile: /etc/prometheus/secrets/etcd-certs/ca.crt
     certFile: /etc/prometheus/secrets/etcd-certs/client.crt
-    keyFile:  /etc/prometheus/secrets/etcd-certs/client.key
+    keyFile: /etc/prometheus/secrets/etcd-certs/client.key

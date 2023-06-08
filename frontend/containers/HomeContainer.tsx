@@ -6,21 +6,21 @@ import { useNavigate } from 'react-router-dom';
 
 export default function HomeContainer() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   function uploadFile(yamlFile: HTMLInputElement): void {
     fetch('/api/initiate')
-    .then((res)=>res.json())
-    .then((res) => {
-      dispatch(setURLs(res));
-    })
-    .then(()=>{
-      fetch('/api/pods')
       .then((res) => res.json())
       .then((res) => {
-        dispatch(setData(res));
-        navigate('/pods');
+        dispatch(setURLs(res));
+      })
+      .then(() => {
+        fetch('/api/pods')
+          .then((res) => res.json())
+          .then((res) => {
+            dispatch(setData(res));
+            navigate('/pods');
+          });
       });
-    })  
   }
 
   return (
@@ -30,9 +30,10 @@ export default function HomeContainer() {
           onSubmit={(event) => {
             event.preventDefault();
             uploadFile(document.querySelector('#myFile') as HTMLInputElement);
-          }}>
-          <input type='file' id='myFile' name='filename' className={styles.fileInput}></input>
-          <input type='submit' className={styles.button}></input>
+          }}
+        >
+          <input type="file" id="myFile" name="filename" className={styles.fileInput}></input>
+          <input type="submit" className={styles.button}></input>
         </form>
       </div>
     </div>

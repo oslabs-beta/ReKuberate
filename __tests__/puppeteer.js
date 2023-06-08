@@ -80,8 +80,7 @@ async function installMouseHelper(page) {
           true
         );
         function updateButtons(buttons) {
-          for (let i = 0; i < 5; i++)
-            box.classList.toggle('button-' + i, buttons & (1 << i));
+          for (let i = 0; i < 5; i++) box.classList.toggle('button-' + i, buttons & (1 << i));
         }
       },
       false
@@ -122,9 +121,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(300, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  let textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  let textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfKublets = await textSelector?.evaluate((el) => el.textContent);
   //exits out of menu
   await delay(250);
@@ -138,9 +135,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(600, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfPods = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -153,9 +148,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(900, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfContainers = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -188,9 +181,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(831, 131);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const cpuUsage = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -203,9 +194,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageGraph = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -218,9 +207,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageDial = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -252,9 +239,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const availability = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -267,9 +252,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    '#share-panel-embed-embed-html-textarea'
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const errorBudget = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);

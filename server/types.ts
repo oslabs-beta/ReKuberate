@@ -1,11 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-
-export type middleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => void;
+export type middleware = (req: Request, res: Response, next: NextFunction) => void;
 
 //Declare controller types
 export type InitControllerType = {
@@ -27,7 +22,6 @@ export type ErrorHandler = {
   };
 };
 
-
 export type obj = {
   [key: string]: {
     [key: string]: any;
@@ -35,4 +29,3 @@ export type obj = {
 };
 
 // export type podsSplit = string | string[];
-

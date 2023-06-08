@@ -14,10 +14,10 @@ tests:
   - it: should have tolerations if affinity is not set
     set:
       alertmanager.alertmanagerSpec.tolerations:
-        - key: "key1"
-          operator: "Equal"
-          value: "value1"
-          effect: "NoSchedule"
+        - key: 'key1'
+          operator: 'Equal'
+          value: 'value1'
+          effect: 'NoSchedule'
     asserts:
       - hasDocuments:
           count: 1

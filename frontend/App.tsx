@@ -16,9 +16,9 @@ export default function App() {
           <img className={styles.logo} src={logo}></img>
         </div>
         <Routes>
-          <Route path='/' element={<HomeContainer />}></Route>
-          <Route path='/pods' element={<PodsContainer />}></Route>
-          <Route path='/metrics' element={<MetricsContainer />}></Route>
+          <Route path="/" element={<HomeContainer />}></Route>
+          <Route path="/pods" element={<PodsContainer />}></Route>
+          <Route path="/metrics" element={<MetricsContainer />}></Route>
         </Routes>
       </div>
     </>
