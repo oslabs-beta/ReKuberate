@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-import MouseHelper from './mouseHelper.js';
 
 function delay(time) {
   return new Promise(function (resolve) {
