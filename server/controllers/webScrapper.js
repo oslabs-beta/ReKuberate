@@ -12,39 +12,6 @@ async function webScrapper() {
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
 
-  //this logins in to grafna and then logs back out to allow anonymous access
-  await page.goto('http://localhost:9000/');
-  const signIn = '#reactRoot > div.grafana-app > main > div.css-278jzv > div.css-13883cc > div.css-68hv8y > a';
-
-  await page.waitForSelector(signIn);
-  await page.click(signIn);
-
-  const usernameInput =
-    '#reactRoot > div.grafana-app > main > div > div.css-opq959 > div > div.css-9h8xxw > div > div > form > div:nth-child(1) > div:nth-child(2) > div > div > input';
-
-  await page.waitForSelector(usernameInput);
-  await page.type(usernameInput, 'admin');
-  const passwordInput = '#current-password';
-
-  await page.waitForSelector(passwordInput);
-  await page.type(passwordInput, 'prom-operator');
-  const loginButton =
-    '#reactRoot > div.grafana-app > main > div > div.css-opq959 > div > div.css-9h8xxw > div > div > form > button';
-
-  await page.waitForSelector(loginButton);
-  await page.click(loginButton);
-  await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
-
-  await delay(500);
-
-  await page.mouse.click(1890, 10);
-
-  await delay(500);
-
-  await page.mouse.click(1860, 200);
-
-  await delay(500);
-
   //this redirects to the dashboards page of grafana
   await page.goto('http://localhost:9000/dashboards');
 
