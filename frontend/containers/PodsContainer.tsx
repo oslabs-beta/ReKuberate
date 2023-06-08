@@ -86,7 +86,6 @@ export default function PodsContainer() {
     chartData.edges.push({ from: firstKey, to: key });
   }
 
-
   const chart = anychart.graph(chartData);
   chart.background('#d8d8d8');
 
@@ -107,7 +106,7 @@ export default function PodsContainer() {
   nodes.labels().format('{%nodeName}');
   nodes.labels().fontSize(12);
   nodes.labels().fontWeight(600);
-  nodes.labels().fontColor('black')
+  nodes.labels().fontColor('black');
 
   nodes.tooltip().fontSize(18);
   nodes.tooltip().background('white');

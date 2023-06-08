@@ -40,29 +40,31 @@
 // };
 // test()
 
-
 import { spawnSync, spawn } from 'child_process';
 
-console.log('hello')
+console.log('hello');
 
 // const func = () => {
 
 // }
-const repo = spawnSync('helm repo add grafana https://grafana.github.io/helm-charts', { shell: true, encoding: 'utf-8' });
-console.log(repo.stdout)
-console.log(repo.stderr)
+const repo = spawnSync('helm repo add grafana https://grafana.github.io/helm-charts', {
+  shell: true,
+  encoding: 'utf-8',
+});
+console.log(repo.stdout);
+console.log(repo.stderr);
 
-const dependencies = spawnSync('helm dependency build ./kube-prometheus-stack', { shell: true, encoding: 'utf-8' })
+const dependencies = spawnSync('helm dependency build ./kube-prometheus-stack', { shell: true, encoding: 'utf-8' });
 
-console.log(dependencies.stdout)
-console.log(dependencies.stderr)
-const prometheus = spawnSync('helm install prometheus ./kube-prometheus-stack', { shell: true, encoding: 'utf-8' })
-console.log(prometheus.stdout)
-console.log(prometheus.stderr)
+console.log(dependencies.stdout);
+console.log(dependencies.stderr);
+const prometheus = spawnSync('helm install prometheus ./kube-prometheus-stack', { shell: true, encoding: 'utf-8' });
+console.log(prometheus.stdout);
+console.log(prometheus.stderr);
 
-console.log('HERE')
+console.log('HERE');
 
-"kubectl port-forward services/prometheus-grafana 9000:80"
+('kubectl port-forward services/prometheus-grafana 9000:80');
 
 // console.log('getting pods');
 // const pods = spawnSync('kubectl get pod -o wide', {
