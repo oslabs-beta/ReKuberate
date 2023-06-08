@@ -166,7 +166,7 @@ For instance, the prometheus-config-reloader used to be configured as follow:
 image:
   repository: quay.io/prometheus-operator/prometheus-config-reloader
   tag: v0.60.1
-  sha: ""
+  sha: ''
 ```
 
 But it now moved to:
@@ -176,7 +176,7 @@ image:
   registry: quay.io
   repository: prometheus-operator/prometheus-config-reloader
   tag: v0.60.1
-  sha: ""
+  sha: ''
 ```
 
 ### From 40.x to 41.x
@@ -704,7 +704,7 @@ For example, if you had storage specified as this with **prometheus-operator**:
 volumeClaimTemplate:
   spec:
     storageClassName: gp2
-    accessModes: ["ReadWriteOnce"]
+    accessModes: ['ReadWriteOnce']
     resources:
       requests:
         storage: 50Gi
@@ -764,7 +764,7 @@ spec:
     cachingMode: None
     diskName: pvc-prometheus-migration-prometheus-0
     diskURI: /subscriptions/f5125d82-2622-4c50-8d25-3f7ba3e9ac4b/resourceGroups/sample-migration-resource-group/providers/Microsoft.Compute/disks/pvc-prometheus-migration-prometheus-0
-    fsType: ""
+    fsType: ''
     kind: Managed
     readOnly: false
   capacity:

@@ -1,11 +1,11 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import HomeContainer from "./containers/HomeContainer";
-import PodsContainer from "./containers/PodsContainer";
-import SidebarContainer from "./containers/SidebarContainer";
-import styles from "./stylesheets/styles.module.scss";
-import MetricsContainer from "./containers/MetricsContainer";
-import logo from "../assets/ReKuberate-transparent.png";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomeContainer from './containers/HomeContainer';
+import PodsContainer from './containers/PodsContainer';
+import SidebarContainer from './containers/SidebarContainer';
+import styles from './stylesheets/styles.module.scss';
+import MetricsContainer from './containers/MetricsContainer';
+import logo from '../assets/ReKuberate-transparent.png';
 
 export default function App() {
   return (

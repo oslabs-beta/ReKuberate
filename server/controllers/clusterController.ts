@@ -1,13 +1,13 @@
-import { spawn, spawnSync } from "child_process";
-import { ClusterControllerType, obj } from "../types";
+import { spawn, spawnSync } from 'child_process';
+import { ClusterControllerType, obj } from '../types';
 
 const clusterController: ClusterControllerType = {
   getPodAndNodeInfo: async (req, res, next) => {
     try {
       // console.log('getting pods');
-      const pods = spawnSync("kubectl get pod -o wide", {
+      const pods = spawnSync('kubectl get pod -o wide', {
         shell: true,
-        encoding: "utf-8",
+        encoding: 'utf-8',
       });
       // console.log(pods.stdout);
 
@@ -17,9 +17,9 @@ const clusterController: ClusterControllerType = {
       // console.log(podsSplit)
 
       // console.log('getting nodes');
-      const nodes = spawnSync("minikube status", {
+      const nodes = spawnSync('minikube status', {
         shell: true,
-        encoding: "utf-8",
+        encoding: 'utf-8',
       });
       const nodesOutput = nodes.output;
 
@@ -31,7 +31,7 @@ const clusterController: ClusterControllerType = {
 
       //splitting the strings into individual strings seperated by one space
       for (let i = 1; i < podsSplit.length - 1; i++) {
-        podsSplit[i] = podsSplit[i].replace(/\s+/g, " ");
+        podsSplit[i] = podsSplit[i].replace(/\s+/g, ' ');
         podsSplit[i] = podsSplit[i].split(/[' ']/);
 
         //if string includes container name, push to container.pods
@@ -44,7 +44,7 @@ const clusterController: ClusterControllerType = {
       }
 
       for (let i = 1; i < minikube.length - 2; i++) {
-        if (minikube[i] === "") {
+        if (minikube[i] === '') {
           i++;
           currentContainer = minikube[i];
           obj[currentContainer] = {};
@@ -62,10 +62,8 @@ const clusterController: ClusterControllerType = {
           }
         }
 
-        const key = minikube[i].slice(0, minikube[i].indexOf(": "));
-        obj[currentContainer][key] = minikube[i].slice(
-          minikube[i].indexOf(": ") + 2
-        );
+        const key = minikube[i].slice(0, minikube[i].indexOf(': '));
+        obj[currentContainer][key] = minikube[i].slice(minikube[i].indexOf(': ') + 2);
       }
 
       // console.log(obj);
@@ -75,7 +73,7 @@ const clusterController: ClusterControllerType = {
       return next({
         log: `error in clusterController.getPodeAndNodeInfo: ${err}`,
         status: 500,
-        message: { err: "An error occurred getting pod and node info" },
+        message: { err: 'An error occurred getting pod and node info' },
       });
     }
   },

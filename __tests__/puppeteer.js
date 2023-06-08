@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer from 'puppeteer';
 
 function delay(time) {
   return new Promise(function (resolve) {
@@ -11,10 +11,10 @@ async function installMouseHelper(page) {
     // Install mouse helper only for top-level frame.
     if (window !== window.parent) return;
     window.addEventListener(
-      "DOMContentLoaded",
+      'DOMContentLoaded',
       () => {
-        const box = document.createElement("puppeteer-mouse-pointer");
-        const styleElement = document.createElement("style");
+        const box = document.createElement('puppeteer-mouse-pointer');
+        const styleElement = document.createElement('style');
         styleElement.innerHTML = `
         puppeteer-mouse-pointer {
           pointer-events: none;
@@ -55,33 +55,32 @@ async function installMouseHelper(page) {
         document.head.appendChild(styleElement);
         document.body.appendChild(box);
         document.addEventListener(
-          "mousemove",
+          'mousemove',
           (event) => {
-            box.style.left = event.pageX + "px";
-            box.style.top = event.pageY + "px";
+            box.style.left = event.pageX + 'px';
+            box.style.top = event.pageY + 'px';
             updateButtons(event.buttons);
           },
           true
         );
         document.addEventListener(
-          "mousedown",
+          'mousedown',
           (event) => {
             updateButtons(event.buttons);
-            box.classList.add("button-" + event.which);
+            box.classList.add('button-' + event.which);
           },
           true
         );
         document.addEventListener(
-          "mouseup",
+          'mouseup',
           (event) => {
             updateButtons(event.buttons);
-            box.classList.remove("button-" + event.which);
+            box.classList.remove('button-' + event.which);
           },
           true
         );
         function updateButtons(buttons) {
-          for (let i = 0; i < 5; i++)
-            box.classList.toggle("button-" + i, buttons & (1 << i));
+          for (let i = 0; i < 5; i++) box.classList.toggle('button-' + i, buttons & (1 << i));
         }
       },
       false
@@ -99,17 +98,17 @@ async function installMouseHelper(page) {
   await page.setViewport({ width: 1900, height: 1000 });
   await installMouseHelper(page);
 
-  await page.goto("http://localhost:9000/dashboards");
+  await page.goto('http://localhost:9000/dashboards');
 
   const searchInput =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
   await page.waitForSelector(searchInput);
-  await page.type(searchInput, "kubelet");
+  await page.type(searchInput, 'kubelet');
 
   await delay(500);
 
   const kublet =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
 
   await page.waitForSelector(kublet);
   await page.click(kublet);
@@ -122,9 +121,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(300, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  let textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  let textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfKublets = await textSelector?.evaluate((el) => el.textContent);
   //exits out of menu
   await delay(250);
@@ -138,9 +135,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(600, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfPods = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -153,9 +148,7 @@ async function installMouseHelper(page) {
   await page.mouse.click(900, 235);
   await delay(250);
   await page.mouse.click(820, 135);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfContainers = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -163,18 +156,18 @@ async function installMouseHelper(page) {
   await delay(250);
 
   //click on dashboard to go back out to all dashboards
-  await page.goto("http://localhost:9000/dashboards");
+  await page.goto('http://localhost:9000/dashboards');
 
   await delay(250);
 
   const searchInput1 =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
   await page.waitForSelector(searchInput1);
-  await page.type(searchInput1, "Node Exporter / Nodes");
+  await page.type(searchInput1, 'Node Exporter / Nodes');
 
   await delay(500);
   const selector =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
 
   await page.waitForSelector(selector);
   await page.click(selector);
@@ -188,9 +181,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(831, 131);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const cpuUsage = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -203,9 +194,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageGraph = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -218,27 +207,25 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageDial = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
   await delay(250);
 
   //click on dashboard to go back out to all dashboards
-  await page.goto("http://localhost:9000/dashboards");
+  await page.goto('http://localhost:9000/dashboards');
 
   await delay(250);
 
   const searchInput2 =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
   await page.waitForSelector(searchInput2);
-  await page.type(searchInput2, "Kubernetes / API server");
+  await page.type(searchInput2, 'Kubernetes / API server');
 
   await delay(500);
   const selector1 =
-    "#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a";
+    '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div:nth-child(3) > div:nth-child(1) > div > div:nth-child(2) > div > div > div > a';
 
   await page.waitForSelector(selector1);
   await page.click(selector1);
@@ -252,9 +239,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const availability = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);
@@ -267,9 +252,7 @@ async function installMouseHelper(page) {
   await delay(250);
   await page.mouse.click(834, 132);
   await delay(250);
-  textSelector = await page.waitForSelector(
-    "#share-panel-embed-embed-html-textarea"
-  );
+  textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const errorBudget = await textSelector?.evaluate((el) => el.textContent);
   await delay(250);
   await page.mouse.click(1290, 135);

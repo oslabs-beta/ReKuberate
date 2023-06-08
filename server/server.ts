@@ -1,10 +1,10 @@
-import express, { Request, Response, NextFunction } from "express";
-import pkg from "pg";
-import { fileURLToPath } from "url";
-import path from "path";
-import { ErrorHandler } from "./types";
-import initRoute from "./routes/initRoute.ts";
-import clusterRoute from "./routes/clusterRoute.ts";
+import express, { Request, Response, NextFunction } from 'express';
+import pkg from 'pg';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { ErrorHandler } from './types';
+import initRoute from './routes/initRoute.ts';
+import clusterRoute from './routes/clusterRoute.ts';
 
 const { Pool } = pkg;
 const app = express();
@@ -16,8 +16,7 @@ const PORT: number = 3001;
 
 app.use(express.json());
 
-const PG_URI: string =
-  "postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws";
+const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 const pool: pkg.Pool = new Pool({
   connectionString: PG_URI,
   ssl: {
@@ -28,9 +27,9 @@ const pool: pkg.Pool = new Pool({
 //Connect to SQL database
 pool.connect((err: Error) => {
   if (err) {
-    return console.error("could not connect to postgres", err);
+    return console.error('could not connect to postgres', err);
   } else {
-    console.log("connected");
+    console.log('connected');
   }
 });
 
@@ -41,34 +40,32 @@ pool.connect((err: Error) => {
 //   return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
 // })
 
-if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.resolve(__dirname, "../dist")));
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.resolve(__dirname, '../dist')));
 }
 
 //Route to install prometheus and grafana
-app.use("/api/initiate", initRoute);
+app.use('/api/initiate', initRoute);
 
 //Route to get cluster info when accessing pods display page
-app.use("/api/pods", clusterRoute);
+app.use('/api/pods', clusterRoute);
 
 //Route for user verification and creation
 // app.use('/user', userRoute)
 
 //Catch all Route
-app.use("*", (req: Request, res: Response) => res.sendStatus(404));
+app.use('*', (req: Request, res: Response) => res.sendStatus(404));
 
 //Global Error Handler
-app.use(
-  (err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
-    const defaultError: ErrorHandler = {
-      log: "Express error handler caught unkown middleware error",
-      status: 500,
-      message: { err: "An error has occured" },
-    };
-    const errorObj: ErrorHandler = Object.assign(defaultError, err);
-    console.log(errorObj.log);
-    res.status(errorObj.status).json(errorObj.message);
-  }
-);
+app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
+  const defaultError: ErrorHandler = {
+    log: 'Express error handler caught unkown middleware error',
+    status: 500,
+    message: { err: 'An error has occured' },
+  };
+  const errorObj: ErrorHandler = Object.assign(defaultError, err);
+  console.log(errorObj.log);
+  res.status(errorObj.status).json(errorObj.message);
+});
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));

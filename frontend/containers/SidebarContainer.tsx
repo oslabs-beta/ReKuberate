@@ -1,7 +1,7 @@
-import React from "react";
-import Nav from "react-bootstrap/Nav";
-import styles from "./SidebarContainerStyles.module.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import styles from './SidebarContainerStyles.module.scss';
+import { Link } from 'react-router-dom';
 
 export default function SidebarContainer() {
   return (

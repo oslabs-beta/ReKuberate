@@ -3,10 +3,10 @@ async function MouseHelper(page) {
     // Install mouse helper only for top-level frame.
     if (window !== window.parent) return;
     window.addEventListener(
-      "DOMContentLoaded",
+      'DOMContentLoaded',
       () => {
-        const box = document.createElement("puppeteer-mouse-pointer");
-        const styleElement = document.createElement("style");
+        const box = document.createElement('puppeteer-mouse-pointer');
+        const styleElement = document.createElement('style');
         styleElement.innerHTML = `
         puppeteer-mouse-pointer {
           pointer-events: none;
@@ -47,33 +47,32 @@ async function MouseHelper(page) {
         document.head.appendChild(styleElement);
         document.body.appendChild(box);
         document.addEventListener(
-          "mousemove",
+          'mousemove',
           (event) => {
-            box.style.left = event.pageX + "px";
-            box.style.top = event.pageY + "px";
+            box.style.left = event.pageX + 'px';
+            box.style.top = event.pageY + 'px';
             updateButtons(event.buttons);
           },
           true
         );
         document.addEventListener(
-          "mousedown",
+          'mousedown',
           (event) => {
             updateButtons(event.buttons);
-            box.classList.add("button-" + event.which);
+            box.classList.add('button-' + event.which);
           },
           true
         );
         document.addEventListener(
-          "mouseup",
+          'mouseup',
           (event) => {
             updateButtons(event.buttons);
-            box.classList.remove("button-" + event.which);
+            box.classList.remove('button-' + event.which);
           },
           true
         );
         function updateButtons(buttons) {
-          for (let i = 0; i < 5; i++)
-            box.classList.toggle("button-" + i, buttons & (1 << i));
+          for (let i = 0; i < 5; i++) box.classList.toggle('button-' + i, buttons & (1 << i));
         }
       },
       false
