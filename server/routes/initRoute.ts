@@ -8,7 +8,7 @@ initRoute.get(
   initController.installPrometheus,
   initController.installGrafana,
   (req: Request, res: Response, next: NextFunction) => {
-    return res.sendStatus(200);
+    return res.status(200).json(res.locals.graphs);
   }
 );
 
