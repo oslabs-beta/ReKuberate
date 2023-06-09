@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import MouseHelper from './mouseHelper.js';
 
 function delay(time) {
   return new Promise(function (resolve) {
@@ -12,6 +13,7 @@ async function webScrapper() {
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
 
+  // await MouseHelper(page);
   //this redirects to the dashboards page of grafana
   await page.goto('http://localhost:9000/dashboards');
 
