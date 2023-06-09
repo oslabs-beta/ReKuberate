@@ -76,5 +76,6 @@
     "supertest": "^6.3.3",
     "ts-loader": "^9.4.3",
     "typescript": "^5.0.4"
-  }
+  },
+  "type": "module"
 }
