@@ -13,6 +13,15 @@ export type ClusterControllerType = {
   // getNodeInfo: middleware
 };
 
+export type CookieControllerType = {
+  setSSIDCookie: middleware;
+}
+
+export type SessionControllerType = {
+  startSession: middleware;
+  isLoggedIn: middleware;
+}
+
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
 export type ErrorHandler = {
   log: string;

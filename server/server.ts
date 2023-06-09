@@ -1,12 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
-import pkg from 'pg';
+// import pkg from 'pg';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { ErrorHandler } from './types';
 import initRoute from './routes/initRoute.ts';
 import clusterRoute from './routes/clusterRoute.ts';
 
-const { Pool } = pkg;
+// const { Pool } = pkg;
 const app = express();
 
 const __filename: string = fileURLToPath(import.meta.url);
@@ -16,22 +16,22 @@ const PORT: number = 3001;
 
 app.use(express.json());
 
-const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
-const pool: pkg.Pool = new Pool({
-  connectionString: PG_URI,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+// const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
+// const pool: pkg.Pool = new Pool({
+//   connectionString: PG_URI,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
-//Connect to SQL database
-pool.connect((err: Error) => {
-  if (err) {
-    return console.error('could not connect to postgres', err);
-  } else {
-    console.log('connected');
-  }
-});
+// //Connect to SQL database
+// pool.connect((err: Error) => {
+//   if (err) {
+//     return console.error('could not connect to postgres', err);
+//   } else {
+//     console.log('connected');
+//   }
+// });
 
 //Serves front end static files
 // app.use(express.static('./frontend'))
