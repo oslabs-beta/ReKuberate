@@ -1,22 +1,22 @@
 .sidebar {
   position: fixed;
-  height: 78vh;
+  height: 83vh;
   top: 20;
   left: 20;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 20vh;
+  padding-top: 15vh;
   width: 190px;
   border-radius: 20px;
-  background-image: linear-gradient(rgba(116, 156, 133, 1), rgba(255, 254, 238, 0));
+  background-image: linear-gradient(rgba(116, 156, 133, 1), rgb(255, 238, 238, 0.5));
 }
 
 .sidebarLinks {
   font-size: 28px;
   text-decoration: none;
-  padding-bottom: 10%;
-  padding-top: 10%;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
   border-radius: 20px;
   margin: 15px;
   color: inherit;
@@ -33,16 +33,34 @@
 .darkmode {
   background-color: rgba(127, 255, 212, 0);
   border: none;
-  font-size: 20px;
+  font-size: 17px;
   text-decoration: none;
-  padding-bottom: 10%;
-  padding-top: 10%;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
   border-radius: 20px;
   margin: 15px;
   color: inherit;
 }
 
 .darkmode:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.loggedIn {
+  background-color: rgba(127, 255, 212, 0);
+  border: none;
+  font-size: 18px;
+  text-decoration: none;
+  margin: 15px;
+  margin-top: 15vh;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+  border-radius: 20px;
+  color: inherit;
+}
+
+.loggedIn:hover {
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }

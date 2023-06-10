@@ -1,10 +1,13 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginContainerStyles.module.scss';
+import { useAppDispatch } from '../store/hooks';
+import { setLoggedIn } from '../store/appSlice';
 
 export default function LoginContainer() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const verifyLogin = async () => {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
@@ -18,6 +21,7 @@ export default function LoginContainer() {
       });
       if (!response.ok) throw new Error(`Incorrect username or password`);
       else {
+        dispatch(setLoggedIn(true));
         navigate('/home');
       }
     } catch (err) {
