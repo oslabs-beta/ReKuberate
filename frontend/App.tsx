@@ -7,6 +7,7 @@ import styles from './stylesheets/styles.module.scss';
 import MetricsContainer from './containers/MetricsContainer';
 import logo from '../assets/ReKuberate-transparent.png';
 import LoginContainer from './containers/LoginContainer';
+import NewAccountContainer from './containers/NewAccountContainer';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         </div>
         <Routes>
           <Route path="/" element={<LoginContainer />}></Route>
+          <Route path="/createAccount" element={<NewAccountContainer />}></Route>
           <Route path="/home" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>

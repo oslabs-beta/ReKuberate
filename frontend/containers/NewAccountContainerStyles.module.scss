@@ -1,0 +1,43 @@
+// export default Login
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(#fee, #749c85);
+  border-radius: 12px;
+  height: 85.5vh;
+  align-items: center;
+}
+
+.createInput {
+  height: 30vh;
+  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+}
+
+.createInput p {
+  margin: 10px;
+}
+
+.create input {
+  // border: 2px red solid;
+  height: 2.5vh;
+  width: 25vh;
+  border-radius: 6px;
+  border: none;
+}
+
+.create button {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  width: 15vh;
+  height: 3vh;
+  border-radius: 4px;
+  border: none;
+  // outline: none;
+  cursor: pointer;
+}

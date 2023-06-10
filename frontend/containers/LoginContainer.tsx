@@ -1,19 +1,20 @@
 import React from 'react';
+import Nav from 'react-bootstrap/Nav';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import styles from './LoginContainerStyles.module.scss';
 
 export default function LoginContainer() {
   const navigate = useNavigate();
   const verifyLogin = async () => {
-    const loginUsername = (document.getElementById('loginUsername') as HTMLInputElement).value;
-    const loginPassword = (document.getElementById('loginPassword') as HTMLInputElement).value;
+    const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
+    const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
     try {
       const response = await fetch(`/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: loginUsername, password: loginPassword }),
+        body: JSON.stringify({ loginUsername: username, loginPassword: password }),
       });
       if (!response.ok) throw new Error(`Incorrect username or password`);
       else {
@@ -35,7 +36,9 @@ export default function LoginContainer() {
           Login
         </button>
         <div className="createAccount">
-          <a href="#">Create an account</a>
+          <Nav.Link as={Link} to="/createAccount">
+            Create an account
+          </Nav.Link>
         </div>
       </div>
     </div>
