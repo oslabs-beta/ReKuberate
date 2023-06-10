@@ -5,6 +5,7 @@ import path from 'path';
 import { ErrorHandler } from './types';
 import initRoute from './routes/initRoute.ts';
 import clusterRoute from './routes/clusterRoute.ts';
+import userRoute from './routes/userRoute.ts';
 
 // const { Pool } = pkg;
 const app = express();
@@ -33,6 +34,13 @@ app.use(express.json());
 //   }
 // });
 
+const db = {
+  query: (text: string, params?: string[], callback?: any): any => {
+    console.log('executed query', text);
+    return pool.query(text, params, callback);
+  },
+};
+
 //Serves front end static files
 // app.use(express.static('./frontend'))
 
@@ -51,7 +59,7 @@ app.use('/api/initiate', initRoute);
 app.use('/api/pods', clusterRoute);
 
 //Route for user verification and creation
-// app.use('/user', userRoute)
+app.use('/api/user', userRoute);
 
 //Catch all Route
 app.use('*', (req: Request, res: Response) => res.sendStatus(404));
@@ -69,3 +77,5 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
 });
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
+
+export default db;

@@ -20,7 +20,7 @@ pool.connect((err: Error) => {
 });
 
 module.exports = {
-    query: (text: string, params:[], callback: Function) => {
+    query: (text: string, params?:string[], callback?: any) => {
         console.log('executed query', text);
         return pool.query(text, params, callback);
     },

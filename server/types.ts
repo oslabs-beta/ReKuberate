@@ -13,6 +13,12 @@ export type ClusterControllerType = {
   // getNodeInfo: middleware
 };
 
+export type userControllerType = {
+  checkUser: middleware;
+  createUser: middleware;
+  checkPassword: middleware;
+};
+
 export type CookieControllerType = {
   setSSIDCookie: middleware;
 }

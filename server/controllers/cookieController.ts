@@ -6,7 +6,7 @@ const cookieController : CookieControllerType = {
     //setSSSIDCookie sets a current instance of res.cookie to be the current value of res.locals.user pulled from when a user logs in
     setSSIDCookie: (req: Request, res: Response, next: NextFunction) => {
         console.log('setSSIDCookie controller running')
-        res.cookie('ssid', res.locals.user, {httpOnly: true});
+        res.cookie('ssid', res.locals.user, {httpOnly: true});  //have Kai set up res.locals.user to be the userId in userController
         return next()
 
 

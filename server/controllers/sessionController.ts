@@ -4,7 +4,7 @@ import { SessionControllerType } from "../types";
 
 const sesionController: SessionControllerType = {
 
-       //start session will create a new session and assign it to the current user
+       //start session will create a new session and assign it to the current user in the database
        startSession: async(req: Request, res: Response, next: NextFunction) => {
         console.log('startSession controller is running')
 
@@ -30,7 +30,9 @@ const sesionController: SessionControllerType = {
 
         try {
             const session = await db.query(queryString)
+            //if the query does not find a result, the user doesnt have a cookie and is therefore not logged in
             if (!session){
+                //need to reroute them to the login page so a value will likely want to be declared that is checked on the frontend
                 
             }
             else return next();
