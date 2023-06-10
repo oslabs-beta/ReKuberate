@@ -35,7 +35,7 @@ pool.connect((err: Error) => {
 });
 
 const db = {
-  query: (text: any, params?: any, callback?: any): any => {
+  query: (text: string, params?: string[], callback?: any): any => {
     console.log('executed query', text);
     return pool.query(text, params, callback);
   },
@@ -59,7 +59,7 @@ app.use('/api/initiate', initRoute);
 app.use('/api/pods', clusterRoute);
 
 //Route for user verification and creation
-app.use('/user', userRoute);
+app.use('/api/user', userRoute);
 
 //Catch all Route
 app.use('*', (req: Request, res: Response) => res.sendStatus(404));
