@@ -4,7 +4,7 @@ import { useAppSelector } from '../store/hooks';
 
 export default function MetricsContainer() {
   const URLs = useAppSelector((state) => state.app.URLs);
-
+  if (!URLs.availability) return <></>;
   return (
     <div className="bigDiv">
       <div
