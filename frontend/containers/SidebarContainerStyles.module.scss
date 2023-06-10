@@ -33,7 +33,7 @@
 .darkmode {
   background-color: rgba(127, 255, 212, 0);
   border: none;
-  font-size: 20px;
+  font-size: 17px;
   text-decoration: none;
   padding-bottom: 1vh;
   padding-top: 1vh;
@@ -50,11 +50,13 @@
 .loggedIn {
   background-color: rgba(127, 255, 212, 0);
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
-  padding-top: 15vh;
-  border-radius: 20px;
   margin: 15px;
+  margin-top: 15vh;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+  border-radius: 20px;
   color: inherit;
 }
 
