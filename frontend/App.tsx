@@ -9,6 +9,8 @@ import logo from '../assets/ReKuberate-transparent.png';
 import { useAppDispatch } from './store/hooks';
 import { setData, setPodIntervalID } from './store/appSlice';
 import LoadingWheel from './components/LoadingWheel';
+import LoginContainer from './containers/LoginContainer';
+import NewAccountContainer from './containers/NewAccountContainer';
 import Docs from './pages/Docs';
 
 export default function App() {
@@ -35,7 +37,9 @@ export default function App() {
           <img className={styles.logo} src={logo}></img>
         </div>
         <Routes>
-          <Route path="/" element={<HomeContainer />}></Route>
+          <Route path="/" element={<LoginContainer />}></Route>
+          <Route path="/createAccount" element={<NewAccountContainer />}></Route>
+          <Route path="/home" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
           <Route path="/docs" element={<Docs />}></Route>

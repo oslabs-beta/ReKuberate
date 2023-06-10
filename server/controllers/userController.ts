@@ -5,10 +5,10 @@ import db from '../server.ts';
 const userController: userControllerType = {
   //Checks if username exists in DB
   checkUser: async (req, res, next) => {
-    const { username } = req.body;
+    const { loginUsername } = req.body;
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
     try {
-      const data = await db.query(sqlQuery, [username]);
+      const data = await db.query(sqlQuery, [loginUsername]);
       console.log(data.rows);
       res.locals.foundUser = data.rows[0];
       return next();
@@ -30,10 +30,10 @@ const userController: userControllerType = {
         message: { err: 'username already taken' },
       });
     }
-    const { username, password } = req.body;
+    const { createUsername, createPassword } = req.body;
     const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
     try {
-      const data = await db.query(sqlQuery, [username, password]);
+      const data = await db.query(sqlQuery, [createUsername, createPassword]);
       return next();
     } catch (err) {
       return next({
@@ -55,13 +55,12 @@ const userController: userControllerType = {
 
     //check if user was found in previous middleware function
     if (!res.locals.foundUser) return next(error);
-
-    const { username } = res.locals.foundUser;
-    const { password } = req.body;
+    const { loginUsername } = res.locals.foundUser;
+    const { loginPassword } = req.body;
 
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1 AND password=$2';
     try {
-      const data = await db.query(sqlQuery, [username, password]);
+      const data = await db.query(sqlQuery, [loginUsername, loginPassword]);
       if (!data.rows[0]) return next(error);
       else return next();
     } catch (err) {
