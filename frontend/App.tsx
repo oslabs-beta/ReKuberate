@@ -42,7 +42,12 @@ export default function App() {
           <Route path="/home" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
-          <Route path="/docs" element={<Docs />}></Route>
+          <Route path="/docs" element={<Docs />}>
+            <Route path="gettingStarted"></Route>
+            <Route path="tutorial"></Route>
+            <Route path="help"></Route>
+            <Route path="troubleShooting"></Route>
+          </Route>
         </Routes>
       </div>
     </>

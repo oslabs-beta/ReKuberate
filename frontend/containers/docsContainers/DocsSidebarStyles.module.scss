@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  height: 77vh;
+  height: 75vh;
   top: 20;
   left: 20;
   display: flex;
@@ -8,8 +8,8 @@
   text-align: center;
   padding-top: 10vh;
   width: 160px;
-  border-radius: 0 0 20px 20px;
-  background-image: linear-gradient(rgba(255, 254, 238, 0), rgba(116, 156, 133, 1));
+  border-radius: 20px;
+  background-image: linear-gradient(rgb(255, 238, 238, 0.5), rgba(116, 156, 133, 1));
 }
 
 .sidebarLinks {

@@ -16,6 +16,7 @@ interface appState {
   loading: 'block' | 'none';
   podIntervalID: any;
   colorTheme: string;
+  loggedIn: boolean;
 }
 
 const initialState: appState = {
@@ -24,6 +25,7 @@ const initialState: appState = {
   loading: 'none',
   podIntervalID: null,
   colorTheme: '',
+  loggedIn: false,
 };
 
 const appSlice = createSlice({
@@ -45,9 +47,12 @@ const appSlice = createSlice({
     setColorTheme: (state, action: PayloadAction<string>) => {
       state.colorTheme = action.payload;
     },
+    setLoggedIn: (state, action: PayloadAction<boolean>) => {
+      state.loggedIn = action.payload;
+    },
   },
 });
 
-export const { setData, setURLs, setLoading, setPodIntervalID, setColorTheme } = appSlice.actions;
+export const { setData, setURLs, setLoading, setPodIntervalID, setColorTheme, setLoggedIn } = appSlice.actions;
 
 export default appSlice.reducer;
