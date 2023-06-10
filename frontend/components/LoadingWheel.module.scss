@@ -1,0 +1,16 @@
+.loading {
+  position: absolute;
+  z-index: 9;
+  top: 35vh;
+  left: 45vw;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

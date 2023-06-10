@@ -8,12 +8,12 @@ function delay(time) {
 }
 
 async function webScrapper() {
-  const browser = await puppeteer.launch({ headless: true, args: [`--window-size=1900,1000`] });
+  const browser = await puppeteer.launch({ headless: false, args: [`--window-size=1900,1000`] });
   const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
 
-  // await MouseHelper(page);
+  await MouseHelper(page);
   //this redirects to the dashboards page of grafana
   await page.goto('http://localhost:9000/dashboards');
 
