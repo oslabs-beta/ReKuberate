@@ -9,7 +9,7 @@
   padding-top: 20vh;
   width: 190px;
   border-radius: 20px;
-  background-image: linear-gradient(#749c85, #fffeee);
+  background-image: linear-gradient(rgba(116, 156, 133, 0.5), rgba(255, 254, 238, 0.5));
 }
 
 .sidebarLinks {
@@ -23,5 +23,9 @@
 }
 
 .sidebarLinks:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebarLinks:focus {
   background-color: rgba(255, 255, 255, 0.5);
 }

@@ -1,0 +1,31 @@
+.sidebar {
+  position: fixed;
+  height: 77vh;
+  top: 20;
+  left: 20;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 10vh;
+  width: 160px;
+  border-radius: 0 0 20px 20px;
+  background-image: linear-gradient(rgba(255, 254, 238, 0.5), rgba(116, 156, 133, 0.5));
+}
+
+.sidebarLinks {
+  font-size: 22px;
+  text-decoration: none;
+  padding-bottom: 10%;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 5px;
+  color: rgb(255, 255, 255);
+}
+
+.sidebarLinks:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.sidebarLinks:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}

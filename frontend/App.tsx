@@ -9,6 +9,7 @@ import logo from '../assets/ReKuberate-transparent.png';
 import { useAppDispatch } from './store/hooks';
 import { setData, setPodIntervalID } from './store/appSlice';
 import LoadingWheel from './components/LoadingWheel';
+import Docs from './pages/Docs';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
+          <Route path="/docs" element={<Docs />}></Route>
         </Routes>
       </div>
     </>

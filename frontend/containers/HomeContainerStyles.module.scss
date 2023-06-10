@@ -1,6 +1,11 @@
 .yaml {
   height: 85.5vh;
-  background-image: linear-gradient(#fffeee, rgb(116, 156, 133), rgb(116, 156, 133), rgb(116, 156, 133));
+  background-image: linear-gradient(
+    rgba(255, 254, 238, 0.5),
+    rgba(116, 156, 133, 0.5),
+    rgba(116, 156, 133, 0.5),
+    rgba(116, 156, 133, 0.5)
+  );
   border-radius: 0 0 20px 20px;
   padding-top: 1vh;
 }
