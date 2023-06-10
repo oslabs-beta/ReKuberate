@@ -55,7 +55,6 @@ const userController: userControllerType = {
 
     //check if user was found in previous middleware function
     if (!res.locals.foundUser) return next(error);
-
     const { loginUsername } = res.locals.foundUser;
     const { loginPassword } = req.body;
 
