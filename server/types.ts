@@ -13,6 +13,12 @@ export type ClusterControllerType = {
   // getNodeInfo: middleware
 };
 
+export type userControllerType = {
+  checkUser: middleware;
+  createUser: middleware;
+  checkPassword: middleware;
+};
+
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
 export type ErrorHandler = {
   log: string;
