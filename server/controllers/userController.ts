@@ -1,6 +1,8 @@
+import db from '../models/dbModel.ts';
 import { NextFunction } from 'express-serve-static-core';
 import { ErrorHandler, userControllerType } from '../types';
-import db from '../server.ts';
+
+
 
 const userController: userControllerType = {
   //Checks if username exists in DB

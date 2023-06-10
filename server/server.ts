@@ -34,12 +34,12 @@ app.use(express.json());
 //   }
 // });
 
-const db = {
-  query: (text: string, params?: string[], callback?: any): any => {
-    console.log('executed query', text);
-    return pool.query(text, params, callback);
-  },
-};
+// const db = {
+//   query: (text: string, params?: string[], callback?: any): any => {
+//     console.log('executed query', text);
+//     return pool.query(text, params, callback);
+//   },
+// };
 
 //Serves front end static files
 // app.use(express.static('./frontend'))
@@ -78,4 +78,3 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
 
-export default db;

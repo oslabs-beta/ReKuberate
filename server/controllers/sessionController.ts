@@ -1,4 +1,4 @@
-const db = require ('../models/dbModel')
+import db from ../models/dbModel.ts';
 import { Request, Response, NextFunction } from "express";
 import { SessionControllerType } from "../types";
 
@@ -7,9 +7,11 @@ const sesionController: SessionControllerType = {
        //start session will create a new session and assign it to the current user in the database
        startSession: async(req: Request, res: Response, next: NextFunction) => {
         console.log('startSession controller is running')
-
+        const cookie = res.cookie
+        const cookieQuery: string = 'INSERT INTO cookies (cookieID, createdAt) VALUES ($1, $2)';
         try{
-
+            //update user that matches _id from ssid, and create a new session that matches that _id
+            
         } catch {
             return next({
                 log: 'error in startSession controller: ${err}',

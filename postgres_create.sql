@@ -9,11 +9,18 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-CREATE TABLE public.people (
+-- CREATE TABLE public.people (
+-- 	"_id" serial NOT NULL,
+-- 	"username" varchar NOT NULL,
+-- 	"password" varchar NOT NULL,
+-- 	CONSTRAINT "people_pk" PRIMARY KEY ("_id")
+-- ) WITH (
+--   OIDS=FALSE
+-- );
+
+CREATE TABLE public.cookies (
 	"_id" serial NOT NULL,
-	"username" varchar NOT NULL,
-	"password" varchar NOT NULL,
-	CONSTRAINT "people_pk" PRIMARY KEY ("_id")
-) WITH (
-  OIDS=FALSE
-);
+	"cookieID" varchar NOT NULL,
+	"createdAt" varchar Not Null,
+	CONSTRAINT "cookies_pk" PRIMARY KEY("_id")
+)
