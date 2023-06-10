@@ -40,8 +40,13 @@ export default function SidebarContainer() {
       <Nav.Link as={Link} to="/docs" className={styles.sidebarLinks}>
         Docs
       </Nav.Link>
-      <button onClick={() => dispatch(setColorTheme('light'))} className={styles.darkmode}>
-        DarkMode
+      <button
+        onClick={() => {
+          colorTheme === 'dark' ? dispatch(setColorTheme('light')) : dispatch(setColorTheme('dark'));
+        }}
+        className={styles.darkmode}
+      >
+        Dark Mode
       </button>
     </Nav>
   );

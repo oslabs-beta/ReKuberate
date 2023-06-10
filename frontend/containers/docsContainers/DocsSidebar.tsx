@@ -8,16 +8,16 @@ export default function DocsSidebar() {
     <>
       <Nav className={styles.sidebar}>
         <Nav.Link as={Link} to="/gettingStarted" className={styles.sidebarLinks}>
-          Home
+          Getting Started
         </Nav.Link>
         <Nav.Link as={Link} to="/tutorial" className={styles.sidebarLinks}>
-          Pods
+          Tutorials
         </Nav.Link>
         <Nav.Link as={Link} to="/help" className={styles.sidebarLinks}>
-          Metrics
+          Help
         </Nav.Link>
         <Nav.Link as={Link} to="/troubleShooting" className={styles.sidebarLinks}>
-          Docs
+          Trouble Shooting
         </Nav.Link>
       </Nav>
     </>
