@@ -13,11 +13,15 @@ interface appState {
     availability?: string;
     errorBudget?: string;
   };
+  loading: 'block' | 'none';
+  podIntervalID: any;
 }
 
 const initialState: appState = {
   data: {},
   URLs: {},
+  loading: 'none',
+  podIntervalID: null,
 };
 
 const appSlice = createSlice({
@@ -30,9 +34,15 @@ const appSlice = createSlice({
     setURLs: (state, action: PayloadAction<Object>) => {
       state.URLs = action.payload;
     },
+    setLoading: (state, action: PayloadAction<'block' | 'none'>) => {
+      state.loading = action.payload;
+    },
+    setPodIntervalID: (state, action: PayloadAction<any>) => {
+      state.podIntervalID = action.payload;
+    },
   },
 });
 
-export const { setData, setURLs } = appSlice.actions;
+export const { setData, setURLs, setLoading, setPodIntervalID } = appSlice.actions;
 
 export default appSlice.reducer;

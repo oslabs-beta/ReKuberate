@@ -7,8 +7,9 @@ export default function CreateAcount() {
   const verifyNewAccount = async () => {
     const username = (document.getElementById('createUsername') as HTMLInputElement).value;
     const password = (document.getElementById('createPassword') as HTMLInputElement).value;
+    console.log(username, password);
     try {
-      const response = await fetch(`/api/create`, {
+      const response = await fetch(`/api/user/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

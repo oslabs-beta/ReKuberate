@@ -9,7 +9,7 @@ export default function LoginContainer() {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
     try {
-      const response = await fetch(`/api/login`, {
+      const response = await fetch(`/api/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
