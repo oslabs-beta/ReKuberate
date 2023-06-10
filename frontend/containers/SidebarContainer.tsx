@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function SidebarContainer() {
   return (
     <Nav className={styles.sidebar}>
-      <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
+      <Nav.Link as={Link} to="/Home" className={styles.sidebarLinks}>
         Home
       </Nav.Link>
       <Nav.Link as={Link} to="/pods" className={styles.sidebarLinks}>
@@ -14,6 +14,9 @@ export default function SidebarContainer() {
       </Nav.Link>
       <Nav.Link as={Link} to="/metrics" className={styles.sidebarLinks}>
         Metrics
+      </Nav.Link>
+      <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
+        Login
       </Nav.Link>
     </Nav>
   );
