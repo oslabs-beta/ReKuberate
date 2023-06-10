@@ -6,8 +6,20 @@ import SidebarContainer from './containers/SidebarContainer';
 import styles from './stylesheets/styles.module.scss';
 import MetricsContainer from './containers/MetricsContainer';
 import logo from '../assets/ReKuberate-transparent.png';
+import { useAppDispatch } from './store/hooks';
+import { setData } from './store/appSlice';
 
-export default function App() {
+export default function App() {  
+  const dispatch = useAppDispatch();
+
+  setInterval(() => {
+    fetch('/api/pods')
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(setData(res));
+      });
+  }, 2000);
+
   return (
     <>
       <SidebarContainer />
