@@ -1,19 +1,34 @@
 import React from 'react';
 import styles from './HomeContainerStyles.module.scss';
-import { useAppDispatch } from '../store/hooks';
-import { setURLs } from '../store/appSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { setData, setLoading, setPodIntervalID, setURLs } from '../store/appSlice';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeContainer() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const podIntervalID = useAppSelector((state) => state.app.podIntervalID);
   function uploadFile(yamlFile: HTMLInputElement): void {
+    clearInterval(podIntervalID);
+    dispatch(setLoading('block'));
     fetch('/api/initiate')
       .then((res) => res.json())
       .then((res) => {
         dispatch(setURLs(res));
+        dispatch(setLoading('none'));
+        dispatch(
+          setPodIntervalID(
+            setInterval(() => {
+              fetch('/api/pods')
+                .then((res) => res.json())
+                .then((res) => {
+                  dispatch(setData(res));
+                });
+            }, 2000)
+          )
+        );
         navigate('/pods');
-      })
+      });
   }
 
   return (

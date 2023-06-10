@@ -7,21 +7,27 @@ import styles from './stylesheets/styles.module.scss';
 import MetricsContainer from './containers/MetricsContainer';
 import logo from '../assets/ReKuberate-transparent.png';
 import { useAppDispatch } from './store/hooks';
-import { setData } from './store/appSlice';
+import { setData, setPodIntervalID } from './store/appSlice';
+import LoadingWheel from './components/LoadingWheel';
 
-export default function App() {  
+export default function App() {
   const dispatch = useAppDispatch();
 
-  setInterval(() => {
-    fetch('/api/pods')
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch(setData(res));
-      });
-  }, 2000);
+  dispatch(
+    setPodIntervalID(
+      setInterval(() => {
+        fetch('/api/pods')
+          .then((res) => res.json())
+          .then((res) => {
+            dispatch(setData(res));
+          });
+      }, 2000)
+    )
+  );
 
   return (
     <>
+      <LoadingWheel />
       <SidebarContainer />
       <div className={styles.mainDiv}>
         <div className={styles.title}>
