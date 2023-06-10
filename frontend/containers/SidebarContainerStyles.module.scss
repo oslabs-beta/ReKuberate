@@ -9,7 +9,7 @@
   padding-top: 20vh;
   width: 190px;
   border-radius: 20px;
-  background-image: linear-gradient(#749c85, #fffeee);
+  background-image: linear-gradient(rgba(116, 156, 133, 1), rgba(255, 254, 238, 0));
 }
 
 .sidebarLinks {
@@ -19,9 +19,30 @@
   padding-top: 10%;
   border-radius: 20px;
   margin: 15px;
-  color: white;
+  color: inherit;
 }
 
 .sidebarLinks:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebarLinks:focus {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.darkmode {
+  background-color: rgba(127, 255, 212, 0);
+  border: none;
+  font-size: 20px;
+  text-decoration: none;
+  padding-bottom: 10%;
+  padding-top: 10%;
+  border-radius: 20px;
+  margin: 15px;
+  color: inherit;
+}
+
+.darkmode:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }

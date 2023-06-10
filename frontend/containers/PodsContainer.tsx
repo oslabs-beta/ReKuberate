@@ -91,7 +91,7 @@ export default function PodsContainer() {
 
   const background = chart.background();
   background.stroke({
-    keys: ['#749c85', '#749c85', '#749c85', '#fffeee'],
+    keys: ['#fffeee00'],
     thickness: 20,
     angle: 90,
   });
@@ -124,7 +124,12 @@ export default function PodsContainer() {
   chart.container('container');
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: 'linear-gradient(rgba(255, 254, 238, 0),rgba(116, 156, 133, 1),rgba(116, 156, 133, 1))',
+        borderRadius: '0 0 20px 20px',
+      }}
+    >
       <AnyChart instance={chart} />
     </div>
   );

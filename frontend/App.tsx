@@ -11,6 +11,7 @@ import { setData, setPodIntervalID } from './store/appSlice';
 import LoadingWheel from './components/LoadingWheel';
 import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
+import Docs from './pages/Docs';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/home" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
+          <Route path="/docs" element={<Docs />}></Route>
         </Routes>
       </div>
     </>
