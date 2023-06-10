@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import MouseHelper from './mouseHelper.js';
 
 function delay(time) {
   return new Promise(function (resolve) {
@@ -7,17 +8,14 @@ function delay(time) {
 }
 
 async function webScrapper() {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [`--window-size=1900,1000`],
-  });
+  const browser = await puppeteer.launch({ headless: true, args: [`--window-size=1900,1000`] });
   const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
 
+  // await MouseHelper(page);
+  //this redirects to the dashboards page of grafana
   await page.goto('http://localhost:9000/dashboards');
-
-  await delay(500);
 
   const searchInput =
     '#reactRoot > div.grafana-app > main > div.css-60onds > div.css-1syiu8h-page-wrapper > div > div.css-1rs2yug-page-container > div > div.scrollbar-view > div > div.css-1736fpx-page-content > div > div.css-vbrrr8.page-action-bar > div > div > div > input';
@@ -42,11 +40,12 @@ async function webScrapper() {
   await page.mouse.click(820, 135);
   let textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfKublets = await textSelector?.evaluate((el) => el.textContent);
+  console.log(numOfKublets);
   //exits out of menu
   await delay(250);
   await page.mouse.click(1290, 135);
 
-  await delay(250);
+  await delay(500);
 
   //open menu for number of pods and gets embed
   await page.mouse.click(610, 160);
@@ -56,10 +55,11 @@ async function webScrapper() {
   await page.mouse.click(820, 135);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfPods = await textSelector?.evaluate((el) => el.textContent);
+  console.log(numOfPods);
   await delay(250);
   await page.mouse.click(1290, 135);
 
-  await delay(250);
+  await delay(500);
 
   //open menu for number of containers and gets embed
   await page.mouse.click(930, 160);
@@ -69,10 +69,11 @@ async function webScrapper() {
   await page.mouse.click(820, 135);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const numOfContainers = await textSelector?.evaluate((el) => el.textContent);
+  console.log(numOfContainers);
   await delay(250);
   await page.mouse.click(1290, 135);
 
-  await delay(250);
+  await delay(500);
 
   //click on dashboard to go back out to all dashboards
   await page.goto('http://localhost:9000/dashboards');
@@ -99,12 +100,12 @@ async function webScrapper() {
   await page.mouse.click(815, 266);
   await delay(250);
   await page.mouse.click(831, 131);
-  await delay(250);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const cpuUsage = await textSelector?.evaluate((el) => el.textContent);
+  console.log(cpuUsage);
   await delay(250);
   await page.mouse.click(1290, 135);
-  await delay(250);
+  await delay(500);
 
   //click on memory for memory usage (graph)
   await page.mouse.click(1402, 495);
@@ -112,12 +113,12 @@ async function webScrapper() {
   await page.mouse.click(1295, 568);
   await delay(250);
   await page.mouse.click(834, 132);
-  await delay(250);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageGraph = await textSelector?.evaluate((el) => el.textContent);
+  console.log(memUsageGraph);
   await delay(250);
   await page.mouse.click(1290, 135);
-  await delay(250);
+  await delay(500);
 
   //click on menu for memory usage (dial)
   await page.mouse.click(1870, 495);
@@ -125,12 +126,12 @@ async function webScrapper() {
   await page.mouse.click(1790, 573);
   await delay(250);
   await page.mouse.click(834, 132);
-  await delay(250);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const memUsageDial = await textSelector?.evaluate((el) => el.textContent);
+  console.log(memUsageDial);
   await delay(250);
   await page.mouse.click(1290, 135);
-  await delay(250);
+  await delay(500);
 
   //click on dashboard to go back out to all dashboards
   await page.goto('http://localhost:9000/dashboards');
@@ -157,12 +158,12 @@ async function webScrapper() {
   await page.mouse.click(505, 306);
   await delay(250);
   await page.mouse.click(834, 132);
-  await delay(250);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const availability = await textSelector?.evaluate((el) => el.textContent);
+  console.log(availability);
   await delay(250);
   await page.mouse.click(1290, 135);
-  await delay(250);
+  await delay(500);
 
   //click on menu for error budget
   await page.mouse.click(1870, 228);
@@ -170,12 +171,11 @@ async function webScrapper() {
   await page.mouse.click(1790, 306);
   await delay(250);
   await page.mouse.click(834, 132);
-  await delay(250);
   textSelector = await page.waitForSelector('#share-panel-embed-embed-html-textarea');
   const errorBudget = await textSelector?.evaluate((el) => el.textContent);
+  console.log(errorBudget);
   await delay(250);
   await page.mouse.click(1290, 135);
-  await delay(250);
 
   await browser.close();
 
