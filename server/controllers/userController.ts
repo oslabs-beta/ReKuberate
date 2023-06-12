@@ -8,9 +8,11 @@ const userController: userControllerType = {
   //Checks if username exists in DB
   //used for both login and account creation
   checkUser: async (req, res, next) => {
+    console.log('checkUser controller is running')
     const { loginUsername } = req.body;
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
     try {
+      console.log('!!!!!!!!!!!!!')
       const data = await db.query(sqlQuery, [loginUsername]);
       console.log(data.rows);
       res.locals.foundUser = data.rows[0];
@@ -26,6 +28,7 @@ const userController: userControllerType = {
 
   //adds user to DB if username is not already taken
   createUser: async (req, res, next) => {
+    console.log('createUser controller is running')
     if (res.locals.foundUser) {
       return next({
         log: 'Error in userController.createUser middleware function',
@@ -49,6 +52,7 @@ const userController: userControllerType = {
 
   //verifies if password matches username
   checkPassword: async (req, res, next) => {
+    console.log('checkPassword controller is running')
     //error to be thrown if username does not exist or password does not match username
     const error: ErrorHandler = {
       log: 'Error in userController.checkPassword middleware function',

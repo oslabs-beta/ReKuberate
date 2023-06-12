@@ -18,7 +18,7 @@ export default function CreateAcount() {
       });
       if (!response.ok) throw new Error(`Invalid input`);
       else {
-        navigate('/home');
+        navigate('/');
       }
     } catch (err) {
       console.error('Error: ', err);

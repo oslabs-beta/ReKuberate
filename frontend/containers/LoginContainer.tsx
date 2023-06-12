@@ -11,22 +11,30 @@ export default function LoginContainer() {
   const verifyLogin = async () => {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
+    console.log(1)
     try {
-      const response = await fetch(`/api/user/login`, {
+      console.log(2)
+      const response = await fetch('/api/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ loginUsername: username, loginPassword: password }),
       });
-      if (!response.ok) throw new Error(`Incorrect username or password`);
+      console.log('!!!!!!!!!!!!!!!!')
+      console.log(response)
+      if (!response.ok) {
+        console.log(3)
+        throw new Error(`Incorrect username or password`);}
       else {
+        console.log('hello')
         dispatch(setLoggedIn(true));
-        navigate('/home');
+        navigate('/');
       }
     } catch (err) {
       console.error('Error: ', err);
     }
+    console.log(4)
   };
 
   return (

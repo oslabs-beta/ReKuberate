@@ -7,7 +7,7 @@ const sessionController: SessionControllerType = {
     //isLoggedIn checks to see if a user has a has a valid session assigned to their name. 
     //If they don't they should be redirected to the landing page on frontend
     hasCookie: async (req: Request, res: Response, next: NextFunction) => {
-        console.log('isLoggedIn controller is running')
+        console.log('hasCookie controller is running')
         try {
             //check if ssid cookie exists
             if (!req.cookies.ssid){
