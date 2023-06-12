@@ -11,23 +11,13 @@ userRoute.get('/', sessionController.hasCookie, (req, res) => {
 });
 
 //create new user in DB
-userRoute.post(
-  '/signup',
-  userController.checkUser,
-  userController.createUser,
-  cookieController.setSSIDCookie,
-  (req, res) => {
+userRoute.post('/signup', userController.checkUser, userController.createUser, cookieController.setSSIDCookie, (req, res) => {
     res.sendStatus(200);
   }
 );
 
 //logins in user
-userRoute.post(
-  '/login',
-  userController.checkUser,
-  userController.checkPassword,
-  cookieController.setSSIDCookie,
-  (req, res) => {
+userRoute.post('/login', userController.checkUser, userController.checkPassword, cookieController.setSSIDCookie, (req, res) => {
     res.sendStatus(200);
   }
 );
