@@ -24,8 +24,7 @@ export type CookieControllerType = {
 }
 
 export type SessionControllerType = {
-  startSession: middleware;
-  isLoggedIn: middleware;
+  hasCookie: middleware;
 }
 
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
