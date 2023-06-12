@@ -4,6 +4,9 @@ import { useAppSelector } from '../store/hooks';
 
 export default function MetricsContainer() {
   const URLs = useAppSelector((state) => state.app.URLs);
+  const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
+  clearInterval(podsIntervalID)
+
   if (!URLs.availability)
     return (
       <>

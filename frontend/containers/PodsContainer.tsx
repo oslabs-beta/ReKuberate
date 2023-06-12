@@ -3,7 +3,8 @@ import './PodsContainerStyles.scss';
 import AnyChart from 'anychart-react';
 import anychart from 'anychart';
 import { MockData } from '../types';
-import { useAppSelector } from '../store/hooks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { setData, setPodIntervalID } from '../store/appSlice';
 
 export default function PodsContainer() {
   const data: any = useAppSelector((state) => state.app.data);
@@ -122,6 +123,20 @@ export default function PodsContainer() {
   });
 
   chart.container('container');
+
+  const dispatch = useAppDispatch();
+
+  dispatch(
+    setPodIntervalID(
+      setInterval(() => {
+        fetch('/api/pods')
+          .then((res) => res.json())
+          .then((res) => {
+            dispatch(setData(res));
+          });
+      }, 2000)
+    )
+  );
 
   return (
     <div
