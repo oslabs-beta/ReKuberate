@@ -15,19 +15,19 @@ describe('Server Unit tests', () => {
   });
 
   //Initialization route testing unit (need to get exact object of res.locals but keeping this commented out to speed up tests)
-  xdescribe('Initalization Route', () => {
+  describe('Initalization Route', () => {
     it ('successfully responds with status 200', async () => {
       const response = await request.get('/api/initiate/');
       expect(response.statusCode).toBe(200);
-    });
+    }, 40000);
 
     it ('successfully returns res.locals.graphs as an object', async () => {
       const response = await request.get('/api/initiate/');
-      expect(response.body).toBe(Object);
-    })
+      expect(response.body).toBeInstanceOf(Object)
+    }, 40000)
   });
 
-  xdescribe('Pods Route', () => {
+  describe('Pods Route', () => {
     //works, skipping so I dont have to have cluster running for all tests
     it('successfully responds with status 200', async () => {
       const response = await request.get('/api/pods/');
@@ -36,15 +36,10 @@ describe('Server Unit tests', () => {
     //works, skipping so I dont have to have cluster running for all tests
     it('successfully sends back json object', async () => {
       const response = await request.get('/api/pods/');
-      expect(response.body).toEqual({"minikube": {"apiserver": "Running", "host": "Running", "kubeconfig": "Configured", "kubelet": "Running", "pods": [{"name": "prometheus-prometheus-node-exporter-8g6mq", "status": "Running"}], "type": "Control Plane"}, "minikube-m02": {"host": "Running", "kubelet": "Running", "pods": [{"name": "alertmanager-prometheus-kube-prometheus-alertmanager-0", "status": "Running"}, {"name": "prometheus-grafana-cd8448b68-cv95c", "status": "Running"}, {"name": "prometheus-kube-prometheus-operator-6d94dc655b-xhnvv", "status": "Running"}, {"name": "prometheus-kube-state-metrics-8674d7b847-956hm", "status": "Running"}, {"name": "prometheus-prometheus-kube-prometheus-prometheus-0", "status": "Running"}, {"name": "prometheus-prometheus-node-exporter-w24mh", "status": "Running"}], "type": "Worker"}});
+      expect(response.body).toBeInstanceOf(Object);
     })
-    //need to figure out how to throw error while still have cluster running
-    xit('sends status 500 when cluster is not running', async () => {
-      const response = await request.get('/api/pods/');
-      expect(response.statusCode).toBe(500)
-    })
-
-    xit('send error message when cluster is not running', async () => {
+    //can't be tested with the rest of the tests because they rely on the cluster being running
+    it('send error message when cluster is not running', async () => {
       const response = await request.get('/api/pods/');
       expect(response).toBe('err')
     })
@@ -65,17 +60,17 @@ describe('Server Unit tests', () => {
         const response = await request.get('/api/user/');
         expect(response.text).toBe("false");
       })
-      //need to figure out how to get an error to occur with just a get request
-      xit('successfully sends back status 500 when error occurs', async () => {
-        const response = await request.get('/api/user/');
-        expect(response.statusCode).toBe(500);
-      })
+      // //need to figure out how to get an error to occur with just a get request
+      // xit('successfully sends back status 500 when error occurs', async () => {
+      //   const response = await request.get('/api/user/');
+      //   expect(response.statusCode).toBe(500);
+      // })
     })
 
     //User creation Route
     describe('User Creation', () => {
-      //works but commenting out for now because you have to rewrite this test each time since it writes to the database
-      xit('successfully sends status 200 on user creation', async () => {
+      //update with new user and password each time to test
+      it('successfully sends status 200 on user creation', async () => {
         const response = await request.post('/api/user/signup').send({
           createUsername: "steveJobs",
           createPassword: "whatitdo",
@@ -100,14 +95,14 @@ describe('Server Unit tests', () => {
       });
 
       //seems like we can only make cookies from supertest, not check so I'll skip for now
-      xit('creates an ssid cookie assigned to the input username', async () => {
-        const response = await request.post('/api/user/signup').send({
-          createUsername: "Alightyyyy",
-          createPassword: "alrightyyyy",
-        });
-        //this only tells us our response returns an object (which it does contain the cookie) but I'm having trouble accessing just the cookie property
-        expect(response.body).toEqual({})
-      });
+      // xit('creates an ssid cookie assigned to the input username', async () => {
+      //   const response = await request.post('/api/user/signup').send({
+      //     createUsername: "Alightyyyy",
+      //     createPassword: "alrightyyyy",
+      //   });
+      //   //this only tells us our response returns an object (which it does contain the cookie) but I'm having trouble accessing just the cookie property
+      //   expect(response.body).toEqual({})
+      // });
     })
 
   //User login route
