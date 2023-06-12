@@ -23,26 +23,37 @@ const gitController: gitControllerType = {
       res.locals.accessToken = result;
       console.log('!!!!!', res.locals.accessToken);
       return next();
-    } catch (error) {
+    } catch (err) {
       //add error handling
-      console.log(error);
+      return next({
+        log: `error in gitController getAccessToken: ${err}`,
+        status: 500,
+        message: { err: 'An error occurred retrieving access token' },
+      });
     }
   },
 
   getUserData: async (req, res, next) => {
     // console.log(req.body);
     //use github's api
-    console.log('new access token: ', res.locals.accessToken);
     const accessToken = res.locals.accessToken.access_token; //BEARER access token
     console.log('accessToken: ', accessToken);
-    const response = await fetch('https://api.github.com/user', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    const result = await response.json();
-    return next();
+    try {
+      const response = await fetch('https://api.github.com/user', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const result = await response.json();
+      return next();
+    } catch (err) {
+      return next({
+        log: `error in gitController getUserData: ${err}`,
+        status: 500,
+        message: 'An error occurred retrieving user data',
+      });
+    }
   },
 };
 
