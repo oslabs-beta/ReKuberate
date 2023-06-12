@@ -34,12 +34,21 @@ const userController: userControllerType = {
       });
     }
     const { createUsername, createPassword } = req.body;
+    //return error if username or password was not provided
+    if (!createUsername.length || !createPassword)
+      return next({
+        log: 'Error in userController.createUser middleware function',
+        status: 400,
+        message: { err: 'username or password does not meet requirements' },
+      });
+    //creates a hash of provided password
     const hash: string = await bcrypt.hash(createPassword, 10);
-    console.log('createPassword is:', createPassword);
-    console.log('hashed password is:', hash);
+    //query to store provided username and hashed password in DB
     const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
     try {
-      const data = await db.query(sqlQuery, [createUsername, hash]);
+      //executes query
+      await db.query(sqlQuery, [createUsername, hash]);
+      //passes object along with username key and new username as value
       res.locals.foundUser = { username: createUsername };
       return next();
     } catch (err) {
@@ -62,7 +71,7 @@ const userController: userControllerType = {
 
     //check if user was found in previous middleware function
     if (!res.locals.foundUser) return next(error);
-    const { username, password } = res.locals.foundUser;
+    const { password } = res.locals.foundUser;
     const { createPassword } = req.body;
     try {
       const compare: boolean = await bcrypt.compare(createPassword, password);
