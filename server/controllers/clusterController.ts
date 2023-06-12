@@ -4,19 +4,15 @@ import { ClusterControllerType, obj } from '../types';
 const clusterController: ClusterControllerType = {
   getPodAndNodeInfo: async (req, res, next) => {
     try {
-      // console.log('getting pods');
       const pods = spawnSync('kubectl get pod -o wide', {
         shell: true,
         encoding: 'utf-8',
       });
-      // console.log(pods.stdout);
 
       const podsOutput = pods.stdout;
       //way around using any??
       const podsSplit: any = podsOutput.split(/[\n]/);
-      // console.log(podsSplit)
 
-      // console.log('getting nodes');
       const nodes = spawnSync('minikube status', {
         shell: true,
         encoding: 'utf-8',
@@ -65,8 +61,7 @@ const clusterController: ClusterControllerType = {
         const key = minikube[i].slice(0, minikube[i].indexOf(': '));
         obj[currentContainer][key] = minikube[i].slice(minikube[i].indexOf(': ') + 2);
       }
-
-      // console.log(obj);
+      
       res.locals.nodeAndPodInfo = obj;
       return next();
     } catch (err) {

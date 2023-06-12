@@ -42,6 +42,7 @@ const appSlice = createSlice({
       state.loading = action.payload;
     },
     setPodIntervalID: (state, action: PayloadAction<any>) => {
+      clearInterval(state.podIntervalID);
       state.podIntervalID = action.payload;
     },
     setColorTheme: (state, action: PayloadAction<string>) => {

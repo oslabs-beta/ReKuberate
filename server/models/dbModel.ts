@@ -21,7 +21,6 @@ pool.connect((err: Error) => {
 
 const db =  {
     query: (text: string, params?:string[], callback?: any): any => {
-        console.log('executed query', text);
         return pool.query(text, params, callback);
     },
 };

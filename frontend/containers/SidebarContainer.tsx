@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import styles from './SidebarContainerStyles.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setColorTheme, setLoggedIn } from '../store/appSlice';
 
@@ -9,6 +9,8 @@ export default function SidebarContainer() {
   const colorTheme = useAppSelector((state) => state.app.colorTheme);
   const dispatch = useAppDispatch();
   const loggedIn = useAppSelector((state) => state.app.loggedIn);
+  const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
+  const navigate = useNavigate();
   let currTheme;
   let selectedDay;
   let selectedNight;
@@ -43,8 +45,11 @@ export default function SidebarContainer() {
           Docs
         </Nav.Link>,
         <button
-          onClick={() => {
+          onClick={async () => {
+            await fetch('/api/user/logout');
             dispatch(setLoggedIn(false));
+            clearInterval(podsIntervalID);
+            navigate('/');
           }}
           className={styles.loggedIn}
         >
