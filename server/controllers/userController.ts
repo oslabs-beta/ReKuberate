@@ -1,9 +1,12 @@
+import db from '../models/dbModel.ts';
 import { NextFunction } from 'express-serve-static-core';
 import { ErrorHandler, userControllerType } from '../types';
-import db from '../server.ts';
+
+
 
 const userController: userControllerType = {
   //Checks if username exists in DB
+  //used for both login and account creation
   checkUser: async (req, res, next) => {
     const { loginUsername } = req.body;
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';

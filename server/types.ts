@@ -19,6 +19,14 @@ export type userControllerType = {
   checkPassword: middleware;
 };
 
+export type CookieControllerType = {
+  setSSIDCookie: middleware;
+}
+
+export type SessionControllerType = {
+  hasCookie: middleware;
+}
+
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
 export type ErrorHandler = {
   log: string;
