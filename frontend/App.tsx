@@ -6,8 +6,8 @@ import SidebarContainer from './containers/SidebarContainer';
 import styles from './stylesheets/styles.module.scss';
 import MetricsContainer from './containers/MetricsContainer';
 import logo from '../assets/ReKuberate-transparent.png';
-import { useAppDispatch } from './store/hooks';
-import { setData, setPodIntervalID } from './store/appSlice';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { setData, setPodIntervalID, setLoggedIn } from './store/appSlice';
 import LoadingWheel from './components/LoadingWheel';
 import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
@@ -15,8 +15,10 @@ import Docs from './pages/Docs';
 
 export default function App() {
   const dispatch = useAppDispatch();
+  const loggedIn = useAppSelector(state => state.app.loggedIn)
 
-  dispatch(
+  if(loggedIn){
+    dispatch(
     setPodIntervalID(
       setInterval(() => {
         fetch('/api/pods')
@@ -26,9 +28,16 @@ export default function App() {
           });
       }, 2000)
     )
-  );
+  );}
 
-  return (
+  fetch('/api/user/').then((res) => res.json()).then(res=>{
+    console.log(res)
+    if(res) dispatch(setLoggedIn(true))
+    else dispatch(setLoggedIn(false))
+  })
+
+  return loggedIn ? 
+   (
     <>
       <LoadingWheel />
       <SidebarContainer />
@@ -37,9 +46,7 @@ export default function App() {
           <img className={styles.logo} src={logo}></img>
         </div>
         <Routes>
-          <Route path="/" element={<LoginContainer />}></Route>
-          <Route path="/createAccount" element={<NewAccountContainer />}></Route>
-          <Route path="/home" element={<HomeContainer />}></Route>
+          <Route path="/" element={<HomeContainer />}></Route>    
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
           <Route path="/docs" element={<Docs />}>
@@ -51,5 +58,26 @@ export default function App() {
         </Routes>
       </div>
     </>
-  );
+  )
+  : (
+    <>
+      <LoadingWheel />
+      <SidebarContainer />
+      <div className={styles.mainDiv}>
+        <div className={styles.title}>
+          <img className={styles.logo} src={logo}></img>
+        </div>
+        <Routes>
+          <Route path="/" element={<LoginContainer />}></Route>
+          <Route path="/createAccount" element={<NewAccountContainer />}></Route>          
+          <Route path="/docs" element={<Docs />}>
+            <Route path="gettingStarted"></Route>
+            <Route path="tutorial"></Route>
+            <Route path="help"></Route>
+            <Route path="troubleShooting"></Route>
+          </Route>
+        </Routes>
+      </div>
+    </>
+  )
 }
