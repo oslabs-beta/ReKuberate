@@ -4,7 +4,7 @@ import AnyChart from 'anychart-react';
 import anychart from 'anychart';
 import { MockData } from '../types';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { setData, setPodIntervalID } from '../store/appSlice';
+import { setData, setLoading, setPodIntervalID } from '../store/appSlice';
 
 export default function PodsContainer() {
   const data: any = useAppSelector((state) => state.app.data);
@@ -133,6 +133,7 @@ export default function PodsContainer() {
           .then((res) => res.json())
           .then((res) => {
             dispatch(setData(res));
+            dispatch(setLoading('none'));
           });
       }, 2000)
     )
