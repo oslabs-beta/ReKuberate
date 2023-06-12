@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginContainerStyles.module.scss';
@@ -6,6 +7,13 @@ import { useAppDispatch } from '../store/hooks';
 import { setLoggedIn } from '../store/appSlice';
 
 export default function LoginContainer() {
+  //retrieve code from URL provided by github to use in API request
+  let codeParam = 'test';
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    codeParam = urlParams.get('code');
+  }, []);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const verifyLogin = async () => {
@@ -30,6 +38,15 @@ export default function LoginContainer() {
     }
   };
 
+  const verifyGithub = () => {
+    console.log('test github');
+    const CLIENT_ID = '4661c408155c78af4f09';
+    // 4661c408155c78af4f09
+    const redirect_uri = 'http://localhost:8080/';
+
+    window.location.assign('https://github.com/login/oauth/authorize?client_id=' + CLIENT_ID);
+  };
+
   return (
     <div className={styles.login}>
       <div className={styles.loginInput}>
@@ -45,6 +62,9 @@ export default function LoginContainer() {
           <input type="password" name="password" id="loginPassword" />
           <button id="loginButton" onClick={() => verifyLogin()}>
             Login
+          </button>
+          <button id="githubLogin" onClick={() => verifyGithub()}>
+            Login with Github
           </button>
         </form>
         <div className="createAccount">
