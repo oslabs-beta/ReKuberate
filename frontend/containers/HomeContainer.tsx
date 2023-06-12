@@ -8,15 +8,14 @@ export default function HomeContainer() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
-  clearInterval(podsIntervalID)
-  
+  clearInterval(podsIntervalID);
+
   function uploadFile(yamlFile: HTMLInputElement): void {
     dispatch(setLoading('block'));
     fetch('/api/initiate')
       .then((res) => res.json())
       .then((res) => {
         dispatch(setURLs(res));
-        dispatch(setLoading('none'));
         navigate('/pods');
       });
   }
