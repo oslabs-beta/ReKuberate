@@ -6,6 +6,7 @@ import { ErrorHandler, userControllerType } from '../types';
 
 const userController: userControllerType = {
   //Checks if username exists in DB
+  //used for both login and account creation
   checkUser: async (req, res, next) => {
     const { username } = req.body;
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
