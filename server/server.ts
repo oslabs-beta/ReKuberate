@@ -2,12 +2,12 @@ import express, { Request, Response, NextFunction } from 'express';
 // import pkg from 'pg';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import cookieParser from 'cookie-parser'
+import cookieParser from 'cookie-parser';
 import { ErrorHandler } from './types';
 import initRoute from './routes/initRoute.ts';
 import clusterRoute from './routes/clusterRoute.ts';
 import userRoute from './routes/userRoute.ts';
-
+import gitController from './controllers/gitController.ts';
 // const { Pool } = pkg;
 const app = express();
 
@@ -17,8 +17,7 @@ const __dirname: string = path.dirname(__filename);
 const PORT: number = 3001;
 
 app.use(express.json());
-app.use(cookieParser())
-
+app.use(cookieParser());
 // const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 // const pool: pkg.Pool = new Pool({
 //   connectionString: PG_URI,
@@ -54,6 +53,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.resolve(__dirname, '../dist')));
 }
 
+app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
+  return res.status(200).json(res.locals.accessToken);
+});
+
 //Route to install prometheus and grafana
 app.use('/api/initiate', initRoute);
 
@@ -78,4 +81,3 @@ app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => 
 });
 
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
-

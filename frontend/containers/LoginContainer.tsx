@@ -8,11 +8,31 @@ import { setLoggedIn } from '../store/appSlice';
 
 export default function LoginContainer() {
   //retrieve code from URL provided by github to use in API request
-  let codeParam = 'test';
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    codeParam = urlParams.get('code');
+    const codeParam = urlParams.get('code');
+    console.log(codeParam);
+    // localStorage.removeItem('accessToken');
+    console.log('localStorage access token', localStorage.getItem('accessToken'));
+
+    //use different type of storage (http only cookie from server?)
+    if (codeParam && localStorage.getItem('accessToken') === null) {
+      (async () => {
+        const response = await fetch('/api/getAccessToken?code=' + codeParam, {
+          method: 'GET',
+        });
+        const result = await response.json();
+        console.log('frontend result: ', result);
+        if (result) {
+          localStorage.setItem('accessToken', result);
+          dispatch(setLoggedIn(true));
+          navigate('/');
+        } else {
+          throw new Error('Error authenticating through Github');
+        }
+      })();
+    }
   }, []);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
