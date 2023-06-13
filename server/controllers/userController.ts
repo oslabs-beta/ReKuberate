@@ -47,6 +47,7 @@ const userController: userControllerType = {
     const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
     try {
       //executes query
+      console.log('INSERTING NEW USER');
       await db.query(sqlQuery, [createUsername, hash]);
       //passes object along with username key and new username as value
       res.locals.foundUser = { username: createUsername };

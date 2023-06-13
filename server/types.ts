@@ -21,11 +21,18 @@ export type userControllerType = {
 
 export type CookieControllerType = {
   setSSIDCookie: middleware;
-}
+};
 
 export type SessionControllerType = {
   hasCookie: middleware;
-}
+};
+
+export type gitControllerType = {
+  // CLIENT_ID: string;
+  // CLIENT_SECRET: string;
+  getAccessToken: middleware;
+  getUserData: middleware;
+};
 
 //Declare ErrorHandler type and assign log to string, status to number, and message to string
 export type ErrorHandler = {

@@ -14,6 +14,7 @@ export default function LoginContainer() {
     dispatch(setErrorMessage([]));
   }, []);
 
+
   const verifyLogin = async () => {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
@@ -43,6 +44,13 @@ export default function LoginContainer() {
     }
   };
 
+  const verifyGithub = () => {
+    //initiate OAuth
+    console.log('test github');
+    const CLIENT_ID = '4661c408155c78af4f09';
+    window.location.assign('https://github.com/login/oauth/authorize?client_id=' + CLIENT_ID);
+  };
+
   return (
     <div className={styles.login}>
       <div className={styles.loginInput}>
@@ -59,6 +67,9 @@ export default function LoginContainer() {
           <input type="password" name="password" id="loginPassword" />
           <button id="loginButton" onClick={() => verifyLogin()}>
             Login
+          </button>
+          <button id="githubLogin" onClick={() => verifyGithub()}>
+            Login with Github
           </button>
         </form>
         <div className="createAccount">
