@@ -18,19 +18,22 @@
 }
 
 .memory {
-  border: none;
+  border: solid;
+  border-width: 1px;
 }
 
 .running {
   width: 150px;
   height: 100px;
   vertical-align: middle;
-  border: none;
+  border: solid;
+  border-width: 1px;
 }
 
 .metrics {
-  border: none;
-  width: 50%;
+  border: solid;
+  border-width: 1px;
+  width: 49%;
   height: 35vh;
 }
 
