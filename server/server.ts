@@ -54,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
-  return res.status(200).json(res.locals.accessToken);
+  return res.status(200).redirect('/');
 });
 
 //Route to install prometheus and grafana

@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { gitControllerType } from '../types.ts';
+import db from '../models/dbModel.ts';
 
 const gitController: gitControllerType = {
   getAccessToken: async (req, res, next) => {
@@ -22,6 +23,12 @@ const gitController: gitControllerType = {
       console.log('accessToken result: ', result);
       res.locals.accessToken = result;
       console.log('!!!!!', res.locals.accessToken);
+
+      const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
+
+      //executes query
+      await db.query(sqlQuery, [res.locals.accessToken.access_token, 'gh_oauth']);
+      res.cookie('ssid', res.locals.accessToken.access_token);
       return next();
     } catch (err) {
       //add error handling
@@ -45,7 +52,6 @@ const gitController: gitControllerType = {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      const result = await response.json();
       return next();
     } catch (err) {
       return next({
