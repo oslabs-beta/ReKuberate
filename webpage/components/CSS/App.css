@@ -1,0 +1,110 @@
+body {
+    text-align: center;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: auto;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  html {
+    background-color: #191414;
+  }
+  .App-header {
+    min-height: 70vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  h1 {
+    color: white;
+    font-family: Inter, sans-serif;
+    margin-bottom: 10vh;
+    
+  }
+  .key-features {
+    position: absolute;
+    background-color: white;
+    height: 200vh;
+    left: 0;
+    width: 100vw;
+  }
+  .key-features h1 {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  
+  }
+  
+  .first-comp {
+    padding-top: 100px;
+    color: black;
+    font-size: 8vh;
+    animation: fadeIn 8s;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .Pods-demo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 15vw;
+    margin:10vw;
+    
+  }
+  .Pods-description {
+    font-size: 3vmin;
+    height: 40vmin;
+    width: 60vmin;
+    border: 2px;
+    margin: auto;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 10px 5px 5px rgb(0, 255, 247);
+    display: flex;
+    justify-content: center;
+  }
+  .demo {
+    height: 50vmin;
+    padding: 10px;
+  }
+  
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 15vw;
+    margin:10vw;
+  }
+  .metrics-description {
+    font-size: 3vmin;
+    height: 40vmin;
+    width: 50vmin; 
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    margin-right: 5vw;
+    padding: 10px;
+    box-shadow: 10px 5px 5px rgb(0, 255, 247);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
