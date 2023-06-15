@@ -132,3 +132,7 @@ dist
 
 node_modules
 package-lock.json
+
+.ssh
+rekuberate*.zip
+text.txt
