@@ -51,6 +51,8 @@ Installation is incredible simple
 ![Prometheus](https://img.shields.io/badge/Prometheus-000000?style=for-the-badge&logo=prometheus&labelColor=000000)
 ![Helm](https://img.shields.io/badge/Helm-0F1689?style=for-the-badge&logo=Helm&labelColor=0F1689)
 ![Jest](https://img.shields.io/badge/-jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/postgresql-31648C?style=for-the-badge&logo=postgresql&logoColor=white)
+![Puppeteer](https://img.shields.io/badge/puppeteer-white?style=for-the-badge&logo=puppeteer&logoColor=01D8A2)
 
 ## Built with ♥
 
