@@ -1,0 +1,10 @@
+{
+  "AWSEBDockerrunVersion": "1",
+      "Image": {
+          "Name": "034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:<VERSION>",
+          "Update": "true"
+      },
+      "Ports": [{
+          "ContainerPort": "3001"
+      }]
+  }
