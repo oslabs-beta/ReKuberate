@@ -7,6 +7,7 @@
     "frontend": "cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"cross-env NODE_ENV=development nodemon --exec 'node --loader ts-node/esm' ./server/server.ts\"",
     "build": "cross-env NODE_ENV=production webpack",
+    "build2": "webpack",
     "electron": "electron ./electron/electron.js",
     "server": "cross-env NODE_ENV=production nodemon --exec 'node --loader ts-node/esm' ./server/server.ts",
     "test": "jest"

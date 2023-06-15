@@ -14,7 +14,6 @@ export default function LoginContainer() {
     dispatch(setErrorMessage([]));
   }, []);
 
-
   const verifyLogin = async () => {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
@@ -65,13 +64,13 @@ export default function LoginContainer() {
           <input type="text" name="username" id="loginUsername" />
           <p>Password</p>
           <input type="password" name="password" id="loginPassword" />
-          <button id="loginButton" onClick={() => verifyLogin()}>
-            Login
-          </button>
-          <button id="githubLogin" onClick={() => verifyGithub()}>
-            Login with Github
-          </button>
         </form>
+        <button id="loginButton" onClick={() => verifyLogin()}>
+          Login
+        </button>
+        <button id="githubLogin" onClick={() => verifyGithub()}>
+          Login with Github
+        </button>
         <div className="createAccount">
           <Nav.Link as={Link} to="/createAccount">
             Create an account
