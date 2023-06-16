@@ -1,0 +1,140 @@
+.sidebar {
+  position: fixed;
+  height: 75vh;
+  top: 20;
+  left: 20;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 10vh;
+  width: 160px;
+  border-radius: 20px;
+  background-image: linear-gradient(rgb(255, 238, 238, 0.5), rgba(116, 156, 133, 1));
+}
+
+.sidebarLinks {
+  font-size: 16px;
+  text-decoration: none;
+  padding-bottom: 10%;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
+  color: inherit;
+}
+
+.sidebarLinks:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.sidebarLinks:focus {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.docs {
+  position: absolute;
+  background-color: rgba(127, 255, 212, 0.2);
+  font-size: 28px;
+  width: 40vw;
+  margin-left: 200px;
+  padding: 10vw 15vw;
+  border-radius: 20px;
+  transition: 2s;
+  opacity: 0;
+}
+
+@keyframes colorChanger {
+  0% {
+    color: rgb(255, 127, 0);
+  }
+  10% {
+    color: rgb(255, 187, 0);
+  }
+  20% {
+    color: rgb(255, 217, 0);
+  }
+  30% {
+    color: rgb(255, 196, 0);
+  }
+  40% {
+    color: rgb(255, 196, 0);
+  }
+  50% {
+    color: rgb(255, 153, 0);
+  }
+  60% {
+    color: rgb(255, 123, 0);
+  }
+  70% {
+    color: rgb(255, 94, 0);
+  }
+  80% {
+    color: rgb(255, 60, 0);
+  }
+  90% {
+    color: rgb(255, 0, 0);
+  }
+  100% {
+    color: rgb(255, 127, 0);
+  }
+}
+
+.kai {
+  display: block;
+  transition: 1s;
+  animation: colorChanger 5s linear infinite;
+}
+
+.kai:hover {
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.hunter {
+  display: block;
+  transition: 1s;
+  animation: colorChanger 5s linear infinite;
+  animation-delay: 0.25s;
+}
+
+.hunter:hover {
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.thad {
+  display: block;
+  transition: 1s;
+  animation: colorChanger 5s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.thad:hover {
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.fabrizzio {
+  display: block;
+  transition: 1s;
+  animation: colorChanger 5s linear infinite;
+  animation-delay: 0.75s;
+}
+
+.fabrizzio:hover {
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.kevin {
+  display: block;
+  transition: 1s;
+  color: inherit;
+  text-decoration: none;
+  animation: colorChanger 5s linear infinite;
+  animation-delay: 1s;
+}
+
+.kevin:hover {
+  cursor: pointer;
+  font-size: 50px;
+}
