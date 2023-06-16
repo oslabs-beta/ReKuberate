@@ -7,6 +7,7 @@ import MouseHelper from '../server/controllers/mouseHelper.js';
     headless: true,
     args: [`--window-size=1900,1000`],
   });
+  const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
   await MouseHelper(page);
@@ -41,11 +42,26 @@ import MouseHelper from '../server/controllers/mouseHelper.js';
   //password label
   const passwordaLabel = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > form > p:nth-child(3)';
   await page.waitForSelector(passwordaLabel);
-  passwordInput ? console.log('password label is present') : console.log()
+  passwordaLabel ? console.log('password label is present') : console.log("not present")
 
   //password input
   const passwordInput = '#loginPassword';
   await page.waitForSelector(passwordInput);
   passwordInput ? console.log('password input is present') : console.log('password input is not present');
+
+  //login button 
+  const loginbutton = '#loginButton';
+  await page.waitForSelector(loginbutton);
+  loginbutton ? console.log('login button is present') : console.log('login button is not present');
+
+  //github Login
+  const github ='#githubLogin';
+  await page.waitForSelector(github);
+  github ? console.log('github button is present') : console.log('github button is not present')
+
+  //create a login 
+  const createUser = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > div > a';
+  await page.waitForSelector(createUser);
+  createUser ? console.log('create user link present') : console.log('create user not present')
 
 })();
