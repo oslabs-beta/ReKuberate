@@ -64,4 +64,27 @@ import MouseHelper from '../server/controllers/mouseHelper.js';
   await page.waitForSelector(createUser);
   createUser ? console.log('create user link present') : console.log('create user not present')
 
+  await page.goto('http://localhost:8080/createAccount');
+
+  //TESTING FOR CREATE USER
+  const createUserDiv = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B';
+  await page.waitForSelector(createUserDiv);
+  createUserDiv ? console.log('create user is present') : console.log('create user is not present');
+
+  //create user form 
+  const createUserForm = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form';
+  await page.waitForSelector(createUserForm);
+  createUserForm ? console.log('create user form is present') : console.log('create user form is not present');
+
+  //usename label
+  const newUsernameLabel = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p:nth-child(1)';
+  await page.waitForSelector(newUsernameLabel);
+  newUsernameLabel ? console.log('username label is present') : console.log('username is not present');
+
+  //username input 
+  const newUsernameInput = '#createUsername';
+  await page.waitForSelector(newUsernameInput);
+  newUsernameInput ? console.log('username input is present') : console.log('username input is not present');
+
+
 })();
