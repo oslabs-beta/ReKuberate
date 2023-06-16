@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import MouseHelper from '../server/controllers/mouseHelper.js';
-import { sign } from 'crypto';
+
 
 (async () => {
   const browser = await puppeteer.launch({
