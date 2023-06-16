@@ -11,8 +11,8 @@ import gitController from './controllers/gitController.ts';
 // const { Pool } = pkg;
 const app = express();
 
-// const __filename: string = fileURLToPath(import.meta.url);
-// const __dirname: string = path.dirname(__filename);
+const __filename: string = fileURLToPath(import.meta.url);
+const __dirname: string = path.dirname(__filename);
 
 const PORT: number = 3001;
 
@@ -49,11 +49,9 @@ app.use(cookieParser());
 //   return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
 // })
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use('/', express.static(path.resolve(__dirname, '../dist')));
-// }
-
-app.use(express.static('/usr/src/app/dist'));
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.resolve(__dirname, '../dist')));
+}
 
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
   return res.status(200).redirect('/');
