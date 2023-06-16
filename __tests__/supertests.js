@@ -3,7 +3,7 @@ import supertest from 'supertest';
 const server = 'http://localhost:3001';
 const request = supertest(server);
 
-describe('Server Unit tests', () => {
+describe('Server Unit Tests', () => {
 
   //Catch All server route testing 
   describe('catchAll Route', () => {
