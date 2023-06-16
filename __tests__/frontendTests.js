@@ -15,4 +15,9 @@ import MouseHelper from '../server/controllers/mouseHelper.js';
   //login components testing
   const loginbutton = '#loginUsername';
   await page.waitForSelector(loginbutton);
+  if (loginbutton) {
+    console.log('Login button is present.');
+  } else {
+    console.log('Login button is not present.');
+  }
 })();
