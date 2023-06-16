@@ -8,9 +8,17 @@ import MouseHelper from '../server/controllers/mouseHelper.js';
   });
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
-  await installMouseHelper(page);
+  await MouseHelper(page);
 
   await page.goto('http://localhost:300');
+
+  //Main screen testing and all of it components in it for the login page
+  const mainScreen = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa'
+  await page.waitForSelector(mainScreen)
+  mainScreen ? console.log('Main Screen is present.') : console.log('Main screen is not present')
+
+
+
 
   //login components testing
   const loginbutton = '#loginUsername';
