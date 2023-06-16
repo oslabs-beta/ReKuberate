@@ -20,7 +20,7 @@ ReKuberate is a GUI that visualizes your kubernetes clusters in real time, allow
 <img src='assets/login.gif'>
 First time setup of ReKuberate will require an initial log in. Log in data is hashed and authenticated with bCrypt. Select the file location of where the application is downloaded and initiate data scraping from your kubernetes cluster. Make sure your cluster is running or else no data will be collected
 
-The nodes will be color-coded. **Red**: error, **yellow**: pending, **green**: running
+The nodes will be color-coded: **red**: error, **yellow**: pending, **green**: running
 
 Hovering over each node will display additional details.
 
@@ -32,10 +32,13 @@ The metrics page displays selected data information displayed in a graph form to
 
 Installation is incredible simple
 
-1. Head over to <a href="https://rekuberate.org">documentation</a>
+1. Head over to <a href="https://rekuberate.org">ReKuberate.org</a>
 2. Click on download
-3. Run the .exe file
-4. Enjoy!
+3. Extract the zip file
+4. Open the extracted folder in VSCode
+5. Install dependencies with 'npm install'
+6. Start electron with 'npm run electron'
+7. Enjoy!
 
 ## Technologies
 
