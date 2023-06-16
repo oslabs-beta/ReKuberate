@@ -69,7 +69,7 @@ app.use('/api/pods', clusterRoute);
 app.use('/api/user', userRoute);
 
 //Catch all Route
-app.use('*', (req: Request, res: Response) => res.sendStatus(404));
+app.use('*', (req: Request, res: Response) => res.status(404).send("this is not the address you're looking for"));
 
 //Global Error Handler
 app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
