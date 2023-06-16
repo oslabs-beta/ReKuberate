@@ -49,9 +49,11 @@ app.use(cookieParser());
 //   return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
 // })
 
-if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static(path.resolve(__dirname, '../dist')));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use('/', express.static(path.resolve(__dirname, '../dist')));
+// }
+
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
   return res.status(200).redirect('/');
