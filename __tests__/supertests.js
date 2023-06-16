@@ -3,7 +3,7 @@ import supertest from 'supertest';
 const server = 'http://localhost:3001';
 const request = supertest(server);
 
-describe('Server Unit Tests', () => {
+describe('Server Unit tests', () => {
 
   //Catch All server route testing 
   describe('catchAll Route', () => {
@@ -14,7 +14,7 @@ describe('Server Unit Tests', () => {
     });
   });
 
-  //Initialization route testing unit (need to get exact object of res.locals but keeping this commented out to speed up tests)
+  //Initialization route testing unit for Prometheus and Grafana, needs long timeout for tests
   describe('Initalization Route', () => {
     it ('successfully responds with status 200', async () => {
       const response = await request.get('/api/initiate/');
@@ -27,18 +27,17 @@ describe('Server Unit Tests', () => {
     }, 40000)
   });
 
+  //Route to get pod information pulled from terminal
   describe('Pods Route', () => {
-    //works, skipping so I dont have to have cluster running for all tests
     it('successfully responds with status 200', async () => {
       const response = await request.get('/api/pods/');
       expect(response.statusCode).toBe(200);
     });
-    //works, skipping so I dont have to have cluster running for all tests
     it('successfully sends back json object', async () => {
       const response = await request.get('/api/pods/');
       expect(response.body).toBeInstanceOf(Object);
     })
-    //can't be tested with the rest of the tests because they rely on the cluster being running
+    //can't be tested with the rest of the tests because it relies on the cluster being running
     it('send error message when cluster is not running', async () => {
       const response = await request.get('/api/pods/');
       expect(response).toBe('err')
@@ -60,11 +59,6 @@ describe('Server Unit Tests', () => {
         const response = await request.get('/api/user/');
         expect(response.text).toBe("false");
       })
-      // //need to figure out how to get an error to occur with just a get request
-      // xit('successfully sends back status 500 when error occurs', async () => {
-      //   const response = await request.get('/api/user/');
-      //   expect(response.statusCode).toBe(500);
-      // })
     })
 
     //User creation Route
@@ -93,16 +87,6 @@ describe('Server Unit Tests', () => {
         });
         expect(response.text).toBe("{\"err\":\"username already taken\"}");
       });
-
-      //seems like we can only make cookies from supertest, not check so I'll skip for now
-      // xit('creates an ssid cookie assigned to the input username', async () => {
-      //   const response = await request.post('/api/user/signup').send({
-      //     createUsername: "Alightyyyy",
-      //     createPassword: "alrightyyyy",
-      //   });
-      //   //this only tells us our response returns an object (which it does contain the cookie) but I'm having trouble accessing just the cookie property
-      //   expect(response.body).toEqual({})
-      // });
     })
 
   //User login route
