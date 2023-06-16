@@ -11,8 +11,8 @@ import gitController from './controllers/gitController.ts';
 // const { Pool } = pkg;
 const app = express();
 
-const __filename: string = fileURLToPath(import.meta.url);
-const __dirname: string = path.dirname(__filename);
+// const __filename: string = fileURLToPath(import.meta.url);
+// const __dirname: string = path.dirname(__filename);
 
 const PORT: number = 3001;
 
@@ -53,7 +53,7 @@ app.use(cookieParser());
 //   app.use('/', express.static(path.resolve(__dirname, '../dist')));
 // }
 
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static('/usr/src/app/dist'));
 
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
   return res.status(200).redirect('/');
