@@ -53,7 +53,7 @@ app.use(cookieParser());
 //   app.use('/', express.static(path.resolve(__dirname, '../dist')));
 // }
 
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
   return res.status(200).redirect('/');
