@@ -19,7 +19,7 @@ const initController: InitControllerType = {
       return next();
     } catch (err) {
       return next({
-        log: `error in initController installPromteheus: ${err}`,
+        log: `error in initController installPrometheus: ${err}`,
         status: 500,
         message: { err: 'An error occurred installing prometheus' },
       });
