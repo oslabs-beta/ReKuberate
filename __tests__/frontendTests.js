@@ -1,6 +1,5 @@
-import { sign } from 'crypto';
 import puppeteer from 'puppeteer';
-import { Await } from 'react-router-dom';
+
 
 describe('Login Page', () => {
   let page;
@@ -77,62 +76,59 @@ describe('Login Page', () => {
   });
 });
 
-// describe('Create User Page', () => {
-//   let page;
-//   let browser;
+describe('Create User Page', () => {
+  let page;
+  let browser;
 
-//   beforeAll(async () => {
-//     browser = await puppeteer.launch({ headless: 'new' });
-//     page = await browser.newPage();
-//   });
+  beforeAll(async () => {
+    browser = await puppeteer.launch({ headless: 'new' });
+    page = await browser.newPage();
+  });
 
-//   afterAll(async () => {
-//     await browser.close();
-//   });
-//   it('should display the main screen', async () => {
-//     await page.goto('http://localhost:8080/createAccount');
-//     const mainScreenSelector = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B';
-//     await page.waitForSelector(mainScreenSelector);
-//     const mainScreen = await page.$(mainScreenSelector);
-//     expect(mainScreen).toBeTruthy();
-//   });
-// });
-//   await page.goto('http://localhost:8080/createAccount');
+  afterAll(async () => {
+    await browser.close();
+  });
+  it('should display the main screen', async () => {
+    await page.goto('http://localhost:8080/createAccount');
+    const mainScreenSelector = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B';
+    await page.waitForSelector(mainScreenSelector);
+    const mainScreen = await page.$(mainScreenSelector);
+    expect(mainScreen).toBeTruthy();
+  });
+  it('should display the create user form', async () => {
+    await page.goto('http://localhost:8080/createAccount');
+    const signInForm = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form';
+    await page.waitForSelector(signInForm);
+    const signIN = await page.$(signInForm);
+    expect(signIN).toBeTruthy();
+  });
+  it('should display the create a username input and label', async () => {
+    await page.goto('http://localhost:8080/createAccount');
+    const [userLabel, userInput] = [
+        '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p:nth-child(1)',
+        '#createUsername'
+    ];
+    await page.waitForSelector(userInput);
+    const inputUser = await page.$(userInput);
+    await page.waitForSelector(userLabel);
+    const inputUserLabel = await page.$(userLabel);
+    expect(inputUser).toBeTruthy();
+    expect(inputUserLabel).toBeTruthy();
+  });
+  it('should display the make password label and input', async () => {
+    await page.goto('http://localhost:8080/createAccount');
+    const [passwordLabel, passwordInput] = [
+        '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p:nth-child(1)',
+        '#createPassword'
+    ];
+    await page.waitForSelector(passwordLabel);
+    const inputPass = await page.$(passwordLabel);
+    await page.waitForSelector(passwordInput);
+    const inputPassLabel = await page.$(passwordInput);
+    expect(inputPass).toBeTruthy();
+    expect(inputPassLabel).toBeTruthy();
+  });
 
-//   //TESTING FOR CREATE USER
-//   const createUserDiv = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B';
-//   await page.waitForSelector(createUserDiv);
-//   createUserDiv ? console.log('create user is present') : console.log('create user is not present');
+});
 
-//   //create user form
-//   const createUserForm = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form';
-//   await page.waitForSelector(createUserForm);
-//   createUserForm ? console.log('create user form is present') : console.log('create user form is not present');
 
-//   //usename label
-//   const newUsernameLabel = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p:nth-child(1)';
-//   await page.waitForSelector(newUsernameLabel);
-//   newUsernameLabel ? console.log('username label is present') : console.log('username is not present');
-
-//   //username input
-//   const newUsernameInput = '#createUsername';
-//   await page.waitForSelector(newUsernameInput);
-//   newUsernameInput ? console.log('username input is present') : console.log('username input is not present');
-
-//   //password label
-//   const newpasswordLabel = '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p:nth-child(1)';
-//   await page.waitForSelector(newpasswordLabel);
-//   newpasswordLabel ? console.log('password label is present') : console.log('password is not present');
-
-//   //username input
-//   const newpasswordInput = '#createUsername';
-//   await page.waitForSelector(newpasswordInput);
-//   newpasswordInput ? console.log('password input is present') : console.log('password input is not present');
-
-//   //create user button
-//   const createUserButton = '#loginButton';
-//   await page.waitForSelector(createUserButton);
-//   createUserButton ? console.log('create user button is present') : console.log('CU button is not present')
-
-//   await browser.close();
-// })();
