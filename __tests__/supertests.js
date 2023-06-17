@@ -33,16 +33,15 @@ describe('Server Unit tests', () => {
       const response = await request.get('/api/pods/');
       expect(response.statusCode).toBe(200);
     });
-    it('successfully sends back json object', async () => {
+    it('successfully sends back a json object', async () => {
       const response = await request.get('/api/pods/');
       expect(response.body).toBeInstanceOf(Object);
-    })
-    //can't be tested with the rest of the tests because it relies on the cluster being running
-    it('send error message when cluster is not running', async () => {
+    });
+    //can't be tested with the rest of the tests because it relies on the cluster not running
+    it('sends minikube not found when no pods are running', async () => {
       const response = await request.get('/api/pods/');
-      expect(response).toBe('err')
-    })
-
+      expect(response.text).toBe('{\"* Profile \\\"minikube\\\" not found. Run \\\"minikube profile list\\\" to view all profiles.\":{\"pods\":[]}}')
+    });
   })
 
   //User Routes testing unit
@@ -67,23 +66,23 @@ describe('Server Unit tests', () => {
       it('successfully sends status 200 on user creation', async () => {
         const response = await request.post('/api/user/signup').send({
           createUsername: "steveJobs",
-          createPassword: "whatitdo",
+          createPassword: "Apple",
         });
         expect(response.statusCode).toBe(200);
       });
 
       it('responds with status 409 if username already exists in database', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "daBoi",
-          createPassword: "whatitdo",
+          createUsername: "Hunter",
+          createPassword: "hunter2",
         });
         expect(response.statusCode).toBe(409);
       });
 
       it('responds with error message if username is already taken', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "daBoi",
-          createPassword: "whatitdo",
+          createUsername: "Hunter",
+          createPassword: "hunter2",
         });
         expect(response.text).toBe("{\"err\":\"username already taken\"}");
       });
@@ -110,7 +109,7 @@ describe('Server Unit tests', () => {
       it('successfully sends status 400 when password is invalid', async () => {
         const response = await request.post('/api/user/login').send({
           creeateUsername: "Kai",
-          createPassword: "whodatboi"
+          createPassword: "iLoveKubernetes"
         });
         expect(response.statusCode).toBe(401);
     });
