@@ -228,106 +228,119 @@ describe('Pods & Metrics Render after submitting', () => {
     await page.waitForSelector(login);
     const loginButton = await page.$(login);
     await loginButton.click();
-    const submit =
-      '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button';
+    const submit = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button';
     await page.waitForSelector(submit);
     const submitButton = await page.$(submit);
     expect(submitButton).toBeTruthy();
   });
+  it('Pods & metrics should render after hitting the submit button', async () => {
+    await page.goto('http://localhost:8080');
+    const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
+    await page.waitForSelector(userInput);
+    const inputUser = await page.$(userInput);
+    await inputUser.type('a');
 
-//   it('Pods & metrics should render after hitting the submit button', async () => {
-//     await page.goto('http://localhost:8080');
-//     const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
-//     await page.waitForSelector(userInput);
-//     const inputUser = await page.$(userInput);
-//     await inputUser.type('a');
+    await page.waitForSelector(userPass);
+    const inputPass = await page.$(userPass);
+    await inputPass.type('a');
 
-//     await page.waitForSelector(userPass);
-//     const inputPass = await page.$(userPass);
-//     await inputPass.type('a');
-
-//     await page.waitForSelector(login);
-//     const loginButton = await page.$(login);
-//     await loginButton.click();
-//     const submit =
-//       '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > form > input.UQDaLf2ZMZHKto0KhHfE';
-//     await page.waitForSelector(submit);
-//     const submitButton = await page.$(submit);
-//     submitButton.click();
-//     await page.waitForTimeout(60000);
-//     await page.goto('http://localhost:8080/pods');
-//     const chart = '#ac-chart-container';
-//     await page.waitForSelector(chart);
-//     const chartLoaded = await page.$(chart);
-//     expect(chartLoaded).toBeTruthy();
-//   }, 300000);
+    await page.waitForSelector(login);
+    const loginButton = await page.$(login);
+    await loginButton.click();
+    const submit =
+      '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > form > input.UQDaLf2ZMZHKto0KhHfE';
+    await page.waitForSelector(submit);
+    const submitButton = await page.$(submit);
+    submitButton.click();
+    await page.waitForTimeout(60000);
+    await page.goto('http://localhost:8080/pods');
+    const chart = '#ac-chart-container';
+    await page.waitForSelector(chart);
+    const chartLoaded = await page.$(chart);
+    expect(chartLoaded).toBeTruthy();
+  }, 300000);
 });
 
 describe('Docs Tab', () => {
-    let page;
-    let browser;
-  
-    beforeAll(async () => {
-      browser = await puppeteer.launch({ headless: 'new' });
-      page = await browser.newPage();
-    });
-    afterAll(async () => {
-      await browser.close();
-    });
-    it('Doc Tab appears', async () => {
-        await page.goto('http://localhost:8080');
-        const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
-        await page.waitForSelector(userInput);
-        const inputUser = await page.$(userInput);
-        await inputUser.type('a');
-    
-        await page.waitForSelector(userPass);
-        const inputPass = await page.$(userPass);
-        await inputPass.type('a');
-    
-        await page.waitForSelector(login);
-        const loginButton = await page.$(login);
-        await loginButton.click();
+  let page;
+  let browser;
 
-        const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
-        await page.waitForSelector(docButton);
-        const doc = await page.$(docButton);
-        await doc.click();
+  beforeAll(async () => {
+    browser = await puppeteer.launch({ headless: 'new' });
+    page = await browser.newPage();
+  });
+  afterAll(async () => {
+    await browser.close();
+  });
+  it('Doc Tab appears', async () => {
+    await page.goto('http://localhost:8080');
+    const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
+    await page.waitForSelector(userInput);
+    const inputUser = await page.$(userInput);
+    await inputUser.type('a');
 
-        const docTab = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav';
-        await page.waitForSelector(docTab);
-        const tab = await page.$(docTab);
-        expect(tab).toBeTruthy();
-    })
-    it('Introduction appears', async () => {
-        await page.goto('http://localhost:8080');
-        const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
-        await page.waitForSelector(userInput);
-        const inputUser = await page.$(userInput);
-        await inputUser.type('a');
-    
-        await page.waitForSelector(userPass);
-        const inputPass = await page.$(userPass);
-        await inputPass.type('a');
-    
-        await page.waitForSelector(login);
-        const loginButton = await page.$(login);
-        await loginButton.click();
+    await page.waitForSelector(userPass);
+    const inputPass = await page.$(userPass);
+    await inputPass.type('a');
 
-        const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
-        await page.waitForSelector(docButton);
-        const doc = await page.$(docButton);
-        await doc.click();
+    await page.waitForSelector(login);
+    const loginButton = await page.$(login);
+    await loginButton.click();
 
-        const intro = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav > a:nth-child(1)';
-        await page.waitForSelector(intro);
-        const introduction = await page.$(intro);
-        await introduction.click()
+    const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
+    await page.waitForSelector(docButton);
+    const doc = await page.$(docButton);
+    await doc.click();
 
-        const introWritings = '#introduction';
-        await page.waitForSelector(introWritings);
-        const introductionW = await page.$(introWritings);
-        expect(introductionW).toBeTruthy();
-    })
-})
+    await page.goto('http://localhost:8080/docs');
 
+    const docTab = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav';
+    await page.waitForSelector(docTab);
+    const tab = await page.$(docTab);
+    expect(tab).toBeTruthy();
+  });
+  it('Introduction appears', async () => {
+    const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
+    await page.waitForSelector(docButton);
+    const doc = await page.$(docButton);
+    await doc.click();
+    await page.goto('http://localhost:8080/docs');
+    const intro = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav > a:nth-child(1)';
+    await page.waitForSelector(intro);
+    const introduction = await page.$(intro);
+    expect(introduction).toBeTruthy();
+  }, 10000);
+  it('About appears', async () => {
+    const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
+    await page.waitForSelector(docButton);
+    const doc = await page.$(docButton);
+    await doc.click();
+    await page.goto('http://localhost:8080/docs');
+    const about = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav > a:nth-child(2)';
+    await page.waitForSelector(about);
+    const aboutTab = await page.$(about);
+    expect(aboutTab).toBeTruthy();
+  }, 10000);
+  it('Installation appears', async () => {
+    const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
+    await page.waitForSelector(docButton);
+    const doc = await page.$(docButton);
+    await doc.click();
+    await page.goto('http://localhost:8080/docs');
+    const installation = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav > a:nth-child(3)';
+    await page.waitForSelector(installation);
+    const installTab = await page.$(installation);
+    expect(installTab).toBeTruthy();
+  }, 10000);
+  it('About Us appears', async () => {
+    const docButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(4)';
+    await page.waitForSelector(docButton);
+    const doc = await page.$(docButton);
+    await doc.click();
+    await page.goto('http://localhost:8080/docs');
+    const aboutUs = '#root > div._91iyXizfLMZnut518R_X > div.Rt6XxpNTX8LWImh8jFRQ.nav > a:nth-child(4)';
+    await page.waitForSelector(aboutUs);
+    const aboutUsTab = await page.$(aboutUs);
+    expect(aboutUsTab).toBeTruthy();
+  }, 10000);
+});
