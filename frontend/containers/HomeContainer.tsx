@@ -27,7 +27,8 @@ export default function HomeContainer() {
           <p className={styles.info}><strong>Welcome to ReKuberate</strong>, an all-in-one cluster visualizer and metrics display application! Before starting, please check to
             be sure that your Kubernetes cluster is currently running. Once its running, you are ready to click submit. After a few brief seconds,
             your cluster will be displayed with real-time status updates. If by any chance you see just a single red pod on the next screen, it is most likely that your cluster
-            is not running. 
+            is not running. Before going to the metrics page for the first time, please be sure to visit localhost:9000 to sign in to Grafana using admin and prom-operator as the username
+            and password.
           </p>
         </div>
         <button className={styles.submit} onClick= {() => submitCluster()}>Submit</button>
