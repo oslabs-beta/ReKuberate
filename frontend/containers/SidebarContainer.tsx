@@ -30,8 +30,7 @@ export default function SidebarContainer() {
     selectedDay = <i className="fa-solid fa-check"></i>;
   }
 
-  // sideBar = loggedIn
-  sideBar = true
+  sideBar = loggedIn
     ? [
         <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
           Home

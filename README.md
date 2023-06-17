@@ -38,6 +38,7 @@ Installation is incredible simple
 4. Open the extracted folder in VSCode
 5. Install dependencies with 'npm install'
 6. Start the application with 'npm run electron'
+6a. If The metrics do not load, but the 
 7. Enjoy!
 
 ## Technologies
