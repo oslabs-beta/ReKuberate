@@ -254,10 +254,24 @@ describe('Pods Render after submitting', () => {
     await page.waitForSelector(submit);
     const submitButton = await page.$(submit);
     submitButton.click();
+    await page.waitForTimeout(60000);
     await page.goto('http://localhost:8080/pods')
     const chart = '#ac-chart-container';
     await page.waitForSelector(chart);
     const chartLoaded = await page.$(chart);
+
+    await page.goto('http://localhost:8080/metrics')
+    await page.waitForTimeout(30000);
+    const charts = '#root > div._91iyXizfLMZnut518R_X > div.bigDiv';
+    await page.waitForSelector(charts);
+    const metricCharts = await page.$(charts);
+    // const charts = '#root > div._91iyXizfLMZnut518R_X > div.bigDiv'
+    // await page.waitForSelector(charts);
+    // const metricCharts = await page.$(charts);
     expect(chartLoaded).toBeTruthy();
+    expect(metricCharts).toBeTruthy();
+    // expect(metricCharts).toBeTruthy();
   }, 100000)
 });
+
+#root > div._91iyXizfLMZnut518R_X > div.bigDiv
