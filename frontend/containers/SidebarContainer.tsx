@@ -11,9 +11,6 @@ export default function SidebarContainer() {
   const loggedIn = useAppSelector((state) => state.app.loggedIn);
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
   const navigate = useNavigate();
-  let currTheme;
-  let selectedDay;
-  let selectedNight;
   let sideBar = [];
 
   if (window.matchMedia('(prefers-color-scheme: dark)').matches && colorTheme === null) {
@@ -21,14 +18,6 @@ export default function SidebarContainer() {
   }
 
   document.querySelector('body').setAttribute('theme', colorTheme);
-
-  if (colorTheme === 'dark') {
-    currTheme = <i className="fa-solid fa-moon"></i>;
-    selectedNight = <i className="fa-solid fa-check"></i>;
-  } else {
-    currTheme = <i className="fa-solid fa-sun"></i>;
-    selectedDay = <i className="fa-solid fa-check"></i>;
-  }
 
   sideBar = loggedIn
     ? [

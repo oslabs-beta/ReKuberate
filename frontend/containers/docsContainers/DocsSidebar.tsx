@@ -25,7 +25,7 @@ export default function DocsSidebar() {
           Installation
         </Nav.Link>
         <Nav.Link onClick={() => transition('#built')} className={styles.sidebarLinks}>
-          Built with ♥
+          Built with <p style={{ color: 'red', display: 'inline' }}>♥</p>
         </Nav.Link>
       </Nav>
     </>
