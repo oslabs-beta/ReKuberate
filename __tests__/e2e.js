@@ -6,12 +6,16 @@ function delay(time) {
   });
 }
 
-// page.goto('http://localhost:8080');
-
 describe('End to End Unit Tests', () => {
+
   beforeAll(async () => {
     await page.goto('http://localhost:8080');
   });
+  afterAll(async () => {
+    const logoutButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > button.f9uabxXsNoPCLrlDwpTW';
+    await page.click(logoutButton)
+  })
+
   xdescribe('Logging in', () => {
     const username = '#loginUsername';
     const password = '#loginPassword';
@@ -116,7 +120,7 @@ describe('End to End Unit Tests', () => {
 
     //handles functionality of creating a new and valid user
     //******NOT FINISHED********   Fixed it, this time checking for button
-    xit('Should sign new users in with valid username and password', async () => {
+    it('Should sign new users in with valid username and password', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -181,10 +185,29 @@ describe('End to End Unit Tests', () => {
       await page.click(troubleShooting);
       expect(page.url()).toBe('http://localhost:8080/docs/troubleShooting');
     });
+
+     //handles functionality of clicking on home in sidebar
+     it('Should go home', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+
+      const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(1)';
+      await page.waitForSelector(metrics);
+      await page.click(metrics);
+      expect(page.url()).toBe('http://localhost:8080/');
+    });
   });
 
-  describe('Pods Page Tests', () => {
-    xit('Redirects to pods page', async () => {
+  //Test Unit for Pod rendering and display
+  xdescribe('Pods Page Test Unit', () => {
+    it('Redirects to pods page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -204,7 +227,7 @@ describe('End to End Unit Tests', () => {
     }, 15000);
     
     //can only check if page renders because pods are refreshing every few seconds
-    xit('Displays Pods on page', async () => {
+    it('Displays Pods on page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -223,9 +246,12 @@ describe('End to End Unit Tests', () => {
       const pods = await page.$(chart);
      expect(pods).toBeTruthy();
     }, 30000);
+  });
 
-    //handles functionality of clicking on metrics in sidebar
-    xit('Should show metrics', async () => {
+  //Test Unit for Metrics display page
+  describe('Metrics Page Test Unit', () => {
+     //handles functionality of clicking on metrics in sidebar
+     it('Routes to Metrics Page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -241,23 +267,6 @@ describe('End to End Unit Tests', () => {
       await page.click(metrics);
       expect(page.url()).toBe('http://localhost:8080/metrics');
     });
-
-    //handles functionality of clicking on home in sidebar
-    xit('Should go home', async () => {
-      const username = '#loginUsername';
-      const password = '#loginPassword';
-      const loginButton = '#loginButton';
-      await page.waitForSelector(username);
-      await page.waitForSelector(password);
-      await page.waitForSelector(loginButton);
-      await page.type(username, 'Kai');
-      await page.type(password, 'kubernetes');
-      await page.click(loginButton);
-
-      const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(1)';
-      await page.waitForSelector(metrics);
-      await page.click(metrics);
-      expect(page.url()).toBe('http://localhost:8080/');
-    });
-  });
+  })
+  
 });
