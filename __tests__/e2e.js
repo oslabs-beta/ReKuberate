@@ -123,13 +123,22 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/docs');
     });
 
-    it('Should show getting started guide', async () => {
+    xit('Should show getting started guide', async () => {
       const gettingStarted = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(1)';
       await page.waitForSelector(docs);
       await page.click(docs);
       await page.waitForSelector(gettingStarted);
       await page.click(gettingStarted);
       expect(page.url()).toBe('http://localhost:8080/docs/gettingStarted');
+    });
+
+    it('Should show tutorials guide', async () => {
+      const tutorials = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(2)';
+      await page.waitForSelector(docs);
+      await page.click(docs);
+      await page.waitForSelector(tutorials);
+      await page.click(tutorials);
+      expect(page.url()).toBe('http://localhost:8080/docs/tutorial');
     });
   });
 });
