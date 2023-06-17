@@ -7,13 +7,13 @@ export default function About() {
   return (
     <>
       <div className={styles.docs} id="about">
-        <img src={gif1} />
+        <img src={gif1} className={styles.gifs} />
         <p>
           First time setup of ReKuberate will require an initial log in. Log in data is hashed and authenticated with
           bCrypt. Select the file location of where the application is downloaded and initiate data scraping from your
           kubernetes cluster. Make sure your cluster is running or else no data will be collected.
         </p>
-        <img src={gif2} />
+        <img src={gif2} className={styles.gifs} />
         <p>The nodes will be color-coded: red: error, yellow: pending, green: running.</p>
         <p>Hovering over each node will display additional details.</p>
       </div>
