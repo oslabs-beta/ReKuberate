@@ -8,7 +8,7 @@ function delay(time) {
 }
 
 async function webScrapper() {
-  const browser = await puppeteer.launch({ headless: false, args: [`--window-size=1900,1000`] });
+  const browser = await puppeteer.launch({ headless: true, args: [`--window-size=1900,1000`] });
   const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
   await page.setViewport({ width: 1900, height: 1000 });
@@ -32,7 +32,7 @@ async function webScrapper() {
 
   await delay(1000);
 
-  //opens menu and clicks on embed to get link for kublets
+  //opens menu and clicks on embed to get link for kubelets
   await page.mouse.click(310, 160);
   await delay(250);
   await page.mouse.click(300, 235);
