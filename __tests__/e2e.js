@@ -117,10 +117,19 @@ describe('End to End Unit Tests', () => {
 
   describe('Docs', () => {
     const docs = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
-    it('Should pull up docs menu', async () => {
+    xit('Should pull up docs menu', async () => {
       await page.waitForSelector(docs);
       await page.click(docs);
       expect(page.url()).toBe('http://localhost:8080/docs');
+    });
+
+    it('Should show getting started guide', async () => {
+      const gettingStarted = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(1)';
+      await page.waitForSelector(docs);
+      await page.click(docs);
+      await page.waitForSelector(gettingStarted);
+      await page.click(gettingStarted);
+      expect(page.url()).toBe('http://localhost:8080/docs/gettingStarted');
     });
   });
 });
