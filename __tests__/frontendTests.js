@@ -202,3 +202,25 @@ describe('Nav Bar', () => {
     expect(logoutLink).toBeTruthy();
   });
 });
+
+describe('Pods Render after submitting', () => {
+    let page;
+    let browser;
+  
+    beforeAll(async () => {
+      browser = await puppeteer.launch({ headless: 'new' });
+      page = await browser.newPage();
+    });
+  
+    afterAll(async () => {
+      await browser.close();
+    });
+    it('There should be a submit button present on th home page', async()=> {
+        await page.goto('http://localhost:8080');
+        const submit = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > form > input.UQDaLf2ZMZHKto0KhHfE';
+        await page.waitForSelector(submit);
+        const submitButton = await page.$(submit);
+        expect(submitButton).toBeTruthy();
+
+    })
+})
