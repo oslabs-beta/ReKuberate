@@ -32,8 +32,7 @@ export default function App() {
     })();
   });
 
-  // return loggedIn ? (
-  return true ? (
+  return loggedIn ? (
     <>
       <LoadingWheel />
       <SidebarContainer />
