@@ -12,10 +12,6 @@ import LoadingWheel from './components/LoadingWheel';
 import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
 import Docs from './pages/Docs';
-import Introduction from './containers/docsContainers/Introduction';
-import About from './containers/docsContainers/About';
-import Installation from './containers/docsContainers/Installation';
-import Built from './containers/docsContainers/Built';
 
 export default function App() {
   const dispatch = useAppDispatch();
