@@ -24,9 +24,9 @@ export default function HomeContainer() {
     <div className={styles.yaml}>
       <div className={styles.fileborder}>
         <div className={styles.infoContainer}>
-          <p className={styles.info}>Welcome to ReKuberate, an all-in-one cluster visualizer and metrics display application! Before starting, please check to
-            be sure that your Kubernetes cluster is currently running. Once its running, you are ready to click submit where after a few brief seconds,
-            your cluster will be displayed. If by any chance you see just a single red pod on the next screen, it is most likely that your cluster
+          <p className={styles.info}><strong>Welcome to ReKuberate</strong>, an all-in-one cluster visualizer and metrics display application! Before starting, please check to
+            be sure that your Kubernetes cluster is currently running. Once its running, you are ready to click submit. After a few brief seconds,
+            your cluster will be displayed with real-time status updates. If by any chance you see just a single red pod on the next screen, it is most likely that your cluster
             is not running. 
           </p>
         </div>
