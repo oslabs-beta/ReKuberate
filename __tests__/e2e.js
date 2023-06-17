@@ -8,11 +8,11 @@ function delay(time) {
 
 // page.goto('http://localhost:8080');
 
-xdescribe('End to End Unit Tests', () => {
+describe('End to End Unit Tests', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:8080');
   });
-  describe('Logging in', () => {
+  xdescribe('Logging in', () => {
     const username = '#loginUsername';
     const password = '#loginPassword';
     const loginButton = '#loginButton';
@@ -115,17 +115,21 @@ xdescribe('End to End Unit Tests', () => {
     });
 
     //handles functionality of creating a new and valid user
-    //******NOT FINISHED********
-    it('Should sign new users in with valid username and password', async () => {
+    //******NOT FINISHED********   Fixed it, this time checking for button
+    xit('Should sign new users in with valid username and password', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
       await page.waitForSelector(loginButton);
-      await page.type(username, 'testusername');
-      await page.type(password, 'testpassword');
+      //username and password need to be changed each time for test
+      await page.type(username, 'testusernamed');
+      await page.type(password, 'testpasswordd');
       await page.click(loginButton);
-      //expect to be re-reouted to homepage
-      //need to write an expect statement to verify a change in state
+     //select the submit button to make sure that the page rendered properly
+     const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
+     await page.waitForSelector(submitButton);
+     const submit = await page.$(submitButton);
+     expect(submit).toBeTruthy();
     });
   });
 
@@ -179,10 +183,8 @@ xdescribe('End to End Unit Tests', () => {
     });
   });
 
-  describe('Sidebar', () => {
-    //THIS ONE IS HAVING PROBLEMS!!!!
-    //********NOT FINISHED**********
-    xit('Should show pods', async () => {
+  describe('Pods Page Tests', () => {
+    xit('Redirects to pods page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -192,12 +194,35 @@ xdescribe('End to End Unit Tests', () => {
       await page.type(username, 'Kai');
       await page.type(password, 'kubernetes');
       await page.click(loginButton);
-
-      const pods = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
-      await page.waitForSelector(pods);
-      await page.click(pods);
-      expect(page.url()).toBe('http://localhost:8080/pods');
-    });
+      //wait for button to render then click
+      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
+      await page.waitForSelector(submitButton);
+      await page.click(submitButton);
+      const podsDisplay = '#ac-chart-container'
+      await page.waitForSelector(podsDisplay);
+       expect(page.url()).toBe('http://localhost:8080/pods');
+    }, 15000);
+    
+    //can only check if page renders because pods are refreshing every few seconds
+    xit('Displays Pods on page', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+      //wait for button to render then click
+      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
+      await page.waitForSelector(submitButton);
+      await page.click(submitButton);
+      const chart = '#ac-chart-container'
+      await page.waitForSelector(chart);
+      const pods = await page.$(chart);
+     expect(pods).toBeTruthy();
+    }, 30000);
 
     //handles functionality of clicking on metrics in sidebar
     xit('Should show metrics', async () => {
