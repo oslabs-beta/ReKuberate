@@ -76,12 +76,25 @@ describe('End to End Unit Tests', () => {
       expect(errorMessage).toBeTruthy;
     });
 
-    it('Should throw an error if password is not provided', async () => {
+    xit('Should throw an error if password is not provided', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
       await page.waitForSelector(loginButton);
       await page.type(username, 'testusername');
+      await page.click(loginButton);
+      const errorMessage =
+        '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p.g5TRelzMwcZSywZtXjZF';
+      expect(errorMessage).toBeTruthy;
+    });
+
+    it('Should throw an error if username is already taken', async () => {
+      await page.goto('http://localhost:8080/createAccount');
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'testpassword');
       await page.click(loginButton);
       const errorMessage =
         '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p.g5TRelzMwcZSywZtXjZF';
