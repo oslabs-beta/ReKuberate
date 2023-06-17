@@ -1,26 +1,22 @@
 import 'expect-puppeteer';
 
-function delay(time) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, time);
-  });
-}
-
 describe('End to End Unit Tests', () => {
 
   beforeAll(async () => {
     await page.goto('http://localhost:8080');
   });
+
   afterAll(async () => {
     const logoutButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > button.f9uabxXsNoPCLrlDwpTW';
     await page.click(logoutButton)
   })
 
-  //Test Unit for Login Functionality
+  //Unit Tests for Login Functionality
   xdescribe('Logging in', () => {
     const username = '#loginUsername';
     const password = '#loginPassword';
     const loginButton = '#loginButton';
+
     //handles functionality of trying to login with incorrect username
     it('Should receive error if username is incorrect', async () => {
       await page.waitForSelector(username);
@@ -31,6 +27,7 @@ describe('End to End Unit Tests', () => {
         '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > form > p.GOCoYCTPu5bX4zlBl_Z6';
       expect(errorMessage).toBeTruthy;
     });
+
     //handles functionality of trying to login with incorrect password
     it('Should receive error if password is incorrect', async () => {
       await page.waitForSelector(password);
@@ -41,6 +38,7 @@ describe('End to End Unit Tests', () => {
         '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > form > p.GOCoYCTPu5bX4zlBl_Z6';
       expect(errorMessage).toBeTruthy;
     });
+
     //handles functionality of logging in with correct username and password
     it('Should reroute to main page if username and password are valid', async () => {
       await page.waitForSelector(username);
@@ -62,7 +60,7 @@ describe('End to End Unit Tests', () => {
     });
   });
 
-  //Test Unit for Creating Users
+  //Unit Tests for Creating Users
   xdescribe('Create new user', () => {
     const newUserButton = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > div > a';
     const username = '#createUsername';
@@ -138,17 +136,18 @@ describe('End to End Unit Tests', () => {
     });
   });
 
+  //Unit Tests for Documentation Sidebar
   xdescribe('Docs', () => {
     const docs = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
     //handles functionality of clicking on docs in sidebar
-    it('Should pull up docs menu', async () => {
+    it('Should route to Docs menu', async () => {
       await page.waitForSelector(docs);
       await page.click(docs);
       expect(page.url()).toBe('http://localhost:8080/docs');
     });
 
     //handles functionality of clicking on getting started in sub-sidebar
-    it('Should show getting started guide', async () => {
+    it('Should render getting started guide', async () => {
       const gettingStarted = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(1)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -158,7 +157,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on tutorials in sub-sidebar
-    it('Should show tutorials guide', async () => {
+    it('Should render tutorials guide', async () => {
       const tutorials = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(2)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -168,7 +167,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on help in sub-sidebar
-    it('Should show help guide', async () => {
+    it('Should render help guide', async () => {
       const help = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(3)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -178,7 +177,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on trouble shooting in sub-sidebar
-    it('Should show trouble shooting guide', async () => {
+    it('Should render trouble shooting guide', async () => {
       const troubleShooting = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(4)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -187,8 +186,8 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/docs/troubleShooting');
     });
 
-     //handles functionality of clicking on home in sidebar
-     it('Should go home', async () => {
+     //handles functionality of clicking on home on sidebar
+     it('Should render home page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
