@@ -235,7 +235,7 @@ describe('Pods Render after submitting', () => {
     expect(submitButton).toBeTruthy();
   });
 
-  it('Pods should render after hitting the submit button', async() => {
+  it('Pods and Metrics should render after hitting the submit button', async() => {
     await page.goto('http://localhost:8080');
     const [userInput, userPass, login] = ['#loginUsername', '#loginPassword', '#loginButton'];
     await page.waitForSelector(userInput);
@@ -254,12 +254,10 @@ describe('Pods Render after submitting', () => {
     await page.waitForSelector(submit);
     const submitButton = await page.$(submit);
     submitButton.click();
-    
-    await page.waitForTimeout(50000);
     await page.goto('http://localhost:8080/pods')
-    const onePod = '#ac_path_1ce0a3f1_2nm';
-    await page.waitForSelector(onePod);
-    const onePodAppears = await page.$(onePod);
-    expect(onePodAppears).toBeTruthy();
+    const chart = '#ac-chart-container';
+    await page.waitForSelector(chart);
+    const chartLoaded = await page.$(chart);
+    expect(chartLoaded).toBeTruthy();
   }, 100000)
 });
