@@ -1,11 +1,10 @@
-import cookieParser from 'cookie-parser';
 import supertest from 'supertest';
 const server = 'http://localhost:3001';
 const request = supertest(server);
 
-describe('Server Unit Tests', () => {
+describe('Server Unit tests', () => {
 
-  //Catch All server route testing 
+  //Catch All Server Route Testing 
   describe('catchAll Route', () => {
 
     it('responds with status 404 when route is not found', async () => {
@@ -14,42 +13,41 @@ describe('Server Unit Tests', () => {
     });
   });
 
-  //Initialization route testing unit (need to get exact object of res.locals but keeping this commented out to speed up tests)
+  //Initialization Route Testing Unit for Prometheus and Grafana, needs long timeout for tests
   describe('Initalization Route', () => {
     it ('successfully responds with status 200', async () => {
       const response = await request.get('/api/initiate/');
       expect(response.statusCode).toBe(200);
     }, 40000);
-
+    //checks if controller returns iframe tags in res.locals.graphs as an object
     it ('successfully returns res.locals.graphs as an object', async () => {
       const response = await request.get('/api/initiate/');
       expect(response.body).toBeInstanceOf(Object)
     }, 40000)
   });
 
+  //Route to get pod information pulled from terminal
   describe('Pods Route', () => {
-    //works, skipping so I dont have to have cluster running for all tests
     it('successfully responds with status 200', async () => {
       const response = await request.get('/api/pods/');
       expect(response.statusCode).toBe(200);
     });
-    //works, skipping so I dont have to have cluster running for all tests
-    it('successfully sends back json object', async () => {
+    //checks if data manipulation from terminal printout gets returned properly
+    it('successfully sends back a json object', async () => {
       const response = await request.get('/api/pods/');
       expect(response.body).toBeInstanceOf(Object);
-    })
-    //can't be tested with the rest of the tests because they rely on the cluster being running
-    it('send error message when cluster is not running', async () => {
+    });
+    //can't be tested with the rest of the tests because it relies on the cluster not running
+    it('sends minikube not found when no pods are running', async () => {
       const response = await request.get('/api/pods/');
-      expect(response).toBe('err')
-    })
-
+      expect(response.text).toBe('{\"* Profile \\\"minikube\\\" not found. Run \\\"minikube profile list\\\" to view all profiles.\":{\"pods\":[]}}')
+    });
   })
 
-  //User Routes testing unit
+  //User Routes Testing Unit
   describe('User Route', () => {
 
-    //Cookies route testing
+    //Cookies Route Testing
     describe('User Cookies', () => {
       it ('successfully sends status 200 when checking for a cookie', async () => {
         const response = await request.get('/api/user/');
@@ -60,52 +58,37 @@ describe('Server Unit Tests', () => {
         const response = await request.get('/api/user/');
         expect(response.text).toBe("false");
       })
-      // //need to figure out how to get an error to occur with just a get request
-      // xit('successfully sends back status 500 when error occurs', async () => {
-      //   const response = await request.get('/api/user/');
-      //   expect(response.statusCode).toBe(500);
-      // })
     })
 
-    //User creation Route
+    //User Creation Route
     describe('User Creation', () => {
       //update with new user and password each time to test
       it('successfully sends status 200 on user creation', async () => {
         const response = await request.post('/api/user/signup').send({
           createUsername: "steveJobs",
-          createPassword: "whatitdo",
+          createPassword: "Apple",
         });
         expect(response.statusCode).toBe(200);
       });
 
       it('responds with status 409 if username already exists in database', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "daBoi",
-          createPassword: "whatitdo",
+          createUsername: "Hunter",
+          createPassword: "hunter2",
         });
         expect(response.statusCode).toBe(409);
       });
 
       it('responds with error message if username is already taken', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "daBoi",
-          createPassword: "whatitdo",
+          createUsername: "Hunter",
+          createPassword: "hunter2",
         });
         expect(response.text).toBe("{\"err\":\"username already taken\"}");
       });
-
-      //seems like we can only make cookies from supertest, not check so I'll skip for now
-      // xit('creates an ssid cookie assigned to the input username', async () => {
-      //   const response = await request.post('/api/user/signup').send({
-      //     createUsername: "Alightyyyy",
-      //     createPassword: "alrightyyyy",
-      //   });
-      //   //this only tells us our response returns an object (which it does contain the cookie) but I'm having trouble accessing just the cookie property
-      //   expect(response.body).toEqual({})
-      // });
     })
 
-  //User login route
+  //User Login Route
   describe('User Login', () => {
     it('sends status 200 on succcessful login', async () => {
       const response = await request.post('/api/user/login').send({
@@ -126,13 +109,13 @@ describe('Server Unit Tests', () => {
       it('successfully sends status 400 when password is invalid', async () => {
         const response = await request.post('/api/user/login').send({
           creeateUsername: "Kai",
-          createPassword: "whodatboi"
+          createPassword: "iLoveKubernetes"
         });
         expect(response.statusCode).toBe(401);
     });
   })
 
-  //User logout route
+  //User Logout Route
   describe('User Logout', () => {
     it('redirects user to / path', async () => {
       const response = await request.get('/api/user/logout');
