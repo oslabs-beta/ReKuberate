@@ -30,7 +30,7 @@ export default function HomeContainer() {
             is not running. 
           </p>
         </div>
-        <button onClick= {() => submitCluster()}>Submit</button>
+        <button className={styles.submit} onClick= {() => submitCluster()}>Submit</button>
       </div>
     </div>
   );

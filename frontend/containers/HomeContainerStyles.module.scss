@@ -16,6 +16,7 @@
   border-radius: 20px;
   background-color: rgba(216, 216, 216, 0.5);
   width: 90%;
+  height: 20%;
   text-align: center;
 }
 
@@ -74,12 +75,41 @@
 
 .infoContainer {
   margin: auto;
+  padding-bottom: 5vh;
 }
 
 .info {
- 
+  width: 60%;
+  margin: auto;
 }
 
 .submit {
-  
+  color: white;
+  background-color: #89d6c5;
+  font-size: 3vmin;
+  height: 10vmin;
+  width: 40vmin;
+  border: 2px;
+  border-style: solid;
+  border-color: #4ba491;;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px #4ba491;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
+
+.submit:hover {
+  background-color: #01a07e;
+  border:  #037058;
+  transition-duration: 300ms;
+  box-shadow: 1px 1px 1px 4px #037058;
+}
+
+.submit:active {
+  top: 5px;
+  left: 5px;
+  box-shadow: none;
+}
+
