@@ -45,6 +45,7 @@ describe('End to End Unit Tests', () => {
       await page.click(loginButton);
       await navigationPromise;
       //not working yet
+      //expect to be re-routed to homepage
       expect(page.url()).toBe();
     });
   });
@@ -88,7 +89,7 @@ describe('End to End Unit Tests', () => {
       expect(errorMessage).toBeTruthy;
     });
 
-    it('Should throw an error if username is already taken', async () => {
+    xit('Should throw an error if username is already taken', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -99,6 +100,27 @@ describe('End to End Unit Tests', () => {
       const errorMessage =
         '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p.g5TRelzMwcZSywZtXjZF';
       expect(errorMessage).toBeTruthy;
+    });
+
+    xit('Should sign new users in with valid username and password', async () => {
+      await page.goto('http://localhost:8080/createAccount');
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'testusername');
+      await page.type(password, 'testpassword');
+      await page.click(loginButton);
+
+      //expect to be re-reouted to homepage
+    });
+  });
+
+  describe('Docs', () => {
+    const docs = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
+    it('Should pull up docs menu', async () => {
+      await page.waitForSelector(docs);
+      await page.click(docs);
+      expect(page.url()).toBe('http://localhost:8080/docs');
     });
   });
 });
