@@ -9,11 +9,6 @@ function delay(time) {
 }
 
 async function createWindow() {
-  spawnSync('npm install', {
-    shell: true,
-    detached: true,
-  });
-
   spawn('npm run server', {
     shell: true,
     detached: true,

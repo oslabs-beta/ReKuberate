@@ -12,6 +12,10 @@ import LoadingWheel from './components/LoadingWheel';
 import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
 import Docs from './pages/Docs';
+import Introduction from './containers/docsContainers/Introduction';
+import About from './containers/docsContainers/About';
+import Installation from './containers/docsContainers/Installation';
+import Built from './containers/docsContainers/Built';
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -40,12 +44,7 @@ export default function App() {
           <Route path="/" element={<HomeContainer />}></Route>
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
-          <Route path="/docs" element={<Docs />}>
-            <Route path="gettingStarted"></Route>
-            <Route path="tutorial"></Route>
-            <Route path="help"></Route>
-            <Route path="troubleShooting"></Route>
-          </Route>
+          <Route path="/docs" element={<Docs />}></Route>
         </Routes>
       </div>
     </>
@@ -60,12 +59,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LoginContainer />}></Route>
           <Route path="/createAccount" element={<NewAccountContainer />}></Route>
-          <Route path="/docs" element={<Docs />}>
-            <Route path="gettingStarted"></Route>
-            <Route path="tutorial"></Route>
-            <Route path="help"></Route>
-            <Route path="troubleShooting"></Route>
-          </Route>
+          <Route path="/docs" element={<Docs />}></Route>
         </Routes>
       </div>
     </>
