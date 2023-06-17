@@ -1,11 +1,10 @@
-import cookieParser from 'cookie-parser';
 import supertest from 'supertest';
 const server = 'http://localhost:3001';
 const request = supertest(server);
 
 describe('Server Unit tests', () => {
 
-  //Catch All server route testing 
+  //Catch All Server Route Testing 
   describe('catchAll Route', () => {
 
     it('responds with status 404 when route is not found', async () => {
@@ -14,13 +13,13 @@ describe('Server Unit tests', () => {
     });
   });
 
-  //Initialization route testing unit for Prometheus and Grafana, needs long timeout for tests
+  //Initialization Route Testing Unit for Prometheus and Grafana, needs long timeout for tests
   describe('Initalization Route', () => {
     it ('successfully responds with status 200', async () => {
       const response = await request.get('/api/initiate/');
       expect(response.statusCode).toBe(200);
     }, 40000);
-
+    //checks if controller returns iframe tags in res.locals.graphs as an object
     it ('successfully returns res.locals.graphs as an object', async () => {
       const response = await request.get('/api/initiate/');
       expect(response.body).toBeInstanceOf(Object)
@@ -33,6 +32,7 @@ describe('Server Unit tests', () => {
       const response = await request.get('/api/pods/');
       expect(response.statusCode).toBe(200);
     });
+    //checks if data manipulation from terminal printout gets returned properly
     it('successfully sends back a json object', async () => {
       const response = await request.get('/api/pods/');
       expect(response.body).toBeInstanceOf(Object);
@@ -44,10 +44,10 @@ describe('Server Unit tests', () => {
     });
   })
 
-  //User Routes testing unit
+  //User Routes Testing Unit
   describe('User Route', () => {
 
-    //Cookies route testing
+    //Cookies Route Testing
     describe('User Cookies', () => {
       it ('successfully sends status 200 when checking for a cookie', async () => {
         const response = await request.get('/api/user/');
@@ -60,7 +60,7 @@ describe('Server Unit tests', () => {
       })
     })
 
-    //User creation Route
+    //User Creation Route
     describe('User Creation', () => {
       //update with new user and password each time to test
       it('successfully sends status 200 on user creation', async () => {
@@ -88,7 +88,7 @@ describe('Server Unit tests', () => {
       });
     })
 
-  //User login route
+  //User Login Route
   describe('User Login', () => {
     it('sends status 200 on succcessful login', async () => {
       const response = await request.post('/api/user/login').send({
@@ -115,7 +115,7 @@ describe('Server Unit tests', () => {
     });
   })
 
-  //User logout route
+  //User Logout Route
   describe('User Logout', () => {
     it('redirects user to / path', async () => {
       const response = await request.get('/api/user/logout');
