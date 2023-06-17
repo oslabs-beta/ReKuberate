@@ -16,6 +16,7 @@ describe('End to End Unit Tests', () => {
     await page.click(logoutButton)
   })
 
+  //Test Unit for Login Functionality
   xdescribe('Logging in', () => {
     const username = '#loginUsername';
     const password = '#loginPassword';
@@ -41,7 +42,6 @@ describe('End to End Unit Tests', () => {
       expect(errorMessage).toBeTruthy;
     });
     //handles functionality of logging in with correct username and password
-    //*****NOT FINISHED*****    Just Finished it for you Kai, you just have to select the element instead of the route
     it('Should reroute to main page if username and password are valid', async () => {
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -61,6 +61,8 @@ describe('End to End Unit Tests', () => {
       // expect(page.url()).toBe( "http://localhost:8080/");
     });
   });
+
+  //Test Unit for Creating Users
   xdescribe('Create new user', () => {
     const newUserButton = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > div > a';
     const username = '#createUsername';
@@ -119,7 +121,6 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of creating a new and valid user
-    //******NOT FINISHED********   Fixed it, this time checking for button
     it('Should sign new users in with valid username and password', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
@@ -267,6 +268,26 @@ describe('End to End Unit Tests', () => {
       await page.click(metrics);
       expect(page.url()).toBe('http://localhost:8080/metrics');
     });
-  })
+
+    //Route to check if metrics divs are rendering when routed to the page
+    it('Metrics display when routed to', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+
+      const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(3)';
+      await page.waitForSelector(metrics);
+      await page.click(metrics);
+      const memUse = '#reactRoot > div.grafana-app > main > div > div.panel-solo > div:nth-child(1) > div > div.css-kvzgb9-panel-content > div > div > div > div > canvas.flot-overlay'
+      await page.waitForSelector(memUse);
+      expect(memUse).toBeTruthy();
+    });
+  });
   
 });
