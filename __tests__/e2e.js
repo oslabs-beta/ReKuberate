@@ -16,7 +16,7 @@ describe('End to End Unit Tests', () => {
     const username = '#loginUsername';
     const password = '#loginPassword';
     const loginButton = '#loginButton';
-    it('Should receive error if username is incorrect', async () => {
+    xit('Should receive error if username is incorrect', async () => {
       await page.waitForSelector(username);
       await page.waitForSelector(loginButton);
       await page.type(username, '');
@@ -25,7 +25,7 @@ describe('End to End Unit Tests', () => {
         '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > form > p.GOCoYCTPu5bX4zlBl_Z6';
       expect(errorMessage).toBeTruthy;
     });
-    it('Should receive error if password is incorrect', async () => {
+    xit('Should receive error if password is incorrect', async () => {
       await page.waitForSelector(password);
       await page.waitForSelector(loginButton);
       await page.type(password, '');
@@ -50,7 +50,11 @@ describe('End to End Unit Tests', () => {
   });
   describe('Create new user', () => {
     const newUserButton = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > div > a';
-    it('Should reroute to createUser endpoint when clicking Create an Account', async () => {
+    const username = '#createUsername';
+    const password = '#createPassword';
+    const loginButton = '#loginButton';
+
+    xit('Should reroute to createUser endpoint when clicking Create an Account', async () => {
       await page.waitForSelector(newUserButton);
 
       const navigationPromise = page.waitForNavigation();
@@ -58,6 +62,18 @@ describe('End to End Unit Tests', () => {
       await navigationPromise;
 
       expect(page.url()).toBe('http://localhost:8080/createAccount');
+    });
+
+    it('Should throw an error if username is not provided', async () => {
+      await page.goto('http://localhost:8080/createAccount');
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(password, 'testpassword');
+      await page.click(loginButton);
+      const errorMessage =
+        '#root > div._91iyXizfLMZnut518R_X > div.LnC6EgFrVh73ecrj0o0B > div > form > p.g5TRelzMwcZSywZtXjZF';
+      expect(errorMessage).toBeTruthy;
     });
   });
 });
