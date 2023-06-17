@@ -1,22 +1,27 @@
 .yaml {
-  height: 84.8vh;
-  background-image: linear-gradient(rgba(255, 254, 238, 0), rgba(116, 156, 133, 1), rgba(116, 156, 133, 1));
+  height: 83.7vh;
+  background-image: linear-gradient(rgba(255, 254, 238, 0), #749c85, #749c85);
   border-radius: 0 0 20px 20px;
   padding-top: 1vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .fileborder {
   margin-left: auto;
   margin-right: auto;
-  padding-top: 33vh;
-  padding-bottom: 33vh;
+  padding-top: 20vh;
+  padding-bottom: 45vh;
   border: solid;
   border-width: 5px;
   border-color: black;
   border-radius: 20px;
-  background-color: rgba(216, 216, 216, 0.5);
+  background-color: #d8d8d880;
   width: 90%;
+  height: 15%;
   text-align: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .fileInput {
@@ -71,3 +76,45 @@
     font-size: 12px;
   }
 }
+
+.infoContainer {
+  margin: auto;
+  padding-bottom: 5vh;
+}
+
+.info {
+  width: 60%;
+  margin: auto;
+  font-size: 1.4vw;
+}
+
+.submit {
+  color: white;
+  background-color: #759c85;
+  font-size: 3vmin;
+  height: 10vmin;
+  width: 40vmin;
+  border: 2px;
+  border-style: solid;
+  border-color: #2da38a;;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px #479a88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.submit:hover {
+  background-color: #01a07e;
+  border:  #037058;
+  transition-duration: 400ms;
+  box-shadow: 1px 1px 1px 4px #037058;
+}
+
+.submit:active {
+  top: 5px;
+  left: 5px;
+  box-shadow: none;
+}
+

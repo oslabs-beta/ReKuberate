@@ -10,7 +10,7 @@ export default function HomeContainer() {
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
   clearInterval(podsIntervalID);
 
-  function uploadFile(yamlFile: HTMLInputElement): void {
+  function submitCluster(): void {
     dispatch(setLoading('block'));
     fetch('/api/initiate')
       .then((res) => res.json())
@@ -23,15 +23,14 @@ export default function HomeContainer() {
   return (
     <div className={styles.yaml}>
       <div className={styles.fileborder}>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            uploadFile(document.querySelector('#myFile') as HTMLInputElement);
-          }}
-        >
-          <input type="file" id="myFile" name="filename" className={styles.fileInput}></input>
-          <input type="submit" className={styles.button}></input>
-        </form>
+        <div className={styles.infoContainer}>
+          <p className={styles.info}><strong>Welcome to ReKuberate</strong>, an all-in-one cluster visualizer and metrics display application! Before starting, please check to
+            be sure that your Kubernetes cluster is currently running. Once its running, you are ready to click submit. After a few brief seconds,
+            your cluster will be displayed with real-time status updates. If by any chance you see just a single red pod on the next screen, it is most likely that your cluster
+            is not running. 
+          </p>
+        </div>
+        <button className={styles.submit} onClick= {() => submitCluster()}>Submit</button>
       </div>
     </div>
   );
