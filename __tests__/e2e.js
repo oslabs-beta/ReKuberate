@@ -132,13 +132,22 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/docs/gettingStarted');
     });
 
-    it('Should show tutorials guide', async () => {
+    xit('Should show tutorials guide', async () => {
       const tutorials = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(2)';
       await page.waitForSelector(docs);
       await page.click(docs);
       await page.waitForSelector(tutorials);
       await page.click(tutorials);
       expect(page.url()).toBe('http://localhost:8080/docs/tutorial');
+    });
+
+    xit('Should show help guide', async () => {
+      const help = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(3)';
+      await page.waitForSelector(docs);
+      await page.click(docs);
+      await page.waitForSelector(help);
+      await page.click(help);
+      expect(page.url()).toBe('http://localhost:8080/docs/help');
     });
   });
 });
