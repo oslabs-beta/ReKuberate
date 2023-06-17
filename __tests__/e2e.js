@@ -8,7 +8,7 @@ function delay(time) {
 
 // page.goto('http://localhost:8080');
 
-describe('End to End Unit Tests', () => {
+xdescribe('End to End Unit Tests', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:8080');
   });
@@ -17,7 +17,7 @@ describe('End to End Unit Tests', () => {
     const password = '#loginPassword';
     const loginButton = '#loginButton';
     //handles functionality of trying to login with incorrect username
-    xit('Should receive error if username is incorrect', async () => {
+    it('Should receive error if username is incorrect', async () => {
       await page.waitForSelector(username);
       await page.waitForSelector(loginButton);
       await page.type(username, '');
@@ -27,7 +27,7 @@ describe('End to End Unit Tests', () => {
       expect(errorMessage).toBeTruthy;
     });
     //handles functionality of trying to login with incorrect password
-    xit('Should receive error if password is incorrect', async () => {
+    it('Should receive error if password is incorrect', async () => {
       await page.waitForSelector(password);
       await page.waitForSelector(loginButton);
       await page.type(password, '');
@@ -37,8 +37,8 @@ describe('End to End Unit Tests', () => {
       expect(errorMessage).toBeTruthy;
     });
     //handles functionality of logging in with correct username and password
-    //*****NOT FINISHED*****
-    xit('Should reroute to main page if username and password are valid', async () => {
+    //*****NOT FINISHED*****    Just Finished it for you Kai, you just have to select the element instead of the route
+    it('Should reroute to main page if username and password are valid', async () => {
       await page.waitForSelector(username);
       await page.waitForSelector(password);
       await page.waitForSelector(loginButton);
@@ -48,20 +48,23 @@ describe('End to End Unit Tests', () => {
       const navigationPromise = page.waitForNavigation();
       await page.click(loginButton);
       await navigationPromise;
-      //not working yet
-      //expect to be re-routed to homepage
+      //select the info box to make sure that the page rendered properly
+      const infoBox = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > div';
+      await page.waitForSelector(infoBox);
+      const info = await page.$(infoBox);
+      expect(info).toBeTruthy();
       //need to write an expect statement to verify a change in state
-      expect(page.url()).toBe();
+      // expect(page.url()).toBe( "http://localhost:8080/");
     });
   });
-  describe('Create new user', () => {
+  xdescribe('Create new user', () => {
     const newUserButton = '#root > div._91iyXizfLMZnut518R_X > div.UIOjVBEHqQKk3K6lPcQa > div > div > a';
     const username = '#createUsername';
     const password = '#createPassword';
     const loginButton = '#loginButton';
 
     //handles functionality of Create an Account button
-    xit('Should reroute to createUser endpoint when clicking Create an Account', async () => {
+    it('Should reroute to createUser endpoint when clicking Create an Account', async () => {
       await page.waitForSelector(newUserButton);
 
       const navigationPromise = page.waitForNavigation();
@@ -72,7 +75,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles error functionality if no username is provided
-    xit('Should throw an error if username is not provided', async () => {
+    it('Should throw an error if username is not provided', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -85,7 +88,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles error functionality if no password is provided
-    xit('Should throw an error if password is not provided', async () => {
+    it('Should throw an error if password is not provided', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -98,7 +101,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles error functionality if provided username is not available
-    xit('Should throw an error if username is already taken', async () => {
+    it('Should throw an error if username is already taken', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -113,7 +116,7 @@ describe('End to End Unit Tests', () => {
 
     //handles functionality of creating a new and valid user
     //******NOT FINISHED********
-    xit('Should sign new users in with valid username and password', async () => {
+    it('Should sign new users in with valid username and password', async () => {
       await page.goto('http://localhost:8080/createAccount');
       await page.waitForSelector(username);
       await page.waitForSelector(password);
@@ -121,23 +124,22 @@ describe('End to End Unit Tests', () => {
       await page.type(username, 'testusername');
       await page.type(password, 'testpassword');
       await page.click(loginButton);
-
       //expect to be re-reouted to homepage
       //need to write an expect statement to verify a change in state
     });
   });
 
-  describe('Docs', () => {
+  xdescribe('Docs', () => {
     const docs = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
     //handles functionality of clicking on docs in sidebar
-    xit('Should pull up docs menu', async () => {
+    it('Should pull up docs menu', async () => {
       await page.waitForSelector(docs);
       await page.click(docs);
       expect(page.url()).toBe('http://localhost:8080/docs');
     });
 
     //handles functionality of clicking on getting started in sub-sidebar
-    xit('Should show getting started guide', async () => {
+    it('Should show getting started guide', async () => {
       const gettingStarted = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(1)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -147,7 +149,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on tutorials in sub-sidebar
-    xit('Should show tutorials guide', async () => {
+    it('Should show tutorials guide', async () => {
       const tutorials = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(2)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -157,7 +159,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on help in sub-sidebar
-    xit('Should show help guide', async () => {
+    it('Should show help guide', async () => {
       const help = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(3)';
       await page.waitForSelector(docs);
       await page.click(docs);
@@ -167,7 +169,7 @@ describe('End to End Unit Tests', () => {
     });
 
     //handles functionality of clicking on trouble shooting in sub-sidebar
-    xit('Should show trouble shooting guide', async () => {
+    it('Should show trouble shooting guide', async () => {
       const troubleShooting = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(4)';
       await page.waitForSelector(docs);
       await page.click(docs);
