@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from 'express';
-// import pkg from 'pg';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -8,7 +7,6 @@ import initRoute from './routes/initRoute.ts';
 import clusterRoute from './routes/clusterRoute.ts';
 import userRoute from './routes/userRoute.ts';
 import gitController from './controllers/gitController.ts';
-// const { Pool } = pkg;
 const app = express();
 
 const __filename: string = fileURLToPath(import.meta.url);
@@ -16,44 +14,15 @@ const __dirname: string = path.dirname(__filename);
 
 const PORT: number = 3001;
 
-//
 app.use(express.json());
 app.use(cookieParser());
-// const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
-// const pool: pkg.Pool = new Pool({
-//   connectionString: PG_URI,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
 
-// //Connect to SQL database
-// pool.connect((err: Error) => {
-//   if (err) {
-//     return console.error('could not connect to postgres', err);
-//   } else {
-//     console.log('connected');
-//   }
-// });
-
-// const db = {
-//   query: (text: string, params?: string[], callback?: any): any => {
-//     console.log('executed query', text);
-//     return pool.query(text, params, callback);
-//   },
-// };
-
-//Serves front end static files
-// app.use(express.static('./frontend'))
-
-// app.use('/', initRoute, (req: Request, res: Response) => {
-//   return res.status(200).sendFile(path.resolve(__dirname, './frontend/index.html'))
-// })
-
+//if build is in production mode, serve the distribution folder
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.resolve(__dirname, '../dist')));
 }
 
+//Route for OAuth
 app.use('/api/getAccessToken', gitController.getAccessToken, gitController.getUserData, (req, res) => {
   return res.status(200).redirect('/');
 });
