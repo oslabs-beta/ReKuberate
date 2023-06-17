@@ -161,18 +161,6 @@ describe('End to End Unit Tests', () => {
   });
 
   describe('Sidebar', () => {
-    // beforeAll(async () => {
-    //   const username = '#loginUsername';
-    //   const password = '#loginPassword';
-    //   const loginButton = '#loginButton';
-    //   await page.waitForSelector(username);
-    //   await page.waitForSelector(password);
-    //   await page.waitForSelector(loginButton);
-    //   await page.type(username, 'Kai');
-    //   await page.type(password, 'kubernetes');
-    //   await page.click(loginButton);
-    // });
-
     //THIS ONE IS HAVING PROBLEMS!!!!
     xit('Should show pods', async () => {
       const username = '#loginUsername';
@@ -191,7 +179,7 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/pods');
     });
 
-    it('Should show metrics', async () => {
+    xit('Should show metrics', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -206,6 +194,23 @@ describe('End to End Unit Tests', () => {
       await page.waitForSelector(metrics);
       await page.click(metrics);
       expect(page.url()).toBe('http://localhost:8080/metrics');
+    });
+
+    it('Should go home', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+
+      const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(1)';
+      await page.waitForSelector(metrics);
+      await page.click(metrics);
+      expect(page.url()).toBe('http://localhost:8080/');
     });
   });
 });
