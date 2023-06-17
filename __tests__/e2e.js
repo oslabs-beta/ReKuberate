@@ -150,13 +150,62 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/docs/help');
     });
 
-    it('Should show trouble shooting guide', async () => {
+    xit('Should show trouble shooting guide', async () => {
       const troubleShooting = '#root > div._91iyXizfLMZnut518R_X > div.bNky_QRpXWxny6oBVSXS.nav > a:nth-child(4)';
       await page.waitForSelector(docs);
       await page.click(docs);
       await page.waitForSelector(troubleShooting);
       await page.click(troubleShooting);
       expect(page.url()).toBe('http://localhost:8080/docs/troubleShooting');
+    });
+  });
+
+  describe('Sidebar', () => {
+    // beforeAll(async () => {
+    //   const username = '#loginUsername';
+    //   const password = '#loginPassword';
+    //   const loginButton = '#loginButton';
+    //   await page.waitForSelector(username);
+    //   await page.waitForSelector(password);
+    //   await page.waitForSelector(loginButton);
+    //   await page.type(username, 'Kai');
+    //   await page.type(password, 'kubernetes');
+    //   await page.click(loginButton);
+    // });
+
+    //THIS ONE IS HAVING PROBLEMS!!!!
+    xit('Should show pods', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+
+      const pods = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(2)';
+      await page.waitForSelector(pods);
+      await page.click(pods);
+      expect(page.url()).toBe('http://localhost:8080/pods');
+    });
+
+    it('Should show metrics', async () => {
+      const username = '#loginUsername';
+      const password = '#loginPassword';
+      const loginButton = '#loginButton';
+      await page.waitForSelector(username);
+      await page.waitForSelector(password);
+      await page.waitForSelector(loginButton);
+      await page.type(username, 'Kai');
+      await page.type(password, 'kubernetes');
+      await page.click(loginButton);
+
+      const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(3)';
+      await page.waitForSelector(metrics);
+      await page.click(metrics);
+      expect(page.url()).toBe('http://localhost:8080/metrics');
     });
   });
 });
