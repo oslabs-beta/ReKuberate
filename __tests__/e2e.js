@@ -1,3 +1,5 @@
+/* eslint-disable ui-testing/no-wait-in-tests */
+/* eslint-disable ui-testing/no-browser-commands-in-tests */
 import 'expect-puppeteer';
 
 describe('End to End Unit Tests', () => {
