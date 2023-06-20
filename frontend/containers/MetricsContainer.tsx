@@ -5,12 +5,12 @@ import { useAppSelector } from '../store/hooks';
 export default function MetricsContainer() {
   const URLs = useAppSelector((state) => state.app.URLs);
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
-  clearInterval(podsIntervalID)
+  clearInterval(podsIntervalID);
 
   if (!URLs.availability)
     return (
       <>
-        <p className='error'>Error in retrieving metrics. Please try resubmitting.</p>
+        <p className="error">Error in retrieving metrics. Please try resubmitting.</p>
       </>
     );
   return (
@@ -18,7 +18,7 @@ export default function MetricsContainer() {
       <div
         className="memoryDiv"
         dangerouslySetInnerHTML={{
-          __html: `${URLs.memUsageDial.slice(0, 7)} class   ='memory' ${URLs.memUsageDial.slice(8)}`,
+          __html: `${URLs.memUsageDial.slice(0, 7)} class='memory' ${URLs.memUsageDial.slice(8)}`,
         }}
       ></div>
       <div
