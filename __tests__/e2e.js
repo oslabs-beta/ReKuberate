@@ -1,7 +1,6 @@
 import 'expect-puppeteer';
 
 describe('End to End Unit Tests', () => {
-
   //Route to server before all
   beforeAll(async () => {
     await page.goto('http://localhost:8080');
@@ -10,8 +9,8 @@ describe('End to End Unit Tests', () => {
   //Sign out after each test to reset app
   afterAll(async () => {
     const logoutButton = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > button.f9uabxXsNoPCLrlDwpTW';
-    await page.click(logoutButton)
-  })
+    await page.click(logoutButton);
+  });
 
   //Unit Tests for Login Functionality
   describe('Logging in', () => {
@@ -128,11 +127,11 @@ describe('End to End Unit Tests', () => {
       await page.type(username, 'testusernamed');
       await page.type(password, 'testpasswordd');
       await page.click(loginButton);
-     //select the submit button to make sure that the page rendered properly
-     const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
-     await page.waitForSelector(submitButton);
-     const submit = await page.$(submitButton);
-     expect(submit).toBeTruthy();
+      //select the submit button to make sure that the page rendered properly
+      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button';
+      await page.waitForSelector(submitButton);
+      const submit = await page.$(submitButton);
+      expect(submit).toBeTruthy();
     });
   });
 
@@ -187,8 +186,8 @@ describe('End to End Unit Tests', () => {
       expect(page.url()).toBe('http://localhost:8080/docs/troubleShooting');
     });
 
-     //Tests functionality of clicking on home on sidebar
-     it('Should render home page', async () => {
+    //Tests functionality of clicking on home on sidebar
+    it('Should render home page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -220,14 +219,14 @@ describe('End to End Unit Tests', () => {
       await page.type(password, 'kubernetes');
       await page.click(loginButton);
       //wait for button to render then click
-      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
+      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button';
       await page.waitForSelector(submitButton);
       await page.click(submitButton);
-      const podsDisplay = '#ac-chart-container'
+      const podsDisplay = '#ac-chart-container';
       await page.waitForSelector(podsDisplay);
-       expect(page.url()).toBe('http://localhost:8080/pods');
+      expect(page.url()).toBe('http://localhost:8080/pods');
     }, 15000);
-    
+
     //Can only check if page renders because pods are refreshing every few seconds
     it('Displays Pods on page', async () => {
       const username = '#loginUsername';
@@ -240,20 +239,20 @@ describe('End to End Unit Tests', () => {
       await page.type(password, 'kubernetes');
       await page.click(loginButton);
       //wait for button to render then click
-      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button'; 
+      const submitButton = '#root > div._91iyXizfLMZnut518R_X > div.E2GAg31kZD7l8WUs9InP > div > button';
       await page.waitForSelector(submitButton);
       await page.click(submitButton);
-      const chart = '#ac-chart-container'
+      const chart = '#ac-chart-container';
       await page.waitForSelector(chart);
       const pods = await page.$(chart);
-     expect(pods).toBeTruthy();
+      expect(pods).toBeTruthy();
     }, 30000);
   });
 
   //Test Unit for Metrics display page
   describe('Metrics Page Test Unit', () => {
-     //Tests functionality of clicking on metrics in sidebar
-     it('Routes to Metrics Page', async () => {
+    //Tests functionality of clicking on metrics in sidebar
+    it('Routes to Metrics Page', async () => {
       const username = '#loginUsername';
       const password = '#loginPassword';
       const loginButton = '#loginButton';
@@ -285,10 +284,10 @@ describe('End to End Unit Tests', () => {
       const metrics = '#root > div.zEvYFT_8MiKA7RLBSHLT.nav > a:nth-child(3)';
       await page.waitForSelector(metrics);
       await page.click(metrics);
-      const memUse = '#reactRoot > div.grafana-app > main > div > div.panel-solo > div:nth-child(1) > div > div.css-kvzgb9-panel-content > div > div > div > div > canvas.flot-overlay'
+      const memUse =
+        '#reactRoot > div.grafana-app > main > div > div.panel-solo > div:nth-child(1) > div > div.css-kvzgb9-panel-content > div > div > div > div > canvas.flot-overlay';
       await page.waitForSelector(memUse);
       expect(memUse).toBeTruthy();
     });
   });
-  
 });

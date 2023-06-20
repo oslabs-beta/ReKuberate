@@ -2,9 +2,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import { gitControllerType } from '../types.ts';
 import db from '../models/dbModel.ts';
 
-
 const gitController: gitControllerType = {
-  getAccessToken: async (req, res, next) => {
+  getAccessToken: async (req: Request, res: Response, next: NextFunction) => {
     //after user successfully logins to github and is redirected to the app, send request to github with code from url, client id, and client secret to receive access token to use in next middleware
     //save acess token in database to remember user, and use the token as ssid cookie
     const { code } = req.query;
@@ -36,7 +35,7 @@ const gitController: gitControllerType = {
     }
   },
 
-  getUserData: async (req, res, next) => {
+  getUserData: async (req: Request, res: Response, next: NextFunction) => {
     //use github's api with user's access token to complete authentication
     const accessToken = res.locals.accessToken.access_token;
     try {

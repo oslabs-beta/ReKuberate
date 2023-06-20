@@ -1,0 +1,27 @@
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:ui-testing/puppeteer"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "ui-testing"],
+  "root": true,
+  "rules": {
+    "indent": ["warn", 2],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "always"],
+    "space-infix-ops": "warn",
+    "no-unused-vars": "warn",
+    "react/prop-types": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true,
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "puppeteerConfig": true,
+    "jestPuppeteer": true
+  }
+}

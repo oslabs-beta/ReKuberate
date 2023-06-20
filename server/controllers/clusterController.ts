@@ -66,7 +66,7 @@ const clusterController: ClusterControllerType = {
         //assign key's value to node's corresponding value from terminal output
         obj[currentContainer][key] = minikube[i].slice(minikube[i].indexOf(': ') + 2);
       }
-      
+
       res.locals.nodeAndPodInfo = obj;
       return next();
     } catch (err) {
