@@ -13,12 +13,16 @@ export default function SidebarContainer() {
   const navigate = useNavigate();
   let sideBar = [];
 
+  //check if darkmode is enabled and udpate colorTheme state if it is
   if (window.matchMedia('(prefers-color-scheme: dark)').matches && colorTheme === null) {
     dispatch(setColorTheme('dark'));
   }
 
+  //assign color of body to the current color theme stored in state
   document.querySelector('body').setAttribute('theme', colorTheme);
 
+  //if user is logged in, assign routes for sidebar links and add logout functionality to logout button. Else only allow routes to login
+  //and docs
   sideBar = loggedIn
     ? [
         <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
@@ -54,6 +58,7 @@ export default function SidebarContainer() {
         </Nav.Link>,
       ];
 
+  //render sidebar and darkmode button with functionality
   return (
     <Nav className={styles.sidebar}>
       {sideBar}
