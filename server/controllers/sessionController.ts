@@ -16,7 +16,7 @@ const sessionController: SessionControllerType = {
         //declare variable username and assign to current ssid cookie
         const username = req.cookies.ssid;
         //declare variable sqlQuery and assign to query string
-        const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
+        const sqlQuery = 'SELECT * FROM people WHERE username=$1';
         //declare variable data and assign to the evaulated result of querying the database for the username matching the ssid cookie
         const data = await db.query(sqlQuery, [username]);
         //assign res.locals.checked to a boolean depending on whether or not the user exists 
