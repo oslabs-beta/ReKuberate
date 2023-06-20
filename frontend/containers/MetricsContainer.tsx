@@ -12,11 +12,13 @@ export default function MetricsContainer() {
   clearInterval(podsIntervalID);
 
   if (!URLs.availability)
+    //if availability property on URLs is falsey render error message
     return (
       <>
         <p className="error">Error in retrieving metrics. Please try resubmitting.</p>
       </>
     );
+  //if availability property of URLs is truthy render following metrics data
   return (
     <div className="bigDiv">
       <div
