@@ -266,7 +266,7 @@ describe('Pods & Metrics Render after submitting', () => {
   }, 300000);
 });
 
-
+//Frontend testing for the docs. Looks at the nav links, page components of those links to see if all items are rendered
 describe('Docs Tab', () => {
   let page;
   let browser;
