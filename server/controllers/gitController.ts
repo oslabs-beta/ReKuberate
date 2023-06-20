@@ -2,10 +2,11 @@ import express, { Request, Response, NextFunction } from 'express';
 import { gitControllerType } from '../types.ts';
 import db from '../models/dbModel.ts';
 
+
 const gitController: gitControllerType = {
   getAccessToken: async (req, res, next) => {
-    //get access token to use in next middleware to use github api
-    console.log('req.query: ', req.query);
+    //after user successfully logins to github and is redirected to the app, send request to github with code from url, client id, and client secret to receive access token to use in next middleware
+    //save acess token in database to remember user, and use the token as ssid cookie
     const { code } = req.query;
     try {
       const CLIENT_ID = '4661c408155c78af4f09';
@@ -20,18 +21,13 @@ const gitController: gitControllerType = {
         }
       );
       const result = await response.json();
-      console.log('accessToken result: ', result);
       res.locals.accessToken = result;
-      console.log('!!!!!', res.locals.accessToken);
 
       const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
-
-      //executes query
       await db.query(sqlQuery, [res.locals.accessToken.access_token, 'gh_oauth']);
       res.cookie('ssid', res.locals.accessToken.access_token);
       return next();
     } catch (err) {
-      //add error handling
       return next({
         log: `error in gitController getAccessToken: ${err}`,
         status: 500,
@@ -41,10 +37,8 @@ const gitController: gitControllerType = {
   },
 
   getUserData: async (req, res, next) => {
-    // console.log(req.body);
-    //use github's api
-    const accessToken = res.locals.accessToken.access_token; //BEARER access token
-    console.log('accessToken: ', accessToken);
+    //use github's api with user's access token to complete authentication
+    const accessToken = res.locals.accessToken.access_token;
     try {
       const response = await fetch('https://api.github.com/user', {
         method: 'GET',
