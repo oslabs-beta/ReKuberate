@@ -1,3 +1,5 @@
+/* eslint-disable ui-testing/no-wait-in-tests */
+/* eslint-disable ui-testing/no-browser-commands-in-tests */
 import puppeteer from 'puppeteer';
 //Utilized puppeteer and jest to perform each test. These test are not for functionality but rather render of components
 
@@ -77,7 +79,7 @@ describe('Login Page', () => {
   });
 });
 
-//Create User frontend test for every rendered component 
+//Create User frontend test for every rendered component
 describe('Create User Page', () => {
   let page;
   let browser;

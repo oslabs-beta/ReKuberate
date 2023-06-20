@@ -23,5 +23,13 @@
     "context": true,
     "puppeteerConfig": true,
     "jestPuppeteer": true
-  }
+  },
+  "overrides": [
+    {
+      "files": ["frontendTests.js", "e2e.js"], // Or *.test.js
+      "rules": {
+        "require-jsdoc": "off"
+      }
+    }
+  ]
 }
