@@ -2,7 +2,7 @@ import pkg from 'pg';
 
 const { Pool } = pkg;
 
-const PG_URI: string = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
+const PG_URI = 'postgres://rcyzjqws:IEUO4MNW9jXWJe8qgdNEZEJ8h_3yz_rB@rajje.db.elephantsql.com/rcyzjqws';
 const pool: pkg.Pool = new Pool({
   connectionString: PG_URI,
   ssl: {
@@ -20,9 +20,9 @@ pool.connect((err: Error) => {
 });
 
 const db =  {
-    query: (text: string, params?:string[], callback?: any): any => {
-        return pool.query(text, params, callback);
-    },
+  query: (text: string, params?:string[], callback?: any): any => {
+    return pool.query(text, params, callback);
+  },
 };
 
 export default db;

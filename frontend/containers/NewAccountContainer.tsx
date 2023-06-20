@@ -24,7 +24,7 @@ export default function CreateAccount() {
       dispatch(setErrorMessage([<p className={styles.errorMessage}>Missing username or password</p>]));
     else {
       try {
-        const response = await fetch(`/api/user/signup`, {
+        const response = await fetch('/api/user/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export default function CreateAccount() {
         });
         if (!response.ok) {
           dispatch(setErrorMessage([<p className={styles.errorMessage}>Username already exists</p>]));
-          throw new Error(`Invalid input`);
+          throw new Error('Invalid input');
         } else {
           dispatch(setLoggedIn(true));
           navigate('/');

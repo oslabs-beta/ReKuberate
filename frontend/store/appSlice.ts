@@ -34,10 +34,10 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setData: (state, action: PayloadAction<Object>) => {
+    setData: (state, action: PayloadAction<object>) => {
       state.data = action.payload;
     },
-    setURLs: (state, action: PayloadAction<Object>) => {
+    setURLs: (state, action: PayloadAction<object>) => {
       state.URLs = action.payload;
     },
     setLoading: (state, action: PayloadAction<'block' | 'none'>) => {
