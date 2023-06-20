@@ -1,3 +1,4 @@
+// Function to render mouse during puppeteer web-scrapping to visualize the mouse movements and clicks
 async function MouseHelper(page) {
   await page.evaluateOnNewDocument(() => {
     // Install mouse helper only for top-level frame.

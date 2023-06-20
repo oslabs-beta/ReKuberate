@@ -14,6 +14,9 @@ export default function LoginContainer() {
     dispatch(setErrorMessage([]));
   }, []);
 
+  //send user's login input to backend to verify their account
+  //upon successful login, update loggedIn state to true and navigate to homepage
+  //if there is an error, display it and update errorMessage state
   const verifyLogin = async () => {
     const username = (document.getElementById('loginUsername') as HTMLInputElement).value;
     const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
@@ -43,9 +46,8 @@ export default function LoginContainer() {
     }
   };
 
+  //initiate OAuth by sending user to github authorization page with app's client id
   const verifyGithub = () => {
-    //initiate OAuth
-    console.log('test github');
     const CLIENT_ID = '4661c408155c78af4f09';
     window.location.assign('https://github.com/login/oauth/authorize?client_id=' + CLIENT_ID);
   };
@@ -65,11 +67,11 @@ export default function LoginContainer() {
           <p>Password</p>
           <input type="password" name="password" id="loginPassword" />
         </form>
-        <button id="loginButton" onClick={() => verifyLogin()}>
+        <button className={styles.loginButton} id="loginButton" onClick={() => verifyLogin()}>
           Login
         </button>
-        <button id="githubLogin" onClick={() => verifyGithub()}>
-          Login with Github
+        <button className={styles.githubLogin} id="githubLogin" onClick={() => verifyGithub()}>
+          <i className="fa-brands fa-github"></i> Login with Github
         </button>
         <div className="createAccount">
           <Nav.Link as={Link} to="/createAccount">

@@ -6,6 +6,8 @@ import { MockData } from '../types';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setData, setLoading, setPodIntervalID } from '../store/appSlice';
 
+// Fetches data from our server and renders data into a network graph using Anychart
+// Data is divided into nodes and edges with conditional coloring
 export default function PodsContainer() {
   const data: any = useAppSelector((state) => state.app.data);
   const firstKey = Object.keys(data)[0];

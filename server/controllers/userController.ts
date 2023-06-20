@@ -8,13 +8,18 @@ const userController: userControllerType = {
   //used for both login and account creation
   checkUser: async (req, res, next) => {
     console.log('checkUser controller is running');
+    //Desctructure createUsername property on request body
     const { createUsername } = req.body;
+    //Declare variable assigned to query for selecting object that matches passed in username
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
     try {
+      //Declare variable assigned to result of database query
       const data = await db.query(sqlQuery, [createUsername]);
+      //Pass object from database on res.locals.foundUser property
       res.locals.foundUser = data.rows[0];
       return next();
     } catch (err) {
+      //Throw error if try block fails
       return next({
         log: 'Error in userController.checkUser middleware function',
         status: 500,
@@ -26,6 +31,7 @@ const userController: userControllerType = {
   //adds user to DB if username is not already taken
   createUser: async (req, res, next) => {
     console.log('createUser controller is running');
+    //Throw error if result from checkUser middleware was not an empty object
     if (res.locals.foundUser) {
       return next({
         log: 'Error in userController.createUser middleware function',
@@ -33,6 +39,7 @@ const userController: userControllerType = {
         message: { err: 'username already taken' },
       });
     }
+    //Destructure createUsername and createPassword properties on request body
     const { createUsername, createPassword } = req.body;
     //return error if username or password was not provided
     if (!createUsername.length || !createPassword)
@@ -53,6 +60,7 @@ const userController: userControllerType = {
       res.locals.foundUser = { username: createUsername };
       return next();
     } catch (err) {
+      //Throw error if try block fails
       return next({
         log: 'Error in userController.checkUser middleware function',
         status: 500,
@@ -70,15 +78,20 @@ const userController: userControllerType = {
       message: { err: 'incorrect username or password' },
     };
 
-    //check if user was found in previous middleware function
+    //If user was not found in previous middleware function throw error
     if (!res.locals.foundUser) return next(error);
+    //Destructure password property from object passed from previous middleware function
     const { password } = res.locals.foundUser;
+    //Desctructure createPassword property from request body
     const { createPassword } = req.body;
     try {
+      //Declare variable assigned to result of calling bcrypt.compare on inputted password and stored hashed password
       const compare: boolean = await bcrypt.compare(createPassword, password);
+      //If result is false throw error
       if (!compare) return next(error);
       else return next();
     } catch (err) {
+      //Throw error if try block fails
       return next({
         log: 'error in userController.checkPassword middleware function',
         status: 500,
@@ -88,4 +101,5 @@ const userController: userControllerType = {
   },
 };
 
+//Export userController object
 export default userController;
