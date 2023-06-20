@@ -13,22 +13,27 @@ import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
 import Docs from './pages/Docs';
 
+//create App functional component and export
 export default function App() {
   const dispatch = useAppDispatch();
   const loggedIn = useAppSelector((state) => state.app.loggedIn);
 
   useEffect(() => {
     (async () => {
+      //fetch request for handling user login
       await fetch('/api/user/')
         .then((res) => res.json())
         .then((res) => {
+          //if result is truthy logged in status is true
           if (res) dispatch(setLoggedIn(true));
+          //else logged in status is false
           else dispatch(setLoggedIn(false));
         });
     })();
   });
 
   return loggedIn ? (
+    //if loggedIn is set to true the following components should render to page
     <>
       <LoadingWheel />
       <SidebarContainer />
@@ -45,6 +50,7 @@ export default function App() {
       </div>
     </>
   ) : (
+    //if loggedIn is set to false the following components should render to page
     <>
       <LoadingWheel />
       <SidebarContainer />
