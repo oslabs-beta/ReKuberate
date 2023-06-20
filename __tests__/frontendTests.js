@@ -132,7 +132,7 @@ describe('Create User Page', () => {
   });
 });
 
-
+//Frontend testing for all the nav bar components to be rendered on the page
 describe('Nav Bar', () => {
   let page;
   let browser;
@@ -206,6 +206,7 @@ describe('Nav Bar', () => {
     expect(logoutLink).toBeTruthy();
   });
 });
+
 
 describe('Pods & Metrics Render after submitting', () => {
   let page;
