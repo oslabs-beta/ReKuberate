@@ -3,21 +3,25 @@ import { InitControllerType } from '../types';
 import webScrapper from './webScrapper.js';
 
 const initController: InitControllerType = {
-  //controller to install prometheus stack from help and update
+  //controller to install prometheus stack from helm and update
   installPrometheus: async (req, res, next) => {
     try {
       console.log('prometheus initialization controller running');
+      //add helm reop for grafana
       spawnSync('helm repo add grafana https://grafana.github.io/helm-charts', {
         shell: true,
       });
+      //fetch and build chart's dependencies
       spawnSync('helm dependency build ./kube-prometheus-stack', {
         shell: true,
       });
+      //install newly built helm chart
       spawnSync('helm install prometheus ./kube-prometheus-stack', {
         shell: true,
       });
       return next();
     } catch (err) {
+      //throw error if try block fails
       return next({
         log: `error in initController installPrometheus: ${err}`,
         status: 500,
