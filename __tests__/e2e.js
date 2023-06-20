@@ -206,9 +206,8 @@ describe('End to End Unit Tests', () => {
     });
   });
 
-  //Test Unit for Pod rendering and display
+  //Test Unit for Pod rendering and display (needs long timeouts since whole route is long)
   describe('Pods Page Test Unit', () => {
-
     //Tests functionality of submit button routing to pods display after pods render
     it('Redirects to pods page', async () => {
       const username = '#loginUsername';
@@ -253,7 +252,6 @@ describe('End to End Unit Tests', () => {
 
   //Test Unit for Metrics display page
   describe('Metrics Page Test Unit', () => {
-
      //Tests functionality of clicking on metrics in sidebar
      it('Routes to Metrics Page', async () => {
       const username = '#loginUsername';
