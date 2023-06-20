@@ -2,15 +2,19 @@ import React from 'react';
 import './MetricsContainerStyles.scss';
 import { useAppSelector } from '../store/hooks';
 
+//create and export MetricsContainer functional componenet
 export default function MetricsContainer() {
+  //access URLs state and assign to URLs variable
   const URLs = useAppSelector((state) => state.app.URLs);
+  //access podIntervalID state and assign to podIntervalID variable
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
-  clearInterval(podsIntervalID)
+  //clear podsIntervalID
+  clearInterval(podsIntervalID);
 
   if (!URLs.availability)
     return (
       <>
-        <p className='error'>Error in retrieving metrics. Please try resubmitting.</p>
+        <p className="error">Error in retrieving metrics. Please try resubmitting.</p>
       </>
     );
   return (
