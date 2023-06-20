@@ -22,8 +22,8 @@ describe('Server Unit tests', () => {
     //checks if controller returns iframe tags in res.locals.graphs as an object
     it ('successfully returns res.locals.graphs as an object', async () => {
       const response = await request.get('/api/initiate/');
-      expect(response.body).toBeInstanceOf(Object)
-    }, 40000)
+      expect(response.body).toBeInstanceOf(Object);
+    }, 40000);
   });
 
   //Route to get pod information pulled from terminal
@@ -40,7 +40,7 @@ describe('Server Unit tests', () => {
     //can't be tested with the rest of the tests because it checks the response when the cluster is not running
     it('sends minikube not found when no pods are running', async () => {
       const response = await request.get('/api/pods/');
-      expect(response.text).toBe('{\"* Profile \\\"minikube\\\" not found. Run \\\"minikube profile list\\\" to view all profiles.\":{\"pods\":[]}}')
+      expect(response.text).toBe('{\"* Profile \\\"minikube\\\" not found. Run \\\"minikube profile list\\\" to view all profiles.\":{\"pods\":[]}}');
     });
   });
 
@@ -57,7 +57,7 @@ describe('Server Unit tests', () => {
       //tests to see if server responds with boolean value for frontend routing 
       it('successfully sends back boolean value if cookie exists or not', async () => {
         const response = await request.get('/api/user/');
-        expect(response.text).toBe("false");
+        expect(response.text).toBe('false');
       })
     });
 
@@ -66,8 +66,8 @@ describe('Server Unit tests', () => {
       //update with new user and password each time to test
       it('successfully sends status 200 on user creation', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "steveJobs",
-          createPassword: "Apple",
+          createUsername: 'steveJobs',
+          createPassword: 'Apple',
         });
         expect(response.statusCode).toBe(200);
       });
@@ -75,8 +75,8 @@ describe('Server Unit tests', () => {
       //tests for response code when username already exists
       it('responds with status 409 if username already exists in database', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "Hunter",
-          createPassword: "hunter2",
+          createUsername: 'Hunter',
+          createPassword: 'hunter2',
         });
         expect(response.statusCode).toBe(409);
       });
@@ -84,10 +84,10 @@ describe('Server Unit tests', () => {
       //tests for response message when username already exists
       it('responds with error message if username is already taken', async () => {
         const response = await request.post('/api/user/signup').send({
-          createUsername: "Hunter",
-          createPassword: "hunter2",
+          createUsername: 'Hunter',
+          createPassword: 'hunter2',
         });
-        expect(response.text).toBe("{\"err\":\"username already taken\"}");
+        expect(response.text).toBe('{\"err\":\"username already taken\"}');
       });
     });
 
@@ -95,8 +95,8 @@ describe('Server Unit tests', () => {
     describe('User Login', () => {
       it('sends status 200 on succcessful login', async () => {
         const response = await request.post('/api/user/login').send({
-          createUsername: "Kai",
-          createPassword: "kubernetes"
+          createUsername: 'Kai',
+          createPassword: 'kubernetes'
         });
         expect(response.statusCode).toBe(200);
       });
@@ -104,8 +104,8 @@ describe('Server Unit tests', () => {
       //tests response status code when username is not in database for login
       it('sucessfully sends status 400 when username is invalid', async () => {
         const response = await request.post('/api/user/login').send({
-          creeateUsername: "Frank",
-          createPassword: "kubernetes"
+          creeateUsername: 'Frank',
+          createPassword: 'kubernetes'
         });
         expect(response.statusCode).toBe(401);
       });
@@ -113,8 +113,8 @@ describe('Server Unit tests', () => {
       //tests response status code when password does not match username in database
       it('successfully sends status 400 when password is invalid', async () => {
         const response = await request.post('/api/user/login').send({
-          creeateUsername: "Kai",
-          createPassword: "iLoveKubernetes"
+          creeateUsername: 'Kai',
+          createPassword: 'iLoveKubernetes'
         });
         expect(response.statusCode).toBe(401);
       });
@@ -125,7 +125,7 @@ describe('Server Unit tests', () => {
       //tests response message when user logs out 
       it('redirects user to / path', async () => {
         const response = await request.get('/api/user/logout');
-        expect(response.text).toBe("Found. Redirecting to /");
+        expect(response.text).toBe('Found. Redirecting to /');
       });
 
       //tests server response status when user logs out

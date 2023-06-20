@@ -17,7 +17,7 @@ export default function PodsContainer() {
     edges: [],
   };
 
-  for (let key in data) {
+  for (const key in data) {
     if (data[key].host === 'Running') {
       chartData.nodes.push({
         id: key,
@@ -114,7 +114,7 @@ export default function PodsContainer() {
   nodes.tooltip().fontSize(18);
   nodes.tooltip().background('white');
   nodes.tooltip().fontColor('black');
-  nodes.tooltip().format(`name: {%name}\nstatus: {%status}\ntype: {%purpose}`);
+  nodes.tooltip().format('name: {%name}\nstatus: {%status}\ntype: {%purpose}');
 
   const edges = chart.edges();
   edges.normal().stroke('#7ec5ff');
