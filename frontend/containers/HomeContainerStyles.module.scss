@@ -6,7 +6,6 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
-
 .fileborder {
   margin-left: auto;
   margin-right: auto;
@@ -23,11 +22,6 @@
   overflow-y: hidden;
   overflow-x: hidden;
 }
-
-.fileInput {
-  font-size: 1.25vw;
-}
-
 .button {
   display: block;
   margin: 10px;
@@ -42,52 +36,23 @@
   margin-right: auto;
   cursor: pointer;
 }
-
-.fileInput::file-selector-button {
-  margin: 10px;
-  font-size: 1.25vw;
-  border-radius: 7px;
-  border: solid;
-  padding: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: white;
-  cursor: pointer;
-}
-
-.fileInput::file-selector-button:hover {
-  background-color: #fffeee;
-}
-
 .button:hover {
   background-color: #fffeee;
 }
-
 @media screen and (max-width: 950px) {
-  .fileInput {
-    font-size: 12px;
-  }
-
   .button {
     font-size: 12px;
   }
-
-  .fileInput::file-selector-button {
-    font-size: 12px;
-  }
 }
-
 .infoContainer {
   margin: auto;
   padding-bottom: 5vh;
 }
-
 .info {
   width: 60%;
   margin: auto;
   font-size: 1.4vw;
 }
-
 .submit {
   color: white;
   background-color: #759c85;
@@ -104,7 +69,6 @@
   align-items: center;
   margin: auto;
 }
-
 .submit:hover {
   background-color: #01a07e;
   border: #037058;
@@ -112,7 +76,6 @@
   box-shadow: 1px 1px 1px 4px #037058;
   cursor: pointer;
 }
-
 .submit:active {
   top: 5px;
   left: 5px;
