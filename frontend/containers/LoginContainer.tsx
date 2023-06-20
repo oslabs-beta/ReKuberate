@@ -65,11 +65,11 @@ export default function LoginContainer() {
           <p>Password</p>
           <input type="password" name="password" id="loginPassword" />
         </form>
-        <button id="loginButton" onClick={() => verifyLogin()}>
+        <button className={styles.loginButton} id="loginButton" onClick={() => verifyLogin()}>
           Login
         </button>
-        <button id="githubLogin" onClick={() => verifyGithub()}>
-          Login with Github
+        <button className={styles.githubLogin} id="githubLogin" onClick={() => verifyGithub()}>
+          <i className="fa-brands fa-github"></i> Login with Github
         </button>
         <div className="createAccount">
           <Nav.Link as={Link} to="/createAccount">

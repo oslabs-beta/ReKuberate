@@ -15,7 +15,6 @@
   width: 30vh;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
 }
 
@@ -24,21 +23,19 @@
 }
 
 .login input {
-  // border: 2px red solid;
   height: 2.5vh;
   width: 25vh;
   border-radius: 6px;
   border: none;
 }
 
-.login button {
+.loginButton {
   margin-top: 25px;
   margin-bottom: 10px;
   width: 15vh;
   height: 3vh;
   border-radius: 4px;
   border: none;
-  // outline: none;
   cursor: pointer;
 }
 
@@ -54,4 +51,16 @@
 
 .errorMessage {
   color: red;
+}
+
+.githubLogin {
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 15vh;
+  height: 3vh;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
 }
