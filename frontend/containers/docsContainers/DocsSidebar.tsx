@@ -5,10 +5,14 @@ import styles from './DocsStyles.module.scss';
 export default function DocsSidebar() {
   function transition(id: string) {
     const ids = ['#introduction', '#about', '#installation', '#built'];
-    console.log(id);
     document.querySelector<HTMLElement>(id).style.opacity = '1';
+    document.querySelector<HTMLElement>(id).style.zIndex = '99';
+
     for (let i = 0; i < ids.length; i++) {
-      if (id !== ids[i]) document.querySelector<HTMLElement>(ids[i]).style.opacity = '0';
+      if (id !== ids[i]) {
+        document.querySelector<HTMLElement>(ids[i]).style.opacity = '0';
+        document.querySelector<HTMLElement>(ids[i]).style.zIndex = '1';
+      }
     }
   }
 

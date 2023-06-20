@@ -96,7 +96,7 @@
   width: 40vmin;
   border: 2px;
   border-style: solid;
-  border-color: #2da38a;;
+  border-color: #2da38a;
   border-radius: 20px;
   box-shadow: 1px 1px 1px 1px #479a88;
   display: flex;
@@ -107,9 +107,10 @@
 
 .submit:hover {
   background-color: #01a07e;
-  border:  #037058;
+  border: #037058;
   transition-duration: 400ms;
   box-shadow: 1px 1px 1px 4px #037058;
+  cursor: pointer;
 }
 
 .submit:active {
@@ -117,4 +118,3 @@
   left: 5px;
   box-shadow: none;
 }
-

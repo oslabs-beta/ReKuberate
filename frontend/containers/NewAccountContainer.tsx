@@ -13,6 +13,9 @@ export default function CreateAccount() {
     dispatch(setErrorMessage([]));
   }, []);
 
+  //send user's account creation input to backend to store their credentials
+  //upon successful account creation, update loggedIn state to true and navigate to homepage
+  //if any errors occur, update errorMessage state and display it
   const verifyNewAccount = async () => {
     const username = (document.getElementById('createUsername') as HTMLInputElement).value;
     const password = (document.getElementById('createPassword') as HTMLInputElement).value;
@@ -36,7 +39,7 @@ export default function CreateAccount() {
           navigate('/');
         }
       } catch (err) {
-        console.error('Error: ', err);
+        throw new Error(err);
       }
     }
   };
