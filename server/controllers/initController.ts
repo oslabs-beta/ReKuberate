@@ -56,4 +56,5 @@ const initController: InitControllerType = {
   },
 };
 
+//export initController object
 export default initController;
