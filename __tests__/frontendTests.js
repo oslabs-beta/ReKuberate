@@ -1,5 +1,7 @@
 import puppeteer from 'puppeteer';
 
+
+//Frontend test for every rendered component on the login page of the desktop app
 describe('Login Page', () => {
   let page;
   let browser;
