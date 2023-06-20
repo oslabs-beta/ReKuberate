@@ -39,7 +39,7 @@ export default function CreateAccount() {
           navigate('/');
         }
       } catch (err) {
-        throw new Error('Error: ', err);
+        throw new Error(err);
       }
     }
   };
