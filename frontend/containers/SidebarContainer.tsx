@@ -21,8 +21,8 @@ export default function SidebarContainer() {
   //assign color of body to the current color theme stored in state
   document.querySelector('body').setAttribute('theme', colorTheme);
 
-  //if user is logged in, assign routes for sidebar links and add logout functionality to logout button. Else only allow routes to login
-  //and docs
+  //if user is logged in, assign sidebar array to render routes for all sidebar links and add logout functionality to logout button. 
+  //Else only render routes for login and docs
   sideBar = loggedIn
     ? [
         <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
