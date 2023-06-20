@@ -33,6 +33,7 @@ export default function App() {
   });
 
   return loggedIn ? (
+    //if loggedIn is set to true the following components should render to page
     <>
       <LoadingWheel />
       <SidebarContainer />
@@ -49,6 +50,7 @@ export default function App() {
       </div>
     </>
   ) : (
+    //if loggedIn is set to false the following components should render to page
     <>
       <LoadingWheel />
       <SidebarContainer />
