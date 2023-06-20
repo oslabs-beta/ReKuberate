@@ -2,9 +2,13 @@ import React from 'react';
 import './MetricsContainerStyles.scss';
 import { useAppSelector } from '../store/hooks';
 
+//create and export MetricsContainer functional componenet
 export default function MetricsContainer() {
+  //access URLs state and assign to URLs variable
   const URLs = useAppSelector((state) => state.app.URLs);
+  //access podIntervalID state and assign to podIntervalID variable
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
+  //clear podsIntervalID
   clearInterval(podsIntervalID);
 
   if (!URLs.availability)
