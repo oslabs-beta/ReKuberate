@@ -10,6 +10,7 @@ export default function HomeContainer() {
   const podsIntervalID = useAppSelector((state) => state.app.podIntervalID);
   clearInterval(podsIntervalID);
 
+  //onclick submit Cluster of the submit button, it we send a fetch request to the backend where ultimately we will reroute to the pod's container
   function submitCluster(): void {
     dispatch(setLoading('block'));
     fetch('/api/initiate')
@@ -20,6 +21,7 @@ export default function HomeContainer() {
       });
   }
 
+  //the render components of the home page, will include a brief description of what the app is, a submit button for the pods to be initiated, and a redirection to the pods component endpoint
   return (
     <div className={styles.yaml}>
       <div className={styles.fileborder}>
