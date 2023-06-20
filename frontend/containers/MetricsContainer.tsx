@@ -24,7 +24,7 @@ export default function MetricsContainer() {
       <div
         className="memoryDiv"
         dangerouslySetInnerHTML={{
-          __html: `${URLs.memUsageDial.slice(0, 7)} class   ='memory' ${URLs.memUsageDial.slice(8)}`,
+          __html: `${URLs.memUsageDial.slice(0, 7)} class='memory' ${URLs.memUsageDial.slice(8)}`,
         }}
       ></div>
       <div
