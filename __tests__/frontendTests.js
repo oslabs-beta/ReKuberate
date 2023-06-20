@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-
+//Utilized puppeteer and jest to perform each test
 
 //Frontend test for every rendered component on the login page of the desktop app
 describe('Login Page', () => {
@@ -77,6 +77,7 @@ describe('Login Page', () => {
   });
 });
 
+//Create User frontend test for every rendered component 
 describe('Create User Page', () => {
   let page;
   let browser;
@@ -130,6 +131,7 @@ describe('Create User Page', () => {
     expect(inputPassLabel).toBeTruthy();
   });
 });
+
 
 describe('Nav Bar', () => {
   let page;
