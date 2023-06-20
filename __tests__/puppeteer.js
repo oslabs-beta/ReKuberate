@@ -91,7 +91,7 @@ async function installMouseHelper(page) {
 (async () => {
   const browser = await puppeteer.launch({
     headless: true,
-    args: [`--window-size=1900,1000`],
+    args: ['--window-size=1900,1000'],
   });
   const page = await browser.newPage();
   //set puppeteer chrome window screensize for all users
