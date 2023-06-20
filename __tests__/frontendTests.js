@@ -1,16 +1,16 @@
 import puppeteer from 'puppeteer';
-//Utilized puppeteer and jest to perform each test
+//Utilized puppeteer and jest to perform each test. These test are not for functionality but rather render of components
 
 //Frontend test for every rendered component on the login page of the desktop app
 describe('Login Page', () => {
   let page;
   let browser;
-
+  //Route to server before all
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
-
+  //close the puppetter testing after testing for components
   afterAll(async () => {
     await browser.close();
   });
@@ -81,12 +81,12 @@ describe('Login Page', () => {
 describe('Create User Page', () => {
   let page;
   let browser;
-
+  //Route to server before all
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
-
+  //close the puppetter testing after testing for components
   afterAll(async () => {
     await browser.close();
   });
@@ -136,12 +136,12 @@ describe('Create User Page', () => {
 describe('Nav Bar', () => {
   let page;
   let browser;
-
+  //Route to server before all
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
-
+  //close the puppetter testing after testing for components
   afterAll(async () => {
     await browser.close();
   });
@@ -211,11 +211,12 @@ describe('Nav Bar', () => {
 describe('Pods & Metrics Render after submitting', () => {
   let page;
   let browser;
-
+  //Route to server before all
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
+  //close the puppetter testing after testing for components
   afterAll(async () => {
     await browser.close();
   });
@@ -270,11 +271,12 @@ describe('Pods & Metrics Render after submitting', () => {
 describe('Docs Tab', () => {
   let page;
   let browser;
-
+  //Route to server before all
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: 'new' });
     page = await browser.newPage();
   });
+  //close the puppetter testing after testing for components
   afterAll(async () => {
     await browser.close();
   });
