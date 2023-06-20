@@ -1,8 +1,0 @@
-# this file tests some non default values to increase the test coverage
-
-defaultRules:
-  additionalRuleLabels:
-    key: value
-  additionalRuleGroupLabels:
-    kubernetesSystem:
-      key2: value2
