@@ -60,7 +60,7 @@ describe('Server Unit tests', () => {
       it('successfully sends back boolean value if cookie exists or not', async () => {
         const response = await request.get('/api/user/');
         expect(response.text).toBe('false');
-      })
+      });
     });
 
     //User Creation Route
