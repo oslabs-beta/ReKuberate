@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import styles from './DocsStyles.module.scss';
 
+// Navigation and transition for documentation subpage
 export default function DocsSidebar() {
   function transition(id: string) {
     const ids = ['#introduction', '#about', '#installation', '#built'];

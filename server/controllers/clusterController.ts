@@ -1,4 +1,4 @@
-import { spawn, spawnSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import { ClusterControllerType, obj } from '../types';
 
 const clusterController: ClusterControllerType = {
@@ -21,14 +21,14 @@ const clusterController: ClusterControllerType = {
       });
 
       const nodesOutput = nodes.output;
-      //assign minikube to first index of nodesOutput and remove all linebreaks
+      //assign minikube to first index of nodesOutput and remove all line breaks
       const minikube = nodesOutput[1].split(/[\n]/);
       const obj: obj = {};
       let currentContainer: string = minikube[0];
       obj[currentContainer] = {};
       obj[currentContainer].pods = [];
 
-      //splitting the strings into individual strings seperated by one space
+      //splitting the strings into individual strings separated by one space
       for (let i = 1; i < podsSplit.length - 1; i++) {
         podsSplit[i] = podsSplit[i].replace(/\s+/g, ' ');
         podsSplit[i] = podsSplit[i].split(/[' ']/);
