@@ -101,4 +101,5 @@ const userController: userControllerType = {
   },
 };
 
+//Export userController object
 export default userController;
