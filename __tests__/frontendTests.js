@@ -207,7 +207,7 @@ describe('Nav Bar', () => {
   });
 });
 
-
+//Frontend testing for pods and metrics to render after the onclick of the submit button, waits for grafana to compile all metrics
 describe('Pods & Metrics Render after submitting', () => {
   let page;
   let browser;
@@ -265,6 +265,7 @@ describe('Pods & Metrics Render after submitting', () => {
     expect(chartLoaded).toBeTruthy();
   }, 300000);
 });
+
 
 describe('Docs Tab', () => {
   let page;
