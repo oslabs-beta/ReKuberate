@@ -13,7 +13,7 @@ const clusterController: ClusterControllerType = {
       const podsOutput = pods.stdout;
 
       //remove all line breaks in terminal response
-      const podsSplit = podsOutput.split(/[\n]/);
+      const podsSplit: any = podsOutput.split(/[\n]/);
       //execute terminal command to get node status and save result to nodesOutput
       const nodes = spawnSync('minikube status', {
         shell: true,
