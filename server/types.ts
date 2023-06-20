@@ -10,7 +10,6 @@ export type InitControllerType = {
 
 export type ClusterControllerType = {
   getPodAndNodeInfo: middleware;
-  // getNodeInfo: middleware
 };
 
 export type userControllerType = {
@@ -28,8 +27,6 @@ export type SessionControllerType = {
 };
 
 export type gitControllerType = {
-  // CLIENT_ID: string;
-  // CLIENT_SECRET: string;
   getAccessToken: middleware;
   getUserData: middleware;
 };
@@ -48,5 +45,3 @@ export type obj = {
     [key: string]: any;
   };
 };
-
-// export type podsSplit = string | string[];
