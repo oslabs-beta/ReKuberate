@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable ui-testing/missing-assertion-in-test */
 import supertest from 'supertest';
 const server = 'http://localhost:3001';
 const request = supertest(server);
