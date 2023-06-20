@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { app, BrowserWindow } = require('electron');
 const { spawn } = require('child_process');
 

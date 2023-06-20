@@ -13,7 +13,7 @@ userRoute.get('/', sessionController.hasCookie, (req, res) => {
 //Signup Route: creates a new user in DB, checking for username availability and creates a session cookie
 userRoute.post('/signup', userController.checkUser, userController.createUser, cookieController.setSSIDCookie, (req, res) => {
     res.sendStatus(200);
-  }
+}
 );
 
 //Login Route: checks for username in database, matching password, and creates a session cookie
