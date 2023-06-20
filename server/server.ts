@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -12,7 +12,7 @@ const app = express();
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
 
-const PORT: number = 3001;
+const PORT = 3001;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -37,10 +37,10 @@ app.use('/api/pods', clusterRoute);
 app.use('/api/user', userRoute);
 
 //Catch all Route
-app.use('*', (req: Request, res: Response) => res.status(404).send("this is not the address you're looking for"));
+app.use('*', (req: Request, res: Response) => res.status(404).send('this is not the address you\'re looking for'));
 
 //Global Error Handler
-app.use((err: ErrorHandler, req: Request, res: Response, next: NextFunction) => {
+app.use((err: ErrorHandler, req: Request, res: Response) => {
   const defaultError: ErrorHandler = {
     log: 'Express error handler caught unkown middleware error',
     status: 500,
