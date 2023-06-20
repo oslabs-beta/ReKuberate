@@ -78,15 +78,20 @@ const userController: userControllerType = {
       message: { err: 'incorrect username or password' },
     };
 
-    //check if user was found in previous middleware function
+    //If user was not found in previous middleware function throw error
     if (!res.locals.foundUser) return next(error);
+    //Destructure password property from object passed from previous middleware function
     const { password } = res.locals.foundUser;
+    //Desctructure createPassword property from request body
     const { createPassword } = req.body;
     try {
+      //Declare variable assigned to result of calling bcrypt.compare on inputted password and stored hashed password
       const compare: boolean = await bcrypt.compare(createPassword, password);
+      //If result is false throw error
       if (!compare) return next(error);
       else return next();
     } catch (err) {
+      //Throw error if try block fails
       return next({
         log: 'error in userController.checkPassword middleware function',
         status: 500,
