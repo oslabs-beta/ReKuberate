@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { CookieControllerType } from '../types';
 
 const cookieController: CookieControllerType = {
-  //setSSIDCookie sets a current instance of res.cookie to be the current value of res.locals.user pulled from when a user logs in
+  //setSSIDCookie sets an ssid cookie to be the current value of res.locals.user pulled from when a user logs in
   setSSIDCookie: (req: Request, res: Response, next: NextFunction) => {
     console.log('setSSIDCookie controller running');
     const username = res.locals.foundUser.username;
