@@ -8,13 +8,18 @@ const userController: userControllerType = {
   //used for both login and account creation
   checkUser: async (req, res, next) => {
     console.log('checkUser controller is running');
+    //Desctructure createUsername property on request body
     const { createUsername } = req.body;
+    //Declare variable assigned to query for selecting object that matches passed in username
     const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
     try {
+      //Declare variable assigned to result of database query
       const data = await db.query(sqlQuery, [createUsername]);
+      //Pass object from database on res.locals.foundUser property
       res.locals.foundUser = data.rows[0];
       return next();
     } catch (err) {
+      //Throw error is try block fails
       return next({
         log: 'Error in userController.checkUser middleware function',
         status: 500,
