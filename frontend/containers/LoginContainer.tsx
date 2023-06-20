@@ -34,7 +34,7 @@ export default function LoginContainer() {
         });
         if (!response.ok) {
           dispatch(setErrorMessage([<p className={styles.errorMessage}>Incorrect username or password</p>]));
-          throw new Error(`Incorrect username or password`);
+          throw new Error('Incorrect username or password');
         } else {
           dispatch(setErrorMessage([]));
           dispatch(setLoggedIn(true));
