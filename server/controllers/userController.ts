@@ -19,7 +19,7 @@ const userController: userControllerType = {
       res.locals.foundUser = data.rows[0];
       return next();
     } catch (err) {
-      //Throw error is try block fails
+      //Throw error if try block fails
       return next({
         log: 'Error in userController.checkUser middleware function',
         status: 500,
@@ -31,6 +31,7 @@ const userController: userControllerType = {
   //adds user to DB if username is not already taken
   createUser: async (req, res, next) => {
     console.log('createUser controller is running');
+    //Throw error if result from checkUser middleware was not an empty object
     if (res.locals.foundUser) {
       return next({
         log: 'Error in userController.createUser middleware function',
@@ -38,6 +39,7 @@ const userController: userControllerType = {
         message: { err: 'username already taken' },
       });
     }
+    //Destructure createUsername and createPassword properties on request body
     const { createUsername, createPassword } = req.body;
     //return error if username or password was not provided
     if (!createUsername.length || !createPassword)
@@ -58,6 +60,7 @@ const userController: userControllerType = {
       res.locals.foundUser = { username: createUsername };
       return next();
     } catch (err) {
+      //Throw error if try block fails
       return next({
         log: 'Error in userController.checkUser middleware function',
         status: 500,
