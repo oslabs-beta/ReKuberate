@@ -19,7 +19,7 @@ export default function About() {
           <span className={styles.red}>error</span>,  
           <span className={styles.yellow}>pending</span>,  
           <span className={styles.green}>running</span>.</p>
-        <p>Hovering over each node will display additional details.</p>
+        <p>Hovering over each node will display a modal with additional details.</p>
       </div>
     </>
   );
