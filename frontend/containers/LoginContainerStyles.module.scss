@@ -69,4 +69,17 @@
   border-radius: 7px;
   border: none;
   cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #0d110f;
+}
+
+.githubLogin:hover {
+  background-color: #1d3127;
+  box-shadow: 1px 1px 1px 1px #333533;
+  transition-duration: 300ms;
+}
+
+.githubLogin:active {
+  top: 5px;
+  left: 5px;
+  box-shadow: none;
 }
