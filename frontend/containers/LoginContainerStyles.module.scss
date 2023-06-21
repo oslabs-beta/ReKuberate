@@ -36,6 +36,19 @@
   border: none;
   cursor: pointer;
   background-color: #82ad95;
+  box-shadow: 1px 1px 1px 1px #688b78;
+}
+
+.loginButton:hover {
+  background-color: #46c57f;
+  box-shadow: 1px 1px 1px 1px #4d8466;
+  transition-duration: 300ms;
+}
+
+.loginButton:active {
+  top: 5px;
+  left: 5px;
+  box-shadow: none;
 }
 
 .login a {
