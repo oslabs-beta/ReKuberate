@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 15vh;
+  justify-content: center;
+  padding-top: 12vh;
+  padding-bottom: 3vh;
   width: 190px;
   border-radius: 20px;
   background-image: linear-gradient(rgba(116, 156, 133, 1), rgb(255, 238, 238, 0.5));
@@ -50,7 +52,7 @@
 .loggedIn {
   background-color: rgba(127, 255, 212, 0);
   border: none;
-  font-size: 18px;
+  font-size: 28px;
   text-decoration: none;
   margin: 15px;
   margin-top: 15vh;
