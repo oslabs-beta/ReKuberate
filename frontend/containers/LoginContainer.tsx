@@ -62,9 +62,9 @@ export default function LoginContainer() {
           }}
         >
           {errorMessage}
-          <p>Username</p>
+          <p className={styles.username} id="username">Username</p>
           <input type="text" name="username" id="loginUsername" />
-          <p>Password</p>
+          <p className={styles.password} id="password">Password</p>
           <input type="password" name="password" id="loginPassword" />
         </form>
         <button className={styles.loginButton} id="loginButton" onClick={() => verifyLogin()}>
