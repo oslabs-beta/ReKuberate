@@ -5,7 +5,7 @@ export default function Installation() {
   return (
     <>
       <div className={styles.docs} id="installation">
-        <p style={{ fontWeight: 600 }}>Installation is incredible simple</p>
+        <p style={{ fontWeight: 900 }}>Installation is incredibly simple</p>
         <p>1. Head over to ReKuberate.org</p>
         <p>2. Click on download</p>
         <p>3. Extract the zip file</p>
