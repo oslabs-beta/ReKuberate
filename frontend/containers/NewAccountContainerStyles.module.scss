@@ -21,20 +21,52 @@
 }
 
 .create input {
-  height: 2.5vh;
-  width: 25vh;
+  height: 30px;
+  width: 300px;
   border-radius: 6px;
   border: none;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 1px 1px 1px 1px #6b9b80;
 }
 
-.create button {
+.username {
+  padding: 0;
+  height: 13px;
+  font-size: 16px;
+  padding-bottom: -3px;
+}
+
+.password {
+  padding: 0;
+  padding-top: 8px;
+  padding-bottom: -3px;
+  height: 13px;
+  font-size: 16px;
+}
+
+.createButton {
   margin-top: 25px;
-  margin-bottom: 10px;
-  width: 15vh;
-  height: 3vh;
-  border-radius: 4px;
+  font-size: 16px;
+  width: 180px;
+  height: 30px;
+  border-radius: 7px;
   border: none;
   cursor: pointer;
+  background-color: #82ad95;
+  box-shadow: 1px 1px 1px 1px #688b78;
+}
+
+.createButton:hover {
+  background-color: #46c57f;
+  box-shadow: 1px 1px 1px 1px #4d8466;
+  transition-duration: 300ms;
+}
+
+.createButton:active {
+  top: 5px;
+  left: 5px;
+  box-shadow: none;
 }
 
 .errorMessage {

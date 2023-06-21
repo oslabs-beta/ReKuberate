@@ -54,11 +54,11 @@ export default function CreateAccount() {
           }}
         >
           {errorMessage}
-          <p>Username</p>
+          <p className={styles.username}>Username</p>
           <input type="text" name="username" id="createUsername" />
-          <p>Password</p>
+          <p className={styles.password}>Password</p>
           <input type="password" name="password" id="createPassword" />
-          <button id="loginButton" onClick={() => verifyNewAccount()}>
+          <button id="loginButton" className={styles.createButton} onClick={() => verifyNewAccount()}>
             Create Account
           </button>
         </form>
