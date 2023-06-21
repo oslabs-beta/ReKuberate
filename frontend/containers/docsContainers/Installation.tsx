@@ -12,12 +12,9 @@ export default function Installation() {
         <p>4. Open the extracted folder in VSCode</p>
         <p>5. Install dependencies with 'npm install'</p>
         <p>6. Start the application with 'npm run electron'</p>
-        <p>7. Enjoy!</p>
-        <p>
-          8. If the metrics do not load but the boxes appear, try going to{' '}
-          <a href="http://localhost:9000">http://localhost:9000</a> and logging in with username: admin, password:
-          prom-operator
-        </p>
+        <p>7. If this is your first time using ReKuberate, visit <a href="http://localhost:9000">http://localhost:9000</a> and login 
+        using admin and prom-operator as the username and password</p>
+        <p>8. Enjoy!</p>
       </div>
     </>
   );
