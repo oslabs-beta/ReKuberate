@@ -3,7 +3,7 @@
     EB_BUCKET=elasticbeanstalk-us-east-1-034677532976
     # Set the default region for aws cli 
     aws configure set default.region us-east-1
-    # Log in to ECR
+    # Log in to ECR 
     eval $(aws ecr get-login --no-include-email --region us-east-1)
     # Build docker image based on our production Dockerfile
     docker build -t kevinlifan/rekuberate .
