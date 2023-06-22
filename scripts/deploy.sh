@@ -17,7 +17,7 @@
     zip -r rekuberate.zip Dockerrun.aws.json .ebextensions
     # Upload zip file to s3 bucket
     aws s3 cp rekuberate.zip s3://$EB_BUCKET/rekuberate.zip
-    # Create a new application version with new Dockerrun
+    # Create a new application version with new Dockerrun 
     aws elasticbeanstalk create-application-version --application-name rekub --version-label $GITHUB_SHA --source-bundle S3Bucket=$EB_BUCKET,S3Key=rekuberate.zip
     # Update environment to use new version number
     aws elasticbeanstalk update-environment --environment-name Rekub-env --version-label $GITHUB_SHA
