@@ -15,20 +15,3 @@
   "exclude": ["node_modules"],
   "include": ["server"]
 }
-
-// added type: module to package.json
-// added "esModuleInterop": true to tsconfig.json
-// added .cjs file extension to webpack
-// npm installed ts-node
-// added --exec 'node --loader ts-node/esm' in package.json scripts
-// converted import { Pool } from 'pg' to import pkg from 'pg'; const { Pool } = pkg;
-// added the following to server.ts:
-// import { fileURLToPath } from 'url';
-// import path from 'path';
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-
-// changed module es6 to es2020 in tsconfig.json
-
-// added declarations for scss modules
