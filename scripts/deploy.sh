@@ -7,7 +7,7 @@
     eval $(aws ecr get-login --no-include-email --region us-east-1)
     # Build docker image based on our production Dockerfile 
     docker build -t kevinlifan/rekuberate .
-    # tag the image with the GitHub SHA
+    # tag the image with the GitHub SHA 
     docker tag kevinlifan/rekuberate:latest 034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:$GITHUB_SHA
     # Push built image to ECS
     docker push 034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:$GITHUB_SHA
