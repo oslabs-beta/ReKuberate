@@ -1,7 +1,7 @@
     echo "Processing deploy.sh"
     # Set EB BUCKET as env variable 
     EB_BUCKET=elasticbeanstalk-us-east-1-034677532976
-    # Set the default region for aws cli
+    # Set the default region for aws cli 
     aws configure set default.region us-east-1
     # Log in to ECR
     eval $(aws ecr get-login --no-include-email --region us-east-1)
