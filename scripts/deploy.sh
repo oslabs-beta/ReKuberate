@@ -1,5 +1,5 @@
     echo "Processing deploy.sh"
-    # Set EB BUCKET as env variable
+    # Set EB BUCKET as env variable 
     EB_BUCKET=elasticbeanstalk-us-east-1-034677532976
     # Set the default region for aws cli
     aws configure set default.region us-east-1
