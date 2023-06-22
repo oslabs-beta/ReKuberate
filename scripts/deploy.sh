@@ -11,7 +11,7 @@
     docker tag kevinlifan/rekuberate:latest 034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:$GITHUB_SHA
     # Push built image to ECS
     docker push 034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:$GITHUB_SHA
-    # Use the linux sed command to replace the text '<VERSION>' in our Dockerrun file with the GitHub SHA key
+    # Use the linux sed command to replace the text '<VERSION>' in our Dockerrun file with the GitHub SHA key 
     sed -i='' "s/<VERSION>/$GITHUB_SHA/" Dockerrun.aws.json
     # Zip up our codebase, along with modified Dockerrun and our .ebextensions directory
     zip -r rekuberate.zip Dockerrun.aws.json .ebextensions
