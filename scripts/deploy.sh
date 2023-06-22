@@ -13,7 +13,7 @@
     docker push 034677532976.dkr.ecr.us-east-1.amazonaws.com/rekuberate:$GITHUB_SHA
     # Use the linux sed command to replace the text '<VERSION>' in our Dockerrun file with the GitHub SHA key 
     sed -i='' "s/<VERSION>/$GITHUB_SHA/" Dockerrun.aws.json
-    # Zip up our codebase, along with modified Dockerrun and our .ebextensions directory
+    # Zip up our codebase, along with modified Dockerrun and our .ebextensions directory 
     zip -r rekuberate.zip Dockerrun.aws.json .ebextensions
     # Upload zip file to s3 bucket
     aws s3 cp rekuberate.zip s3://$EB_BUCKET/rekuberate.zip
