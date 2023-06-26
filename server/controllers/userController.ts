@@ -1,5 +1,4 @@
 import db from '../models/dbModel.ts';
-import { NextFunction } from 'express-serve-static-core';
 import { ErrorHandler, userControllerType } from '../types';
 import bcrypt from 'bcryptjs';
 
