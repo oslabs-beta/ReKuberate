@@ -50,7 +50,7 @@ export default function SidebarContainer() {
       </button>,
     ]
     : [
-      <Nav.Link as={Link} to="/" className={styles.sidebarLinks}>
+      <Nav.Link as={Link} to="/" className={`${styles.sidebarLinks} ${styles.loginLink}`}>
           Login
       </Nav.Link>,
       <Nav.Link as={Link} to="/docs" className={styles.sidebarLinks}>

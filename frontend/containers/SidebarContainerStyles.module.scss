@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
   padding-top: 12vh;
   padding-bottom: 3vh;
   width: 190px;
@@ -22,6 +21,10 @@
   border-radius: 20px;
   margin: 15px;
   color: inherit;
+}
+
+.loginLink {
+  padding-top: 15vh;
 }
 
 .sidebarLinks:hover {
