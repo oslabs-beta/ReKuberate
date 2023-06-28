@@ -48,6 +48,7 @@ Installation is incredible simple
 ![Redux](https://img.shields.io/badge/-Redux-764ABC?style=for-the-badge&logo=react&logoColor=white)
 ![Webpack](https://img.shields.io/badge/Webpack-2CA5E0?style=for-the-badge&logo=webpack&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![AWS](https://img.shields.io/badge/Amazon_EC2-white?style=for-the-badge&logo=amazon-ec2&logoColor=orange)
 ![Electron](https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9)
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-326ce5.svg?&style=for-the-badge&logo=kubernetes&logoColor=white)
