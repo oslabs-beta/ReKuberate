@@ -20,6 +20,13 @@ export default function drawChart(data) {
       'link',
       d3.forceLink(links).id((d) => d.id)
     )
+    .force(
+      'link',
+      d3
+        .forceLink()
+        .distance((d) => d.distance)
+        .strength(0.1)
+    )
     .force('charge', d3.forceManyBody())
     .force('center', d3.forceCenter(width / 2, height / 2))
     .on('tick', ticked);
@@ -40,7 +47,7 @@ export default function drawChart(data) {
     .selectAll()
     .data(links)
     .join('line')
-    .attr('stroke-width', (d) => Math.sqrt(d.value));
+    .attr('stroke-width', (d) => d.value);
 
   const node = svg
     .append('g')
@@ -49,8 +56,8 @@ export default function drawChart(data) {
     .selectAll()
     .data(nodes)
     .join('circle')
-    .attr('r', 10)
-    .attr('fill', (d) => color(d.group));
+    .attr('r', 15)
+    .attr('fill', (d) => d.group);
 
   node.append('title').text((d) => d.id);
 
