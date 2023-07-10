@@ -12,6 +12,7 @@ import LoadingWheel from './components/LoadingWheel';
 import LoginContainer from './containers/LoginContainer';
 import NewAccountContainer from './containers/NewAccountContainer';
 import Docs from './pages/Docs';
+import D3 from './pages/D3';
 
 //create App functional component and export
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/pods" element={<PodsContainer />}></Route>
           <Route path="/metrics" element={<MetricsContainer />}></Route>
           <Route path="/docs" element={<Docs />}></Route>
+          <Route path="/d3" element={<D3 />}></Route>
         </Routes>
       </div>
     </>
