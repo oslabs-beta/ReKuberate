@@ -2,7 +2,7 @@ import React from 'react';
 import './PodsContainerStyles.scss';
 import AnyChart from 'anychart-react';
 import anychart from 'anychart';
-// import { MockData } from '../types';
+import { MockData } from '../types';
 import { useAppDispatch} from '../store/hooks';
 import { setData, setLoading, setPodIntervalID } from '../store/appSlice';
 
@@ -11,7 +11,7 @@ import { setData, setLoading, setPodIntervalID } from '../store/appSlice';
 export default function PodsContainer() {
 
   // Mock data for online demo
-  const chartData = {
+  const chartData: MockData = {
     nodes: [
       {
         hovered: { fill: '#51cf51' },
