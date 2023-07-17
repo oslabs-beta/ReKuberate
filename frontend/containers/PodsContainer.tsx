@@ -250,7 +250,7 @@ export default function PodsContainer() {
   chart.container('container');
 
 
-// Uncomment for realtime data
+  // Uncomment for realtime data
   // const data: any = useAppSelector((state) => state.app.data);
   // const firstKey = Object.keys(data)[0];
 
