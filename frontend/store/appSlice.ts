@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface appState {
-  data: {};
+  data: object;
   URLs: {
     numOfKublets?: string;
     numOfPods?: string;

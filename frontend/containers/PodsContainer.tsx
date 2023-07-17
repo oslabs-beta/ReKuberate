@@ -2,15 +2,15 @@ import React from 'react';
 import './PodsContainerStyles.scss';
 import AnyChart from 'anychart-react';
 import anychart from 'anychart';
-import { MockData } from '../types';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+// import { MockData } from '../types';
+import { useAppDispatch} from '../store/hooks';
 import { setData, setLoading, setPodIntervalID } from '../store/appSlice';
 
 // Fetches data from our server and renders data into a network graph using Anychart
 // Data is divided into nodes and edges with conditional coloring
 export default function PodsContainer() {
 
-// Mock data for online demo
+  // Mock data for online demo
   const chartData = {
     nodes: [
       {
