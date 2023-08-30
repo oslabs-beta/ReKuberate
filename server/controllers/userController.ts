@@ -10,7 +10,7 @@ const userController: userControllerType = {
     //Desctructure createUsername property on request body
     const { createUsername } = req.body;
     //Declare variable assigned to query for selecting object that matches passed in username
-    const sqlQuery: string = 'SELECT * FROM people WHERE username=$1';
+    const sqlQuery = 'SELECT * FROM people WHERE username=$1';
     try {
       //Declare variable assigned to result of database query
       const data = await db.query(sqlQuery, [createUsername]);
@@ -48,9 +48,9 @@ const userController: userControllerType = {
         message: { err: 'username or password does not meet requirements' },
       });
     //creates a hash of provided password
-    const hash: string = await bcrypt.hash(createPassword, 10);
+    const hash = await bcrypt.hash(createPassword, 10);
     //query to store provided username and hashed password in DB
-    const sqlQuery: string = 'INSERT INTO people (username, password) VALUES ($1, $2)';
+    const sqlQuery = 'INSERT INTO people (username, password) VALUES ($1, $2)';
     try {
       //executes query
       console.log('INSERTING NEW USER');
